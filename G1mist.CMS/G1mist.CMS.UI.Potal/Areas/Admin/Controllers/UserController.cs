@@ -171,7 +171,7 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
                 {
                     var salt = user.salt;
                     var pwd = user.password;
-                    var loginPwd = Security.SetMD5(password, salt);
+                    var loginPwd = FormsAuthentication.HashPasswordForStoringInConfigFile(password + salt, "MD5");
 
                     //比较密码
                     if (pwd.Equals(loginPwd))
@@ -316,7 +316,7 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
                     //获取用户加密盐
                     var salt = user.salt;
                     //计算用户输入的旧密码是否正确
-                    var isOldPwdCurrect = Security.SetMD5(oldpwd, salt).Equals(user.password);
+                    var isOldPwdCurrect = FormsAuthentication.HashPasswordForStoringInConfigFile(oldpwd + salt, "MD5").Equals(user.password);
 
                     if (isOldPwdCurrect)
                     {
@@ -325,7 +325,7 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
                         //设置新的加密盐
                         user.salt = newsalt;
                         //计算新的密码
-                        user.password = Security.SetMD5(newpwd, newsalt);
+                        user.password = FormsAuthentication.HashPasswordForStoringInConfigFile(newpwd + salt, "MD5");
 
                         var res = UserService.Update(user);
 
@@ -370,7 +370,7 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
 
             //初始密码为666666
             //将密码与加密盐混淆,做MD5运算
-            var pass = Security.SetMD5("666666", salt);
+            var pass = FormsAuthentication.HashPasswordForStoringInConfigFile("666666" + salt, "MD5");
 
             //创建时间
             user.createtime = DateTime.Now;

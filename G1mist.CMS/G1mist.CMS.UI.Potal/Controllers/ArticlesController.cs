@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using G1mist.CMS.Common;
 using G1mist.CMS.Modal;
 using Newtonsoft.Json;
+using Microsoft.Security.Application;
 
 namespace G1mist.CMS.UI.Potal.Controllers
 {
@@ -35,6 +36,25 @@ namespace G1mist.CMS.UI.Potal.Controllers
 
             velocityHelper.Put("list", list);
             velocityHelper.Display("list.htm");
+        }
+
+        public void Show(int id)
+        {
+            var velocityHelper = new VelocityHelper(_templatePath);
+
+            var model = ArticleService.GetModal(a => a.id.Equals(id));
+
+            if (model != null)
+            {
+                model.body = HttpContext.Server.HtmlDecode(model.body);
+                velocityHelper.Put("model", model);
+                velocityHelper.Display("show.htm");
+            }
+            else
+            {
+                HttpContext.Response.Redirect(@"/static/error.html");
+                HttpContext.Response.End();
+            }
         }
     }
 }
