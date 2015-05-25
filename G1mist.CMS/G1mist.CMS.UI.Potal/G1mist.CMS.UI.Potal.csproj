@@ -1,0 +1,924 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{20E4E463-8872-43D9-9E52-EA096F701664}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>G1mist.CMS.UI.Potal</RootNamespace>
+    <AssemblyName>G1mist.CMS.UI.Potal</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AntiXssLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\AntiXssLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.3.0.0\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging.Core">
+      <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlSanitizationLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NVelocity">
+      <HintPath>..\packages\NVelocity.1.0.3\lib\NVelocity.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core">
+      <HintPath>..\packages\Spring.Core.2.0.1\lib\net40\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web">
+      <HintPath>..\packages\Spring.Web.2.0.1\lib\net40\Spring.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web.Extensions">
+      <HintPath>..\packages\Spring.Web.Extensions.2.0.1\lib\net40\Spring.Web.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web.Mvc4">
+      <HintPath>..\packages\Spring.Web.Mvc4.2.0.1\lib\net40\Spring.Web.Mvc4.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\HttpModules.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LinkController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Controllers\ArticlesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\ExceptionFilter.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Message.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Areas\Admin\html\articles\add.html" />
+    <Content Include="Areas\Admin\html\articles\index.html" />
+    <Content Include="Areas\Admin\html\articles\edit.html" />
+    <Content Include="Areas\Admin\html\authorize\add.html" />
+    <Content Include="Areas\Admin\html\authorize\index.html" />
+    <Content Include="Areas\Admin\html\categories\add.html" />
+    <Content Include="Areas\Admin\html\categories\edit.html" />
+    <Content Include="Areas\Admin\html\categories\index.html" />
+    <Content Include="Areas\Admin\html\css\bootstrap-table.min.css" />
+    <Content Include="Areas\Admin\html\css\bootstrap.min.css" />
+    <Content Include="Areas\Admin\html\css\style.css" />
+    <Content Include="Areas\Admin\html\images\001.jpg" />
+    <Content Include="Areas\Admin\html\images\404.png" />
+    <Content Include="Areas\Admin\html\images\add.png" />
+    <Content Include="Areas\Admin\html\images\btnbg.png" />
+    <Content Include="Areas\Admin\html\images\btnbg1.png" />
+    <Content Include="Areas\Admin\html\images\btnbg2.png" />
+    <Content Include="Areas\Admin\html\images\buttonbg.png" />
+    <Content Include="Areas\Admin\html\images\c01.png" />
+    <Content Include="Areas\Admin\html\images\c02.png" />
+    <Content Include="Areas\Admin\html\images\c03.png" />
+    <Content Include="Areas\Admin\html\images\cbg.png" />
+    <Content Include="Areas\Admin\html\images\clist.png" />
+    <Content Include="Areas\Admin\html\images\close.png" />
+    <Content Include="Areas\Admin\html\images\close1.png" />
+    <Content Include="Areas\Admin\html\images\cloud.png" />
+    <Content Include="Areas\Admin\html\images\d01.png" />
+    <Content Include="Areas\Admin\html\images\d02.png" />
+    <Content Include="Areas\Admin\html\images\d03.png" />
+    <Content Include="Areas\Admin\html\images\d04.png" />
+    <Content Include="Areas\Admin\html\images\d05.png" />
+    <Content Include="Areas\Admin\html\images\d06.png" />
+    <Content Include="Areas\Admin\html\images\d07.png" />
+    <Content Include="Areas\Admin\html\images\diskbg.png" />
+    <Content Include="Areas\Admin\html\images\dp.png" />
+    <Content Include="Areas\Admin\html\images\f01.png" />
+    <Content Include="Areas\Admin\html\images\f02.png" />
+    <Content Include="Areas\Admin\html\images\f03.png" />
+    <Content Include="Areas\Admin\html\images\f04.png" />
+    <Content Include="Areas\Admin\html\images\f05.png" />
+    <Content Include="Areas\Admin\html\images\f06.png" />
+    <Content Include="Areas\Admin\html\images\help.png" />
+    <Content Include="Areas\Admin\html\images\i01.png" />
+    <Content Include="Areas\Admin\html\images\i02.png" />
+    <Content Include="Areas\Admin\html\images\i03.png" />
+    <Content Include="Areas\Admin\html\images\i04.png" />
+    <Content Include="Areas\Admin\html\images\i05.png" />
+    <Content Include="Areas\Admin\html\images\i06.png" />
+    <Content Include="Areas\Admin\html\images\i07.png" />
+    <Content Include="Areas\Admin\html\images\i08.png" />
+    <Content Include="Areas\Admin\html\images\i09.png" />
+    <Content Include="Areas\Admin\html\images\iadd.png" />
+    <Content Include="Areas\Admin\html\images\ibtnbg.png" />
+    <Content Include="Areas\Admin\html\images\ico01.png" />
+    <Content Include="Areas\Admin\html\images\ico02.png" />
+    <Content Include="Areas\Admin\html\images\ico03.png" />
+    <Content Include="Areas\Admin\html\images\ico04.png" />
+    <Content Include="Areas\Admin\html\images\ico05.png" />
+    <Content Include="Areas\Admin\html\images\ico06.png" />
+    <Content Include="Areas\Admin\html\images\icon01.png" />
+    <Content Include="Areas\Admin\html\images\icon02.png" />
+    <Content Include="Areas\Admin\html\images\icon03.png" />
+    <Content Include="Areas\Admin\html\images\icon04.png" />
+    <Content Include="Areas\Admin\html\images\icon05.png" />
+    <Content Include="Areas\Admin\html\images\icon06.png" />
+    <Content Include="Areas\Admin\html\images\img01.png" />
+    <Content Include="Areas\Admin\html\images\img02.png" />
+    <Content Include="Areas\Admin\html\images\img03.png" />
+    <Content Include="Areas\Admin\html\images\img04.png" />
+    <Content Include="Areas\Admin\html\images\img05.png" />
+    <Content Include="Areas\Admin\html\images\img06.png" />
+    <Content Include="Areas\Admin\html\images\img07.png" />
+    <Content Include="Areas\Admin\html\images\img08.png" />
+    <Content Include="Areas\Admin\html\images\img09.png" />
+    <Content Include="Areas\Admin\html\images\img10.png" />
+    <Content Include="Areas\Admin\html\images\img11.png" />
+    <Content Include="Areas\Admin\html\images\img12.png" />
+    <Content Include="Areas\Admin\html\images\img13.png" />
+    <Content Include="Areas\Admin\html\images\img14.png" />
+    <Content Include="Areas\Admin\html\images\img15.png" />
+    <Content Include="Areas\Admin\html\images\inputbg.gif" />
+    <Content Include="Areas\Admin\html\images\itabbg.png" />
+    <Content Include="Areas\Admin\html\images\itabbg1.png" />
+    <Content Include="Areas\Admin\html\images\leftico.png" />
+    <Content Include="Areas\Admin\html\images\leftico01.png" />
+    <Content Include="Areas\Admin\html\images\leftico02.png" />
+    <Content Include="Areas\Admin\html\images\leftico03.png" />
+    <Content Include="Areas\Admin\html\images\leftico04.png" />
+    <Content Include="Areas\Admin\html\images\leftline.gif" />
+    <Content Include="Areas\Admin\html\images\leftmenubg.gif" />
+    <Content Include="Areas\Admin\html\images\lefttop.gif" />
+    <Content Include="Areas\Admin\html\images\libg.png" />
+    <Content Include="Areas\Admin\html\images\light.png" />
+    <Content Include="Areas\Admin\html\images\line.gif" />
+    <Content Include="Areas\Admin\html\images\line1.png" />
+    <Content Include="Areas\Admin\html\images\list.gif" />
+    <Content Include="Areas\Admin\html\images\list1.gif" />
+    <Content Include="Areas\Admin\html\images\list2.png" />
+    <Content Include="Areas\Admin\html\images\loginbg1.png" />
+    <Content Include="Areas\Admin\html\images\loginbg2.png" />
+    <Content Include="Areas\Admin\html\images\loginbg3.png" />
+    <Content Include="Areas\Admin\html\images\logininfo.png" />
+    <Content Include="Areas\Admin\html\images\loginlogo.png" />
+    <Content Include="Areas\Admin\html\images\loginpassword.png" />
+    <Content Include="Areas\Admin\html\images\loginsj.png" />
+    <Content Include="Areas\Admin\html\images\loginuser.png" />
+    <Content Include="Areas\Admin\html\images\logo.png" />
+    <Content Include="Areas\Admin\html\images\msg.png" />
+    <Content Include="Areas\Admin\html\images\navbg.png" />
+    <Content Include="Areas\Admin\html\images\next.gif" />
+    <Content Include="Areas\Admin\html\images\pre.gif" />
+    <Content Include="Areas\Admin\html\images\px.gif" />
+    <Content Include="Areas\Admin\html\images\righttop.gif" />
+    <Content Include="Areas\Admin\html\images\rlist.gif" />
+    <Content Include="Areas\Admin\html\images\search.png" />
+    <Content Include="Areas\Admin\html\images\sj.png" />
+    <Content Include="Areas\Admin\html\images\sun.png" />
+    <Content Include="Areas\Admin\html\images\t01.png" />
+    <Content Include="Areas\Admin\html\images\t02.png" />
+    <Content Include="Areas\Admin\html\images\t03.png" />
+    <Content Include="Areas\Admin\html\images\t04.png" />
+    <Content Include="Areas\Admin\html\images\t05.png" />
+    <Content Include="Areas\Admin\html\images\tbg.png" />
+    <Content Include="Areas\Admin\html\images\tcbg.gif" />
+    <Content Include="Areas\Admin\html\images\th.gif" />
+    <Content Include="Areas\Admin\html\images\ticon.png" />
+    <Content Include="Areas\Admin\html\images\time.png" />
+    <Content Include="Areas\Admin\html\images\toolbg.gif" />
+    <Content Include="Areas\Admin\html\images\topbg.gif" />
+    <Content Include="Areas\Admin\html\images\topleft.jpg" />
+    <Content Include="Areas\Admin\html\images\topright.jpg" />
+    <Content Include="Areas\Admin\html\images\ub1.png" />
+    <Content Include="Areas\Admin\html\images\uew_icon.png" />
+    <Content Include="Areas\Admin\html\images\uew_icon_hover.png" />
+    <Content Include="Areas\Admin\html\images\ulist.png" />
+    <Content Include="Areas\Admin\html\images\user.png" />
+    <Content Include="Areas\Admin\html\images\userbg.png" />
+    <Content Include="Areas\Admin\html\index.html" />
+    <Content Include="Areas\Admin\html\js\bootstrap-table-zh-CN.min.js" />
+    <Content Include="Areas\Admin\html\js\bootstrap-table.min.js" />
+    <Content Include="Areas\Admin\html\js\bootstrap.min.js" />
+    <Content Include="Areas\Admin\html\js\editor\kindeditor-all-min.js" />
+    <Content Include="Areas\Admin\html\js\editor\lang\ar.js" />
+    <Content Include="Areas\Admin\html\js\editor\lang\en.js" />
+    <Content Include="Areas\Admin\html\js\editor\lang\ko.js" />
+    <Content Include="Areas\Admin\html\js\editor\lang\zh_CN.js" />
+    <Content Include="Areas\Admin\html\js\editor\lang\zh_TW.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\anchor\anchor.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\autoheight\autoheight.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\baidumap\baidumap.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\baidumap\index.html" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\baidumap\map.html" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\clearhtml\clearhtml.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\code\code.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\code\prettify.css" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\code\prettify.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\emoticons.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\0.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\1.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\10.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\100.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\101.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\102.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\103.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\104.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\105.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\106.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\107.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\108.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\109.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\11.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\110.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\111.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\112.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\113.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\114.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\115.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\116.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\117.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\118.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\119.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\12.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\120.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\121.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\122.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\123.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\124.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\125.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\126.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\127.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\128.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\129.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\13.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\130.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\131.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\132.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\133.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\134.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\14.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\15.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\16.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\17.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\18.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\19.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\2.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\20.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\21.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\22.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\23.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\24.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\25.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\26.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\27.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\28.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\29.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\3.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\30.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\31.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\32.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\33.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\34.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\35.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\36.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\37.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\38.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\39.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\4.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\40.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\41.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\42.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\43.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\44.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\45.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\46.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\47.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\48.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\49.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\5.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\50.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\51.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\52.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\53.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\54.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\55.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\56.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\57.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\58.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\59.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\6.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\60.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\61.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\62.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\63.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\64.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\65.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\66.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\67.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\68.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\69.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\7.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\70.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\71.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\72.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\73.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\74.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\75.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\76.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\77.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\78.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\79.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\8.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\80.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\81.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\82.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\83.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\84.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\85.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\86.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\87.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\88.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\89.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\9.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\90.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\91.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\92.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\93.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\94.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\95.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\96.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\97.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\98.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\99.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\emoticons\images\static.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\filemanager\filemanager.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\filemanager\images\file-16.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\filemanager\images\file-64.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\filemanager\images\folder-16.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\filemanager\images\folder-64.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\filemanager\images\go-up.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\flash\flash.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\image\image.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\image\images\align_left.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\image\images\align_right.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\image\images\align_top.gif" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\image\images\refresh.png" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\insertfile\insertfile.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\lineheight\lineheight.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\link\link.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\map\map.html" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\map\map.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\media\media.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\multiimage\images\image.png" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\multiimage\images\select-files-en.png" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\multiimage\images\select-files-zh_CN.png" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\multiimage\images\swfupload.swf" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\multiimage\multiimage.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\pagebreak\pagebreak.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\plainpaste\plainpaste.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\preview\preview.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\quickformat\quickformat.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\table\table.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\template\html\1.html" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\template\html\2.html" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\template\html\3.html" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\template\template.js" />
+    <Content Include="Areas\Admin\html\js\editor\plugins\wordpaste\wordpaste.js" />
+    <Content Include="Areas\Admin\html\js\editor\themes\common\anchor.gif" />
+    <Content Include="Areas\Admin\html\js\editor\themes\common\blank.gif" />
+    <Content Include="Areas\Admin\html\js\editor\themes\common\flash.gif" />
+    <Content Include="Areas\Admin\html\js\editor\themes\common\loading.gif" />
+    <Content Include="Areas\Admin\html\js\editor\themes\common\media.gif" />
+    <Content Include="Areas\Admin\html\js\editor\themes\common\rm.gif" />
+    <Content Include="Areas\Admin\html\js\editor\themes\default\background.png" />
+    <Content Include="Areas\Admin\html\js\editor\themes\default\default.css" />
+    <Content Include="Areas\Admin\html\js\editor\themes\default\default.png" />
+    <Content Include="Areas\Admin\html\js\editor\themes\qq\editor.gif" />
+    <Content Include="Areas\Admin\html\js\editor\themes\qq\qq.css" />
+    <Content Include="Areas\Admin\html\js\editor\themes\simple\simple.css" />
+    <Content Include="Areas\Admin\html\js\jquery.js" />
+    <Content Include="Areas\Admin\html\js\jquery.min.js" />
+    <Content Include="Areas\Admin\html\left.html" />
+    <Content Include="Areas\Admin\html\top.html" />
+    <Content Include="Areas\Admin\html\users\add.html" />
+    <Content Include="Areas\Admin\html\users\changepwd.html" />
+    <Content Include="Areas\Admin\html\users\index.html" />
+    <Content Include="Areas\Admin\login.html" />
+    <Content Include="Areas\Admin\main.html" />
+    <Content Include="Config\controllers.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\Services.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\bootstrap-table.min.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\select.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Areas\Admin\html\css\sweetalert.css" />
+    <Content Include="Global.asax" />
+    <Content Include="images\001.jpg" />
+    <Content Include="images\404.png" />
+    <Content Include="images\add.png" />
+    <Content Include="images\btnbg.png" />
+    <Content Include="images\btnbg1.png" />
+    <Content Include="images\btnbg2.png" />
+    <Content Include="images\buttonbg.png" />
+    <Content Include="images\c01.png" />
+    <Content Include="images\c02.png" />
+    <Content Include="images\c03.png" />
+    <Content Include="images\cbg.png" />
+    <Content Include="images\clist.png" />
+    <Content Include="images\close.png" />
+    <Content Include="images\close1.png" />
+    <Content Include="images\cloud.png" />
+    <Content Include="images\d01.png" />
+    <Content Include="images\d02.png" />
+    <Content Include="images\d03.png" />
+    <Content Include="images\d04.png" />
+    <Content Include="images\d05.png" />
+    <Content Include="images\d06.png" />
+    <Content Include="images\d07.png" />
+    <Content Include="images\diskbg.png" />
+    <Content Include="images\dp.png" />
+    <Content Include="images\f01.png" />
+    <Content Include="images\f02.png" />
+    <Content Include="images\f03.png" />
+    <Content Include="images\f04.png" />
+    <Content Include="images\f05.png" />
+    <Content Include="images\f06.png" />
+    <Content Include="images\help.png" />
+    <Content Include="images\i01.png" />
+    <Content Include="images\i02.png" />
+    <Content Include="images\i03.png" />
+    <Content Include="images\i04.png" />
+    <Content Include="images\i05.png" />
+    <Content Include="images\i06.png" />
+    <Content Include="images\i07.png" />
+    <Content Include="images\i08.png" />
+    <Content Include="images\i09.png" />
+    <Content Include="images\iadd.png" />
+    <Content Include="images\ibtnbg.png" />
+    <Content Include="images\ico01.png" />
+    <Content Include="images\ico02.png" />
+    <Content Include="images\ico03.png" />
+    <Content Include="images\ico04.png" />
+    <Content Include="images\ico05.png" />
+    <Content Include="images\ico06.png" />
+    <Content Include="images\icon01.png" />
+    <Content Include="images\icon02.png" />
+    <Content Include="images\icon03.png" />
+    <Content Include="images\icon04.png" />
+    <Content Include="images\icon05.png" />
+    <Content Include="images\icon06.png" />
+    <Content Include="images\img01.png" />
+    <Content Include="images\img02.png" />
+    <Content Include="images\img03.png" />
+    <Content Include="images\img04.png" />
+    <Content Include="images\img05.png" />
+    <Content Include="images\img06.png" />
+    <Content Include="images\img07.png" />
+    <Content Include="images\img08.png" />
+    <Content Include="images\img09.png" />
+    <Content Include="images\img10.png" />
+    <Content Include="images\img11.png" />
+    <Content Include="images\img12.png" />
+    <Content Include="images\img13.png" />
+    <Content Include="images\img14.png" />
+    <Content Include="images\img15.png" />
+    <Content Include="images\inputbg.gif" />
+    <Content Include="images\itabbg.png" />
+    <Content Include="images\itabbg1.png" />
+    <Content Include="images\leftico.png" />
+    <Content Include="images\leftico01.png" />
+    <Content Include="images\leftico02.png" />
+    <Content Include="images\leftico03.png" />
+    <Content Include="images\leftico04.png" />
+    <Content Include="images\leftline.gif" />
+    <Content Include="images\leftmenubg.gif" />
+    <Content Include="images\lefttop.gif" />
+    <Content Include="images\libg.png" />
+    <Content Include="images\light.png" />
+    <Content Include="images\line.gif" />
+    <Content Include="images\line1.png" />
+    <Content Include="images\list.gif" />
+    <Content Include="images\list1.gif" />
+    <Content Include="images\list2.png" />
+    <Content Include="images\loginbg1.png" />
+    <Content Include="images\loginbg2.png" />
+    <Content Include="images\loginbg3.png" />
+    <Content Include="images\logininfo.png" />
+    <Content Include="images\loginlogo.png" />
+    <Content Include="images\loginpassword.png" />
+    <Content Include="images\loginsj.png" />
+    <Content Include="images\loginuser.png" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\msg.png" />
+    <Content Include="images\navbg.png" />
+    <Content Include="images\next.gif" />
+    <Content Include="images\pre.gif" />
+    <Content Include="images\px.gif" />
+    <Content Include="images\righttop.gif" />
+    <Content Include="images\rlist.gif" />
+    <Content Include="images\search.png" />
+    <Content Include="images\sj.png" />
+    <Content Include="images\sun.png" />
+    <Content Include="images\t01.png" />
+    <Content Include="images\t02.png" />
+    <Content Include="images\t03.png" />
+    <Content Include="images\t04.png" />
+    <Content Include="images\t05.png" />
+    <Content Include="images\tbg.png" />
+    <Content Include="images\tcbg.gif" />
+    <Content Include="images\th.gif" />
+    <Content Include="images\ticon.png" />
+    <Content Include="images\time.png" />
+    <Content Include="images\toolbg.gif" />
+    <Content Include="images\topbg.gif" />
+    <Content Include="images\topleft.jpg" />
+    <Content Include="images\topright.jpg" />
+    <Content Include="images\ub1.png" />
+    <Content Include="images\uew_icon.png" />
+    <Content Include="images\uew_icon_hover.png" />
+    <Content Include="images\ulist.png" />
+    <Content Include="images\user.png" />
+    <Content Include="images\userbg.png" />
+    <Content Include="Scripts\bootstrap-table-export.js" />
+    <Content Include="Scripts\bootstrap-table.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\editor\kindeditor-all-min.js" />
+    <Content Include="Scripts\editor\lang\ar.js" />
+    <Content Include="Scripts\editor\lang\en.js" />
+    <Content Include="Scripts\editor\lang\ko.js" />
+    <Content Include="Scripts\editor\lang\zh_CN.js" />
+    <Content Include="Scripts\editor\lang\zh_TW.js" />
+    <Content Include="Scripts\editor\plugins\anchor\anchor.js" />
+    <Content Include="Scripts\editor\plugins\autoheight\autoheight.js" />
+    <Content Include="Scripts\editor\plugins\baidumap\baidumap.js" />
+    <Content Include="Scripts\editor\plugins\baidumap\index.html" />
+    <Content Include="Scripts\editor\plugins\baidumap\map.html" />
+    <Content Include="Scripts\editor\plugins\clearhtml\clearhtml.js" />
+    <Content Include="Scripts\editor\plugins\code\code.js" />
+    <Content Include="Scripts\editor\plugins\code\prettify.css" />
+    <Content Include="Scripts\editor\plugins\code\prettify.js" />
+    <Content Include="Scripts\editor\plugins\emoticons\emoticons.js" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\0.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\1.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\10.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\100.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\101.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\102.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\103.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\104.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\105.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\106.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\107.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\108.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\109.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\11.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\110.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\111.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\112.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\113.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\114.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\115.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\116.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\117.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\118.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\119.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\12.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\120.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\121.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\122.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\123.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\124.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\125.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\126.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\127.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\128.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\129.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\13.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\130.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\131.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\132.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\133.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\134.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\14.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\15.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\16.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\17.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\18.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\19.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\2.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\20.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\21.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\22.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\23.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\24.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\25.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\26.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\27.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\28.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\29.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\3.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\30.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\31.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\32.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\33.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\34.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\35.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\36.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\37.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\38.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\39.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\4.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\40.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\41.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\42.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\43.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\44.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\45.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\46.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\47.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\48.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\49.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\5.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\50.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\51.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\52.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\53.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\54.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\55.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\56.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\57.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\58.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\59.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\6.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\60.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\61.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\62.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\63.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\64.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\65.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\66.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\67.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\68.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\69.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\7.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\70.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\71.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\72.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\73.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\74.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\75.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\76.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\77.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\78.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\79.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\8.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\80.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\81.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\82.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\83.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\84.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\85.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\86.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\87.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\88.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\89.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\9.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\90.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\91.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\92.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\93.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\94.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\95.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\96.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\97.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\98.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\99.gif" />
+    <Content Include="Scripts\editor\plugins\emoticons\images\static.gif" />
+    <Content Include="Scripts\editor\plugins\filemanager\filemanager.js" />
+    <Content Include="Scripts\editor\plugins\filemanager\images\file-16.gif" />
+    <Content Include="Scripts\editor\plugins\filemanager\images\file-64.gif" />
+    <Content Include="Scripts\editor\plugins\filemanager\images\folder-16.gif" />
+    <Content Include="Scripts\editor\plugins\filemanager\images\folder-64.gif" />
+    <Content Include="Scripts\editor\plugins\filemanager\images\go-up.gif" />
+    <Content Include="Scripts\editor\plugins\flash\flash.js" />
+    <Content Include="Scripts\editor\plugins\image\image.js" />
+    <Content Include="Scripts\editor\plugins\image\images\align_left.gif" />
+    <Content Include="Scripts\editor\plugins\image\images\align_right.gif" />
+    <Content Include="Scripts\editor\plugins\image\images\align_top.gif" />
+    <Content Include="Scripts\editor\plugins\image\images\refresh.png" />
+    <Content Include="Scripts\editor\plugins\insertfile\insertfile.js" />
+    <Content Include="Scripts\editor\plugins\lineheight\lineheight.js" />
+    <Content Include="Scripts\editor\plugins\link\link.js" />
+    <Content Include="Scripts\editor\plugins\map\map.html" />
+    <Content Include="Scripts\editor\plugins\map\map.js" />
+    <Content Include="Scripts\editor\plugins\media\media.js" />
+    <Content Include="Scripts\editor\plugins\multiimage\images\image.png" />
+    <Content Include="Scripts\editor\plugins\multiimage\images\select-files-en.png" />
+    <Content Include="Scripts\editor\plugins\multiimage\images\select-files-zh_CN.png" />
+    <Content Include="Scripts\editor\plugins\multiimage\images\swfupload.swf" />
+    <Content Include="Scripts\editor\plugins\multiimage\multiimage.js" />
+    <Content Include="Scripts\editor\plugins\pagebreak\pagebreak.js" />
+    <Content Include="Scripts\editor\plugins\plainpaste\plainpaste.js" />
+    <Content Include="Scripts\editor\plugins\preview\preview.js" />
+    <Content Include="Scripts\editor\plugins\quickformat\quickformat.js" />
+    <Content Include="Scripts\editor\plugins\table\table.js" />
+    <Content Include="Scripts\editor\plugins\template\html\1.html" />
+    <Content Include="Scripts\editor\plugins\template\html\2.html" />
+    <Content Include="Scripts\editor\plugins\template\html\3.html" />
+    <Content Include="Scripts\editor\plugins\template\template.js" />
+    <Content Include="Scripts\editor\plugins\wordpaste\wordpaste.js" />
+    <Content Include="Scripts\editor\themes\common\anchor.gif" />
+    <Content Include="Scripts\editor\themes\common\blank.gif" />
+    <Content Include="Scripts\editor\themes\common\flash.gif" />
+    <Content Include="Scripts\editor\themes\common\loading.gif" />
+    <Content Include="Scripts\editor\themes\common\media.gif" />
+    <Content Include="Scripts\editor\themes\common\rm.gif" />
+    <Content Include="Scripts\editor\themes\default\background.png" />
+    <Content Include="Scripts\editor\themes\default\default.css" />
+    <Content Include="Scripts\editor\themes\default\default.png" />
+    <Content Include="Scripts\editor\themes\qq\editor.gif" />
+    <Content Include="Scripts\editor\themes\qq\qq.css" />
+    <Content Include="Scripts\editor\themes\simple\simple.css" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Areas\Admin\html\js\sweetalert.min.js" />
+    <Content Include="templates\static\401.html" />
+    <Content Include="templates\static\error.html" />
+    <Content Include="templates\static\index.html" />
+    <Content Include="templates\static\error500.html" />
+    <Content Include="templates\index.htm" />
+    <Content Include="templates\list.htm" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="log\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\G1mist.CMS.Common\G1mist.CMS.Common.csproj">
+      <Project>{3FA0EDCD-497B-46C6-AF3B-F06DE60712B2}</Project>
+      <Name>G1mist.CMS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\G1mist.CMS.IRepository\G1mist.CMS.IRepository.csproj">
+      <Project>{634030FD-EB79-4774-986C-0DFA98A112B6}</Project>
+      <Name>G1mist.CMS.IRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\G1mist.CMS.Modal\G1mist.CMS.Modal.csproj">
+      <Project>{33C1F0CD-E29E-4853-B400-2F1E362EB4A8}</Project>
+      <Name>G1mist.CMS.Modal</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\G1mist.CMS.Repository\G1mist.CMS.Repository.csproj">
+      <Project>{322BDEDE-A67C-4F75-B900-1F2F3854697E}</Project>
+      <Name>G1mist.CMS.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Web.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>17858</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

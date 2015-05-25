@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_CMSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="DB_CMSModelStoreContainer">
+    <EntitySet Name="T_Articles" EntityType="DB_CMSModel.Store.T_Articles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_Categories" EntityType="DB_CMSModel.Store.T_Categories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_Links" EntityType="DB_CMSModel.Store.T_Links" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_Users" EntityType="DB_CMSModel.Store.T_Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_Action" EntityType="DB_CMSModel.Store.T_Action" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_Action_Role" EntityType="DB_CMSModel.Store.T_Action_Role" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_Role" EntityType="DB_CMSModel.Store.T_Role" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="T_User_Role" EntityType="DB_CMSModel.Store.T_User_Role" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_T_Articles_T_Users" Association="DB_CMSModel.Store.FK_T_Articles_T_Users">
+      <End Role="T_Users" EntitySet="T_Users" />
+      <End Role="T_Articles" EntitySet="T_Articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_Categories_T_Users" Association="DB_CMSModel.Store.FK_T_Categories_T_Users">
+      <End Role="T_Users" EntitySet="T_Users" />
+      <End Role="T_Categories" EntitySet="T_Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_Action_Role_T_Action" Association="DB_CMSModel.Store.FK_T_Action_Role_T_Action">
+      <End Role="T_Action" EntitySet="T_Action" />
+      <End Role="T_Action_Role" EntitySet="T_Action_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_Action_Role_T_Role" Association="DB_CMSModel.Store.FK_T_Action_Role_T_Role">
+      <End Role="T_Role" EntitySet="T_Role" />
+      <End Role="T_Action_Role" EntitySet="T_Action_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_User_Role_T_Role" Association="DB_CMSModel.Store.FK_T_User_Role_T_Role">
+      <End Role="T_Role" EntitySet="T_Role" />
+      <End Role="T_User_Role" EntitySet="T_User_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_User_Role_T_Users" Association="DB_CMSModel.Store.FK_T_User_Role_T_Users">
+      <End Role="T_Users" EntitySet="T_Users" />
+      <End Role="T_User_Role" EntitySet="T_User_Role" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="T_Articles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" Nullable="false" MaxLength="120" />
+    <Property Name="body" Type="varchar(max)" Nullable="false" />
+    <Property Name="abstract" Type="varchar" Nullable="true" MaxLength="300" />
+    <Property Name="from" Type="varchar" Nullable="true" MaxLength="120" />
+    <Property Name="author" Type="varchar" Nullable="true" MaxLength="30" />
+    <Property Name="cateid" Type="int" Nullable="true" />
+    <Property Name="uid" Type="int" Nullable="true" />
+    <Property Name="createtime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_Categories">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="120" />
+    <Property Name="parentid" Type="int" Nullable="false" />
+    <Property Name="uid" Type="int" Nullable="true" />
+    <Property Name="createtime" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="T_Links">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="120" />
+    <Property Name="url" Type="varchar" Nullable="false" MaxLength="120" />
+    <Property Name="createtime" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="T_Users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="password" Type="varchar" Nullable="false" MaxLength="32" />
+    <Property Name="salt" Type="varchar" Nullable="false" MaxLength="32" />
+    <Property Name="createtime" Type="datetime" Nullable="false" />
+    <Property Name="lastlogintime" Type="datetime" Nullable="true" />
+    <Property Name="lastloginip" Type="varchar" Nullable="true" MaxLength="32" />
+    <Property Name="lastloginarea" Type="varchar" Nullable="true" MaxLength="100" />
+    <Property Name="type" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_Action">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="controllername" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="actionname" Type="varchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="T_Action_Role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="aid" Type="int" Nullable="true" />
+    <Property Name="rid" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="T_Role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="T_User_Role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="uid" Type="int" Nullable="true" />
+    <Property Name="rid" Type="int" Nullable="true" />
+  </EntityType>
+  <Association Name="FK_T_Articles_T_Users">
+    <End Role="T_Users" Type="DB_CMSModel.Store.T_Users" Multiplicity="0..1" />
+    <End Role="T_Articles" Type="DB_CMSModel.Store.T_Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="T_Articles">
+        <PropertyRef Name="uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_Categories_T_Users">
+    <End Role="T_Users" Type="DB_CMSModel.Store.T_Users" Multiplicity="0..1" />
+    <End Role="T_Categories" Type="DB_CMSModel.Store.T_Categories" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="T_Categories">
+        <PropertyRef Name="uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_Action_Role_T_Action">
+    <End Role="T_Action" Type="DB_CMSModel.Store.T_Action" Multiplicity="0..1" />
+    <End Role="T_Action_Role" Type="DB_CMSModel.Store.T_Action_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Action">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="T_Action_Role">
+        <PropertyRef Name="aid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_Action_Role_T_Role">
+    <End Role="T_Role" Type="DB_CMSModel.Store.T_Role" Multiplicity="0..1" />
+    <End Role="T_Action_Role" Type="DB_CMSModel.Store.T_Action_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="T_Action_Role">
+        <PropertyRef Name="rid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_User_Role_T_Role">
+    <End Role="T_Role" Type="DB_CMSModel.Store.T_Role" Multiplicity="0..1" />
+    <End Role="T_User_Role" Type="DB_CMSModel.Store.T_User_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="T_User_Role">
+        <PropertyRef Name="rid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_User_Role_T_Users">
+    <End Role="T_Users" Type="DB_CMSModel.Store.T_Users" Multiplicity="0..1" />
+    <End Role="T_User_Role" Type="DB_CMSModel.Store.T_User_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_Users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="T_User_Role">
+        <PropertyRef Name="uid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_CMSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DB_CMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="T_Articles" EntityType="DB_CMSModel.T_Articles" />
+          <EntitySet Name="T_Categories" EntityType="DB_CMSModel.T_Categories" />
+          <EntitySet Name="T_Links" EntityType="DB_CMSModel.T_Links" />
+          <EntitySet Name="T_Users" EntityType="DB_CMSModel.T_Users" />
+          <AssociationSet Name="FK_T_Articles_T_Users" Association="DB_CMSModel.FK_T_Articles_T_Users">
+            <End Role="T_Users" EntitySet="T_Users" />
+            <End Role="T_Articles" EntitySet="T_Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_Categories_T_Users" Association="DB_CMSModel.FK_T_Categories_T_Users">
+            <End Role="T_Users" EntitySet="T_Users" />
+            <End Role="T_Categories" EntitySet="T_Categories" />
+          </AssociationSet>
+          <EntitySet Name="T_Action" EntityType="DB_CMSModel.T_Action" />
+          <EntitySet Name="T_Action_Role" EntityType="DB_CMSModel.T_Action_Role" />
+          <EntitySet Name="T_Role" EntityType="DB_CMSModel.T_Role" />
+          <EntitySet Name="T_User_Role" EntityType="DB_CMSModel.T_User_Role" />
+          <AssociationSet Name="FK_T_Action_Role_T_Action" Association="DB_CMSModel.FK_T_Action_Role_T_Action">
+            <End Role="T_Action" EntitySet="T_Action" />
+            <End Role="T_Action_Role" EntitySet="T_Action_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_Action_Role_T_Role" Association="DB_CMSModel.FK_T_Action_Role_T_Role">
+            <End Role="T_Role" EntitySet="T_Role" />
+            <End Role="T_Action_Role" EntitySet="T_Action_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_User_Role_T_Role" Association="DB_CMSModel.FK_T_User_Role_T_Role">
+            <End Role="T_Role" EntitySet="T_Role" />
+            <End Role="T_User_Role" EntitySet="T_User_Role" />
+          </AssociationSet>
+          <AssociationSet Name="FK_T_User_Role_T_Users" Association="DB_CMSModel.FK_T_User_Role_T_Users">
+            <End Role="T_Users" EntitySet="T_Users" />
+            <End Role="T_User_Role" EntitySet="T_User_Role" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="T_Articles">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="120" Unicode="false" FixedLength="false" />
+          <Property Name="body" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="abstract" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="from" Type="String" MaxLength="120" Unicode="false" FixedLength="false" />
+          <Property Name="author" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="cateid" Type="Int32" />
+          <Property Name="uid" Type="Int32" />
+          <NavigationProperty Name="T_Users" Relationship="DB_CMSModel.FK_T_Articles_T_Users" FromRole="T_Articles" ToRole="T_Users" />
+          <Property Type="DateTime" Name="createtime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="T_Categories">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="120" Unicode="false" FixedLength="false" />
+          <Property Name="parentid" Type="Int32" Nullable="false" />
+          <Property Name="uid" Type="Int32" />
+          <Property Name="createtime" Type="DateTime" />
+          <NavigationProperty Name="T_Users" Relationship="DB_CMSModel.FK_T_Categories_T_Users" FromRole="T_Categories" ToRole="T_Users" />
+        </EntityType>
+        <EntityType Name="T_Links">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="120" Unicode="false" FixedLength="false" />
+          <Property Name="url" Type="String" Nullable="false" MaxLength="120" Unicode="false" FixedLength="false" />
+          <Property Name="createtime" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="T_Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="salt" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="createtime" Type="DateTime" Nullable="false" />
+          <Property Name="lastlogintime" Type="DateTime" />
+          <Property Name="lastloginip" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="lastloginarea" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="T_Articles" Relationship="DB_CMSModel.FK_T_Articles_T_Users" FromRole="T_Users" ToRole="T_Articles" />
+          <NavigationProperty Name="T_Categories" Relationship="DB_CMSModel.FK_T_Categories_T_Users" FromRole="T_Users" ToRole="T_Categories" />
+          <NavigationProperty Name="T_User_Role" Relationship="DB_CMSModel.FK_T_User_Role_T_Users" FromRole="T_Users" ToRole="T_User_Role" />
+        </EntityType>
+        <Association Name="FK_T_Articles_T_Users">
+          <End Role="T_Users" Type="DB_CMSModel.T_Users" Multiplicity="0..1" />
+          <End Role="T_Articles" Type="DB_CMSModel.T_Articles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_Articles">
+              <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_Categories_T_Users">
+          <End Role="T_Users" Type="DB_CMSModel.T_Users" Multiplicity="0..1" />
+          <End Role="T_Categories" Type="DB_CMSModel.T_Categories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_Categories">
+              <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_Action">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="controllername" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="actionname" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_Action_Role" Relationship="DB_CMSModel.FK_T_Action_Role_T_Action" FromRole="T_Action" ToRole="T_Action_Role" />
+        </EntityType>
+        <EntityType Name="T_Action_Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="aid" />
+          <Property Type="Int32" Name="rid" />
+          <NavigationProperty Name="T_Action" Relationship="DB_CMSModel.FK_T_Action_Role_T_Action" FromRole="T_Action_Role" ToRole="T_Action" />
+          <NavigationProperty Name="T_Role" Relationship="DB_CMSModel.FK_T_Action_Role_T_Role" FromRole="T_Action_Role" ToRole="T_Role" />
+        </EntityType>
+        <EntityType Name="T_Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_Action_Role" Relationship="DB_CMSModel.FK_T_Action_Role_T_Role" FromRole="T_Role" ToRole="T_Action_Role" />
+          <NavigationProperty Name="T_User_Role" Relationship="DB_CMSModel.FK_T_User_Role_T_Role" FromRole="T_Role" ToRole="T_User_Role" />
+        </EntityType>
+        <EntityType Name="T_User_Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="uid" />
+          <Property Type="Int32" Name="rid" />
+          <NavigationProperty Name="T_Role" Relationship="DB_CMSModel.FK_T_User_Role_T_Role" FromRole="T_User_Role" ToRole="T_Role" />
+          <NavigationProperty Name="T_Users" Relationship="DB_CMSModel.FK_T_User_Role_T_Users" FromRole="T_User_Role" ToRole="T_Users" />
+        </EntityType>
+        <Association Name="FK_T_Action_Role_T_Action">
+          <End Type="DB_CMSModel.T_Action" Role="T_Action" Multiplicity="0..1" />
+          <End Type="DB_CMSModel.T_Action_Role" Role="T_Action_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Action">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_Action_Role">
+              <PropertyRef Name="aid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_Action_Role_T_Role">
+          <End Type="DB_CMSModel.T_Role" Role="T_Role" Multiplicity="0..1" />
+          <End Type="DB_CMSModel.T_Action_Role" Role="T_Action_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_Action_Role">
+              <PropertyRef Name="rid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_User_Role_T_Role">
+          <End Type="DB_CMSModel.T_Role" Role="T_Role" Multiplicity="0..1" />
+          <End Type="DB_CMSModel.T_User_Role" Role="T_User_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_User_Role">
+              <PropertyRef Name="rid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_T_User_Role_T_Users">
+          <End Type="DB_CMSModel.T_Users" Role="T_Users" Multiplicity="0..1" />
+          <End Type="DB_CMSModel.T_User_Role" Role="T_User_Role" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_Users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="T_User_Role">
+              <PropertyRef Name="uid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_CMSModelStoreContainer" CdmEntityContainer="DB_CMSEntities">
+    <EntitySetMapping Name="T_Articles">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_CMSModel.T_Articles)">
+        <MappingFragment StoreEntitySet="T_Articles">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="body" ColumnName="body" />
+          <ScalarProperty Name="abstract" ColumnName="abstract" />
+          <ScalarProperty Name="from" ColumnName="from" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="cateid" ColumnName="cateid" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Categories">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_CMSModel.T_Categories)">
+        <MappingFragment StoreEntitySet="T_Categories">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="parentid" ColumnName="parentid" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Links">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_CMSModel.T_Links)">
+        <MappingFragment StoreEntitySet="T_Links">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Users">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_CMSModel.T_Users)">
+        <MappingFragment StoreEntitySet="T_Users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="salt" ColumnName="salt" />
+          <ScalarProperty Name="createtime" ColumnName="createtime" />
+          <ScalarProperty Name="lastlogintime" ColumnName="lastlogintime" />
+          <ScalarProperty Name="lastloginip" ColumnName="lastloginip" />
+          <ScalarProperty Name="lastloginarea" ColumnName="lastloginarea" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Action">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_CMSModel.T_Action)">
+        <MappingFragment StoreEntitySet="T_Action">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="controllername" ColumnName="controllername" />
+          <ScalarProperty Name="actionname" ColumnName="actionname" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Action_Role">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_CMSModel.T_Action_Role)">
+        <MappingFragment StoreEntitySet="T_Action_Role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="aid" ColumnName="aid" />
+          <ScalarProperty Name="rid" ColumnName="rid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_Role">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_CMSModel.T_Role)">
+        <MappingFragment StoreEntitySet="T_Role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_User_Role">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_CMSModel.T_User_Role)">
+        <MappingFragment StoreEntitySet="T_User_Role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="rid" ColumnName="rid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DB_Model">
+        <EntityTypeShape EntityType="DB_CMSModel.T_Articles" Width="1.5" PointX="3" PointY="1.125" Height="2.7341113281249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_CMSModel.T_Categories" Width="1.5" PointX="3" PointY="4.625" Height="2.1610522460937496" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_CMSModel.T_Links" Width="1.5" PointX="5.75" PointY="0.75" Height="1.7790128580729165" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_CMSModel.T_Users" Width="1.5" PointX="0.75" PointY="2.375" Height="3.1161507161458339" IsExpanded="true" />
+        <AssociationConnector Association="DB_CMSModel.FK_T_Articles_T_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.2125655110677083" />
+          <ConnectorPoint PointX="3" PointY="3.2125655110677083" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_CMSModel.FK_T_Categories_T_Users" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.1535852050781248" />
+          <ConnectorPoint PointX="3" PointY="5.1535852050781248" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DB_CMSModel.T_Action" Width="1.5" PointX="3.75" PointY="11.125" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="DB_CMSModel.T_Action_Role" Width="1.5" PointX="6" PointY="8" Height="1.9700325520833317" />
+        <EntityTypeShape EntityType="DB_CMSModel.T_Role" Width="1.5" PointX="3.75" PointY="8.125" Height="1.7790128580729174" />
+        <EntityTypeShape EntityType="DB_CMSModel.T_User_Role" Width="1.5" PointX="6" PointY="4" Height="1.9700325520833317" />
+        <AssociationConnector Association="DB_CMSModel.FK_T_Action_Role_T_Action" >
+          <ConnectorPoint PointX="5.25" PointY="12.014506429036459" />
+          <ConnectorPoint PointX="6.75" PointY="12.014506429036459" />
+          <ConnectorPoint PointX="6.75" PointY="9.9700325520833317" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_CMSModel.FK_T_Action_Role_T_Role" >
+          <ConnectorPoint PointX="5.25" PointY="9.0145064290364587" />
+          <ConnectorPoint PointX="6" PointY="9.0145064290364587" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_CMSModel.FK_T_User_Role_T_Role" >
+          <ConnectorPoint PointX="4.90625" PointY="8.125" />
+          <ConnectorPoint PointX="4.90625" PointY="4.3375655110677087" />
+          <ConnectorPoint PointX="6" PointY="4.3375655110677087" />
+        </AssociationConnector>
+        <AssociationConnector Association="DB_CMSModel.FK_T_User_Role_T_Users" >
+          <ConnectorPoint PointX="2.25" PointY="4.5125327555338544" />
+          <ConnectorPoint PointX="4.822916666666667" PointY="4.5125327555338535" />
+          <ConnectorPoint PointX="4.989583333333333" PointY="4.5125327555338544" />
+          <ConnectorPoint PointX="6" PointY="4.5125327555338544" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<objects xmlns="http://www.springframework.net">
+  <!--注入Controller，其注入的属性在Services.xml中-->
+  <!--逗号之前是类型的全名称，后门的是类型所在的程序集-->
+
+  <!--*********************后台Controller注入开始*****************-->
+
+  <!--Admin/UserController-->
+  <!--在后台中的UserController中注入UserService-->
+  <object type="G1mist.CMS.UI.Potal.Areas.Admin.Controllers.UserController, G1mist.CMS.UI.Potal" singleton="false" >
+    <property name="UserService" ref="UserService" />
+  </object>
+
+  <!--Admin/ArticleController-->
+  <!--在后台中的ArticleController中注入UserService,ArticleService-->
+  <object type="G1mist.CMS.UI.Potal.Areas.Admin.Controllers.ArticleController, G1mist.CMS.UI.Potal" singleton="false" >
+    <property name="UserService" ref="UserService" />
+    <property name="ArticleService" ref="ArticleService" />
+    <property name="CategoryService" ref="CategoryService" />
+  </object>
+
+  <!--Admin/CategoryController-->
+  <!--在后台中的ArticleController中注入UserService,ArticleService-->
+  <object type="G1mist.CMS.UI.Potal.Areas.Admin.Controllers.CategoryController, G1mist.CMS.UI.Potal" singleton="false" >
+    <property name="UserService" ref="UserService" />
+    <property name="ArticleService" ref="ArticleService" />
+    <property name="CategoryService" ref="CategoryService" />
+  </object>
+
+  <!--*********************后台Controller注入结束*****************-->
+
+
+  <!--*********************前台Controller注入开始*****************-->
+
+  <!--前台HomeController注入UserService-->
+  <object type="G1mist.CMS.UI.Potal.Controllers.HomeController, G1mist.CMS.UI.Potal" singleton="false" >
+    <property name="UserService" ref="UserService" />
+  </object>
+  <!--前台ArticlesController注入ArticleService-->
+  <object type="G1mist.CMS.UI.Potal.Controllers.ArticlesController, G1mist.CMS.UI.Potal" singleton="false" >
+    <property name="ArticleService" ref="ArticleService" />
+  </object>
+
+
+
+  <!--*********************前台Controller注入结束*****************-->
+</objects>
+

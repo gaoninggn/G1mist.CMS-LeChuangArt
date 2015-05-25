@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--对应Controller里面的注入的属性-->
+<objects xmlns="http://www.springframework.net">
+  <object id="UserService" type="G1mist.CMS.Repository.UserRepo, G1mist.CMS.Repository"  singleton="false">
+  </object>
+  <object id="ArticleService" type="G1mist.CMS.Repository.ArticleRepo, G1mist.CMS.Repository"  singleton="false">
+  </object>
+  <object id="CategoryService" type="G1mist.CMS.Repository.CategoryRepo, G1mist.CMS.Repository"  singleton="false">
+  </object>
+</objects>

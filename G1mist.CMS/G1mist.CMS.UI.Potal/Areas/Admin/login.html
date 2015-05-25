@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>欢迎登录后台管理系统</title>
+    <link href="../../Content/style.css" rel="stylesheet" type="text/css" />
+    <script language="JavaScript" src="../../Scripts/jquery.min.js"></script>
+    <script language="javascript">
+        $(function () {
+            $('.loginbox').css({ 'position': 'absolute', 'left': ($(window).width() - 692) / 2 });
+            $(window).resize(function () {
+                $('.loginbox').css({ 'position': 'absolute', 'left': ($(window).width() - 692) / 2 });
+            });
+        });  
+    </script>
+</head>
+<body style="background-color: #1c77ac; background-image: url(../../images/light.png);
+    background-repeat: no-repeat; background-position: center top; overflow: hidden;">
+    <div id="mainBody">
+        <div id="cloud1" class="cloud">
+        </div>
+        <div id="cloud2" class="cloud">
+        </div>
+    </div>
+    <div class="logintop">
+        <span>欢迎登录后台管理界面平台</span>
+        <ul>
+            <li><a href="#">回首页</a></li>
+        </ul>
+    </div>
+    <div class="loginbody">
+        <span class="systemlogo"></span>
+        <div class="loginbox">
+            <ul>
+                <li>
+                    <input name="login" type="text" class="loginuser" id="txtName" value="admin" onclick="javaScript:this.value='' " /></li>
+                <li>
+                    <input name="login" type="password" class="loginpwd" id="txtPwd" value="密码" onclick="javaScript:this.value='' " /></li>
+                <li>
+                    <input name="" type="button" class="loginbtn" value="登录" id="btnLogin" />
+                    <input name="" type="button" class="loginbtn" value="重置" id="btnReset" style="margin-left: 120px;" /></li>
+            </ul>
+        </div>
+    </div>
+    <div class="loginbm">
+        版权所有 2015 <a href="http://www.gaoninggn.cn">G1mist</a>&nbsp;&nbsp;保留所有权利</div>
+    <script type="text/javascript">
+        $(function () {
+            $('#btnLogin').click(function () {
+                var name = $('#txtName').val();
+                var pwd = $('#txtPwd').val();
+
+                if (name == "" || pwd == "") {
+                    alert("用户名或密码为空");
+                } else {
+                    $.post("/admin/user/login", { username: name, password: pwd }, function (msg) {
+                        if (msg.code == 1) {
+                            window.location.href = "/areas/admin/main.html";
+                        } else {
+                            alert(msg.body);
+                        }
+                    });
+                }
+            });
+            $('#btnReset').click(function () {
+                $("input[name = 'login']").val("");
+            });
+        });
+    </script>
+</body>
+</html>

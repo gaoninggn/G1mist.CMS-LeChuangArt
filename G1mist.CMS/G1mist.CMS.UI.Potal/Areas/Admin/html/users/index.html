@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无标题文档</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap-table.min.js" type="text/javascript"></script>
+    <script src="../js/bootstrap-table-zh-CN.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../css/bootstrap-table.min.css">
+    <script src="../js/sweetalert.min.js" type="text/javascript"></script>
+    <link href="../css/sweetalert.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="place">
+        <span>位置：</span>
+        <ul class="placeul">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">用户信息</a></li>
+        </ul>
+    </div>
+    <div style="width: 99%; margin-left: 5px;">
+        <table id="table-pagination" data-toggle="table" data-url="/admin/user/get" data-height="50%"
+            data-page-list="[5, 10]" data-pagination="true" data-show-refresh="true" data-show-columns="true"
+            data-click-to-select="true" data-side-pagination="server" data-striped="true"
+            data-search="true">
+            <thead>
+                <tr>
+                    <th data-field="id" data-align="center" data-visible="false">
+                        id
+                    </th>
+                    <th data-field="username" data-align="center">
+                        用户名
+                    </th>
+                    <th data-field="type" data-align="center" data-formatter="operateGroup">
+                        用户组别
+                    </th>
+                    <th data-field="lastlogintime" data-align="center" data-formatter="operateTime">
+                        上次登录时间
+                    </th>
+                    <th data-field="lastloginarea" data-align="center">
+                        上次登录地点
+                    </th>
+                    <th data-field="lastloginip" data-align="center">
+                        上次登录IP
+                    </th>
+                    <th data-field="createtime" data-align="center" data-formatter="operateTime">
+                        创建时间
+                    </th>
+                    <th data-field="operate" data-formatter="operateFormatter">
+                        操作
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <script type="text/javascript">
+            function operateFormatter(value, row) {
+                var id = row.id;
+                return "<a href='#'  onclick='del(" + id + ")'>删除</a>";
+            }
+
+            function operateTime(value) {
+                var date = value.substr(0, 10);
+                if (date == "2000-01-01") {
+                    return "从未登录";
+                } else {
+                    return value.substr(0, 10);
+                }
+            }
+
+            function operateGroup(value) {
+                switch (value) {
+                    case 0:
+                        return "普通用户";
+                    case 1:
+                        return "管理员";
+                    default: return "ERROR";
+                }
+            }
+
+            function del(value) {
+                swal({ title: "确定要删除么?", text: "将此用户删除后将不能使用该用户进行登录操作!", type: "warning", confirmButtonColor: "#DD6B55", confirmButtonText: "YES", closeOnConfirm: false, closeOnCancel: false, allowOutsideClick: true }, function (isConfirm) {
+                    if (isConfirm) {
+                        DoDel(value);
+                    } else {
+                        swal("取消", "您已经取消删除操作)", "error");
+                    }
+                });
+            }
+
+            function DoDel(value) {
+                $.post("/admin/user/delete", { id: value },
+                   function (msg) {
+                       if (msg.code == 1) {
+                           $(':text').val("");
+                           swal({ title: "成功", text: msg.body, type: "success" },
+                            function () {
+                                window.top.rightFrame.location.href = "index.html";
+                            });
+                       }
+                       else {
+                           $(':text').val("");
+                           swal("失败", msg.body, "error");
+                       }
+                   });
+            }
+        </script>
+    </div>
+</body>
+</html>
