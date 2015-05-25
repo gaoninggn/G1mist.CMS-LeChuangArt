@@ -105,14 +105,29 @@ namespace G1mist.CMS.UI.Potal
             //获取访问文件的拓展名
             var extention = Path.GetExtension(path);
 
-            //根据访问的拓展名来选择处理程序
-            switch (extention)
+            if (path.Equals("/index.shtml"))
             {
-                //.shtml为前台UI
-                case ".shtml": HandleUiPages(path, context); break;
-                //.htm为前台的模板页
-                case ".htm": HandleAccessTemplates(context); break;
+                HandleIndex(context);
             }
+            else
+            {
+                //根据访问的拓展名来选择处理程序
+                switch (extention)
+                {
+                    //.shtml为前台UI
+                    case ".shtml": HandleUiPages(path, context); break;
+                    //.htm为前台的模板页
+                    case ".htm": HandleAccessTemplates(context); break;
+                }
+            }
+        }
+
+        private void HandleIndex(HttpContext context)
+        {
+            var urlHelper = new UrlHelper(context.Request.RequestContext);
+            var url = UrlHelper.GenerateUrl("", "index", "index", null, urlHelper.RouteCollection, context.Request.RequestContext, false) ?? "";
+
+            ReWriteToPage(context, url);
         }
 
         /// <summary>

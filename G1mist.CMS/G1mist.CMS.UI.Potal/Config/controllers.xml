@@ -32,12 +32,13 @@
 
   <!--*********************前台Controller注入开始*****************-->
 
-  <!--前台HomeController注入UserService-->
-  <object type="G1mist.CMS.UI.Potal.Controllers.HomeController, G1mist.CMS.UI.Potal" singleton="false" >
-    <property name="UserService" ref="UserService" />
-  </object>
   <!--前台ArticlesController注入ArticleService-->
   <object type="G1mist.CMS.UI.Potal.Controllers.ArticlesController, G1mist.CMS.UI.Potal" singleton="false" >
+    <property name="ArticleService" ref="ArticleService" />
+  </object>
+
+  <!--前台IndexController注入ArticleService-->
+  <object type="G1mist.CMS.UI.Potal.Controllers.IndexController, G1mist.CMS.UI.Potal" singleton="false" >
     <property name="ArticleService" ref="ArticleService" />
   </object>
 

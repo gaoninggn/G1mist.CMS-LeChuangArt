@@ -17,7 +17,7 @@ namespace G1mist.CMS.UI.Potal
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "home", action = "index", id = UrlParameter.Optional }
+                defaults: new { controller = "index", action = "index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(

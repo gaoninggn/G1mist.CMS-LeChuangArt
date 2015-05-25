@@ -4,12 +4,12 @@
     <title></title>
 </head>
 <body>
-    #foreach($user in $userList)
+    #foreach($art in ${articles.GetArticlesByCate(1)})
     <div>
         <p>
-            欢迎您：$user.username</p>
+            Title:$art.title</p>
         <p>
-            $user.createtime</p>
+            Body:$art.body</p>
     </div>
     #end
 </body>
