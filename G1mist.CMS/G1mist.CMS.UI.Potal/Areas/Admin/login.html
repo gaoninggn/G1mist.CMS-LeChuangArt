@@ -1,21 +1,28 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>欢迎登录后台管理系统</title>
     <link href="../../Content/style.css" rel="stylesheet" type="text/css" />
-    <script language="JavaScript" src="../../Scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://api.geetest.com/get.php"></script>
     <script language="javascript">
         $(function () {
             $('.loginbox').css({ 'position': 'absolute', 'left': ($(window).width() - 692) / 2 });
             $(window).resize(function () {
                 $('.loginbox').css({ 'position': 'absolute', 'left': ($(window).width() - 692) / 2 });
             });
-        });  
+        });
+    </script>
+    <script type="text/javascript">
+        window.embed_captcha = new window.Geetest({
+            gt: 'c12e1d16c2c89a7269e275ee7cf67fca',
+            product: 'float'
+        }).appendTo("#embed_div_id");
     </script>
 </head>
 <body style="background-color: #1c77ac; background-image: url(../../images/light.png);
-    background-repeat: no-repeat; background-position: center top; overflow: hidden;">
+                                                                            background-repeat: no-repeat; background-position: center top; overflow: hidden;">
     <div id="mainBody">
         <div id="cloud1" class="cloud">
         </div>
@@ -33,39 +40,63 @@
         <div class="loginbox">
             <ul>
                 <li>
-                    <input name="login" type="text" class="loginuser" id="txtName" value="admin" onclick="javaScript:this.value='' " /></li>
+                    <input name="login" type="text" class="loginuser" id="txtName" value="admin" onclick="javaScript:this.value = '' " />
+                </li>
                 <li>
-                    <input name="login" type="password" class="loginpwd" id="txtPwd" value="密码" onclick="javaScript:this.value='' " /></li>
+                    <input name="login" type="password" class="loginpwd" id="txtPwd" value="密码" onclick="javaScript:this.value = '' " />
+                </li>
                 <li>
-                    <input name="" type="button" class="loginbtn" value="登录" id="btnLogin" />
-                    <input name="" type="button" class="loginbtn" value="重置" id="btnReset" style="margin-left: 120px;" /></li>
+                    <div id="embed_div_id" style="width: 299px;"></div>
+                </li>
+                <li>
+                    <input name="" type="button" class="loginbtn" value="登录" id="btnLogin" onclick="Login()" />
+                    <input name="" type="button" class="loginbtn" value="重置" id="btnReset" style="margin-left: 120px;" />
+                </li>
             </ul>
         </div>
     </div>
     <div class="loginbm">
-        版权所有 2015 <a href="http://www.gaoninggn.cn">G1mist</a>&nbsp;&nbsp;保留所有权利</div>
+        版权所有 2015 <a href="http://www.gaoninggn.cn">G1mist</a>&nbsp;&nbsp;保留所有权利
+    </div>
     <script type="text/javascript">
-        $(function () {
-            $('#btnLogin').click(function () {
+        var geetest_passed = false;
+        function gt_custom_ajax(result) {
+            geetest_passed = result;
+        }
+        function Login() {
+            if (!geetest_passed) {
+                alert('请正确执行验证');
+                embed_captcha.refresh();
+            } else {
                 var name = $('#txtName').val();
                 var pwd = $('#txtPwd').val();
-
-                if (name == "" || pwd == "") {
-                    alert("用户名或密码为空");
-                } else {
-                    $.post("/admin/user/login", { username: name, password: pwd }, function (msg) {
-                        if (msg.code == 1) {
-                            window.location.href = "/areas/admin/main.html";
-                        } else {
-                            alert(msg.body);
-                        }
-                    });
-                }
-            });
-            $('#btnReset').click(function () {
-                $("input[name = 'login']").val("");
-            });
-        });
+                //TODO:前端校验
+                $.post('/admin/user/login', {
+                    validate: embed_captcha.getValidate(),
+                    username: name,
+                    password: pwd
+                }, function (msg) {
+                    alert(msg.code + ":" + msg.body);
+                });
+            }
+        }
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,6 +7,7 @@ using G1mist.CMS.Common;
 using G1mist.CMS.Modal;
 using Newtonsoft.Json;
 using G1mist.CMS.UI.Potal.Models;
+using GeetestSDK;
 
 namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
 {
@@ -152,7 +153,20 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
         {
             var msg = new Message();
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            //获取前端滑动验证的三个数据
+            var geetestChallenge = Request["validate[geetest_challenge]"] ?? "";
+            var geetestValidate = Request["validate[geetest_validate]"] ?? "";
+            var geetestSeccode = Request["validate[geetest_seccode]"] ?? "";
+
+            //滑动验证的后端校验
+            var result = BackValidate(geetestChallenge, geetestValidate, geetestSeccode);
+
+            if (!result)
+            {
+                msg.code = 0;
+                msg.body = "滑动验证失败,请重试";
+            }
+            else if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 msg.code = 0;
                 msg.body = "用户名或密码为空";
@@ -316,7 +330,8 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
                     //获取用户加密盐
                     var salt = user.salt;
                     //计算用户输入的旧密码是否正确
-                    var isOldPwdCurrect = FormsAuthentication.HashPasswordForStoringInConfigFile(oldpwd + salt, "MD5").Equals(user.password);
+                    var hashPasswordForStoringInConfigFile = FormsAuthentication.HashPasswordForStoringInConfigFile(oldpwd + salt, "MD5");
+                    var isOldPwdCurrect = hashPasswordForStoringInConfigFile != null && hashPasswordForStoringInConfigFile.Equals(user.password);
 
                     if (isOldPwdCurrect)
                     {
@@ -451,6 +466,29 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
 
             var json = JsonConvert.SerializeObject(result, settings);
             return json;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="geetestChallenge"></param>
+        /// <param name="geetestValidate"></param>
+        /// <param name="geetestSeccode"></param>
+        /// <returns></returns>
+        [NonAction]
+        private static bool BackValidate(string geetestChallenge, string geetestValidate, string geetestSeccode)
+        {
+            if (!string.IsNullOrEmpty(geetestChallenge) && !string.IsNullOrEmpty(geetestValidate) &&
+                !string.IsNullOrEmpty(geetestSeccode))
+            {
+                const string privateKey = "91f6e4142cf97fa261c8decc1be5c2fd";
+                var geetest = new GeetestLib(privateKey);
+
+                var result = geetest.validate(geetestChallenge, geetestValidate, geetestSeccode);
+
+                return result;
+            }
+            return false;
         }
 
         #endregion

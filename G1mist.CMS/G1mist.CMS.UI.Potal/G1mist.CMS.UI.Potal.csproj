@@ -16,6 +16,10 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -881,6 +885,10 @@
     <ProjectReference Include="..\G1mist.CMS.Repository\G1mist.CMS.Repository.csproj">
       <Project>{322BDEDE-A67C-4F75-B900-1F2F3854697E}</Project>
       <Name>G1mist.CMS.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GeetestSDK\GeetestSDK.csproj">
+      <Project>{cc55ea94-b545-404c-b5bf-0ad5358dfcb5}</Project>
+      <Name>GeetestSDK</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
