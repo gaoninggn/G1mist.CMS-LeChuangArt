@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using G1mist.CMS.Common;
 using G1mist.CMS.Modal;
+using System.Security.Cryptography;
+using System.IO;
 
 namespace G1mist.CMS.UI.Potal.Controllers
 {
@@ -26,12 +28,27 @@ namespace G1mist.CMS.UI.Potal.Controllers
             _templatePath = tempDir;
         }
 
-        public void Index()
+        [HttpGet]
+        public ActionResult Index()
         {
-            var velocityHelper = new VelocityHelper(_templatePath);
+            //var velocityHelper = new VelocityHelper(_templatePath);
 
-            velocityHelper.Put("articles", this);
-            velocityHelper.Display("index.htm");
+            //velocityHelper.Put("articles", this);
+            //velocityHelper.Display("index.htm");
+
+            return Content("123");
+        }
+
+        [HttpPost]
+        public ActionResult Decrypt(string encryptedStr)
+        {
+            var path = Server.MapPath("~/config/keys.config");
+            var privateKey = new XmlHelper(path).GetValue("privateKey").Trim();
+
+            var rsa = new RsaCryptoService(privateKey);
+            var decryptStr = rsa.Decrypt(encryptedStr);
+
+            return Content(decryptStr);
         }
 
         [NonAction]

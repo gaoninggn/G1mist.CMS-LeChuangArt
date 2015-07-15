@@ -8,6 +8,7 @@ using G1mist.CMS.Modal;
 using Newtonsoft.Json;
 using G1mist.CMS.UI.Potal.Models;
 using GeetestSDK;
+using Microsoft.VisualBasic;
 
 namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
 {
@@ -92,7 +93,7 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
             else
             {
                 //检查用户名格式: result>0则正确,-1为空,-2为长度过长
-                var userNameFormatCheck = CheckUserName(user.username);
+                var userNameFormatCheck = CheckUserNameLength(user.username);
 
                 //检查用户名有效性,即是否重复
                 var userNameOkCheck = CheckUserNameIsExits(user.username);
@@ -173,8 +174,11 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
             }
             else
             {
+                var decryptedName = DecryptStr(username);
+                var decryptedPwd = DecryptStr(password);
+
                 var bll = UserService;
-                var user = bll.GetModal(a => a.username.Equals(username));
+                var user = bll.GetModal(a => a.username.Equals(decryptedName));
 
                 if (user == null)
                 {
@@ -185,7 +189,7 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
                 {
                     var salt = user.salt;
                     var pwd = user.password;
-                    var loginPwd = FormsAuthentication.HashPasswordForStoringInConfigFile(password + salt, "MD5");
+                    var loginPwd = FormsAuthentication.HashPasswordForStoringInConfigFile(decryptedPwd + salt, "MD5");
 
                     //比较密码
                     if (pwd.Equals(loginPwd))
@@ -210,6 +214,16 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
                 }
             }
             return Json(msg);
+        }
+
+        private string DecryptStr(string encryptedStr)
+        {
+            var path = Server.MapPath("~/config/keys.config");
+            var privateKey = new XmlHelper(path).GetValue("privateKey").Trim();
+
+            var rsa = new RsaCryptoService(privateKey);
+            var decryptStr = rsa.Decrypt(encryptedStr);
+            return decryptStr;
         }
 
         [NonAction]
@@ -251,6 +265,11 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
                 msg.code = 0;
                 msg.body = "ID为空";
             }
+            else if (!Information.IsNumeric(id))
+            {
+                msg.code = 0;
+                msg.body = "ID应为数字";
+            }
             else if (UserService.GetModal(a => a.username.Equals(User.Identity.Name)).type == 0)
             {
                 msg.code = 0;
@@ -271,6 +290,11 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
                 {
                     msg.code = 0;
                     msg.body = "此用户下还有文章,不能删除";
+                }
+                else if (GetCurrentUserId().Equals(int.Parse(id)))
+                {
+                    msg.code = 0;
+                    msg.body = "不能删除自己";
                 }
                 else
                 {
@@ -374,6 +398,18 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
         #region NonAction-辅助方法
 
         /// <summary>
+        /// 通过当前登录用户的用户名获取当前登录用户的ID
+        /// </summary>
+        /// <returns></returns>
+        private int GetCurrentUserId()
+        {
+            var username = User.Identity.Name;
+            var user = UserService.GetModal(a => a.username.Equals(username));
+
+            return user.id;
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="user"></param>
@@ -417,7 +453,7 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
         /// <param name="username"></param>
         /// <returns></returns>
         [NonAction]
-        private int CheckUserName(string username)
+        private int CheckUserNameLength(string username)
         {
             if (string.IsNullOrEmpty(username.Trim()))
             {

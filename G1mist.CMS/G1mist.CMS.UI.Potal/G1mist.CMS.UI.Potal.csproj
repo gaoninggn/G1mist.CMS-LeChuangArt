@@ -54,6 +54,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="NVelocity">
       <HintPath>..\packages\NVelocity.1.0.3\lib\NVelocity.dll</HintPath>
     </Reference>
@@ -846,6 +847,7 @@
     <Content Include="static\401.html" />
     <Content Include="static\error.html" />
     <Content Include="static\error500.html" />
+    <Content Include="static\RSA.html" />
     <Content Include="templates\index.htm" />
     <Content Include="templates\list.htm" />
     <Content Include="templates\show.htm" />
@@ -893,6 +895,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\keys.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -5,6 +5,7 @@
     <title>欢迎登录后台管理系统</title>
     <link href="../../Content/style.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://7xijun.com1.z0.glb.clouddn.com/Jsencrypt.js"></script>
     <script src="http://api.geetest.com/get.php"></script>
     <script language="javascript">
         $(function () {
@@ -68,15 +69,26 @@
                 alert('请正确执行验证');
                 embed_captcha.refresh();
             } else {
+                var encrypt = new JSEncrypt();
+                var publicKey = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDMmT4ysbd0atzdpY6EA1mTm77KfpVOe8UDaI1aVh7AIZ9aPjbJ/6kZRwBAGSZJTbsGqySqDQDYJrFULFDV2Ae7K8hQm8QJ9fm1M6Uzg/VrjEk5PByNFPqiy2E0/6qwAoG2ZUjWwMP4jL4LKdZWi4iBpTSjJmz+CMDv0735bNXSMQIDAQAB';
+                encrypt.setPublicKey(publicKey);
                 var name = $('#txtName').val();
                 var pwd = $('#txtPwd').val();
+                var encryptedName = encrypt.encrypt(name);
+                var encryptedPwd = encrypt.encrypt(pwd);
                 //TODO:前端校验
                 $.post('/admin/user/login', {
                     validate: embed_captcha.getValidate(),
-                    username: name,
-                    password: pwd
+                    username: encryptedName,
+                    password: encryptedPwd
                 }, function (msg) {
-                    alert(msg.code + ":" + msg.body);
+                    if (msg.code === 1) {
+                        alert(msg.body);
+                        window.location.href = "/areas/admin/main.html";
+                    } else {
+                        alert(msg.body);
+                        return;
+                    }
                 });
             }
         }
