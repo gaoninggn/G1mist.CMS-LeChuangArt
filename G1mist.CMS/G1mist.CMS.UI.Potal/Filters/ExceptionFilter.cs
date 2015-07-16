@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.IO;
+﻿using System.Web.Mvc;
+using G1mist.CMS.Common;
 
 namespace G1mist.CMS.UI.Potal.Filters
 {
@@ -11,18 +7,13 @@ namespace G1mist.CMS.UI.Potal.Filters
     {
         public void OnException(ExceptionContext filterContext)
         {
-            var path = HttpContext.Current.Server.MapPath("/log/log.log");
-            using (var fs = new FileStream(path, FileMode.Append))
+            LogHelper.Error(filterContext.Exception.Message);
+
+            if (filterContext.Exception.InnerException != null)
             {
-                using (var sw = new StreamWriter(fs))
-                {
-                    sw.WriteLine(filterContext.Exception.Message);
-                    if (filterContext.Exception.InnerException != null)
-                    {
-                        sw.WriteLine(filterContext.Exception.InnerException);
-                    }
-                }
+                LogHelper.Error(filterContext.Exception.InnerException.Message);
             }
+
             filterContext.HttpContext.Response.Redirect("/static/error.html");
             filterContext.HttpContext.Response.End();
         }

@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>无标题文档</title>
     <link href="../css/style.css" rel="stylesheet" type="text/css" />
     <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css" />
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
@@ -17,7 +17,11 @@
     <link href="../css/sweetalert.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
         KindEditor.ready(function (K) {
-            window.editor = K.create('#editor_id');
+            window.editor = K.create('#editor_id', {
+                uploadJson: '../js/editor/asp.net/upload_json.ashx',
+                allowFileManager: true,
+                fileManagerJson: '../js/editor/asp.net/file_manager_json.ashx'
+            });
         });
     </script>
 </head>
@@ -31,43 +35,51 @@
     </div>
     <div class="formbody">
         <div class="formtitle">
-            <span>添加文章</span></div>
+            <span>添加文章</span>
+        </div>
         <ul class="forminfo">
             <li>
                 <label for="title">
-                    文章标题</label>
+                    文章标题
+                </label>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="title" placeholder="在此输入文章的标题" style="width: 350px;"><span
-                        id="validatetitle" style="color: red; display: none;">标题不能为空！</span>
+                    <input type="text" class="form-control" id="title" placeholder="在此输入文章的标题" style="width: 350px;" /><span id="validatetitle" style="color: red; display: none;">标题不能为空！</span>
                 </div>
             </li>
             <li>
                 <label>
-                    作者</label><cite>
-                        <input type="text" class="form-control" id="author" placeholder="在此输入文章的作者" style="width: 350px;">
-                    </cite></li>
-            <li>
-                <label>
-                    来源</label><cite>
-                        <input type="text" class="form-control" id="from" placeholder="在此输入文章的来源" style="width: 350px;">
-                    </cite></li>
-            <li>
-                <label>
-                    文章分类</label><cite>
-                        <select class="form-control" id="sltcate" style="width: 350px;">
-                        </select><span id="validatecate" style="color: red; display: none;">请选择分类！</span>
-                    </cite></li>
-            <li>
-                <label>
-                    文章内容</label>
-                <textarea id="editor_id" name="content" style="width: 700px; height: 300px;"></textarea><span
-                    id="validatecontent" style="color: red; display: none;">文章内容不能为空！</span>
+                    作者
+                </label><cite>
+                    <input type="text" class="form-control" id="author" placeholder="在此输入文章的作者" style="width: 350px;" />
+                </cite>
             </li>
             <li>
                 <label>
-                    &nbsp;</label>
+                    来源
+                </label><cite>
+                    <input type="text" class="form-control" id="from" placeholder="在此输入文章的来源" style="width: 350px;" />
+                </cite>
+            </li>
+            <li>
+                <label>
+                    文章分类
+                </label><cite>
+                    <select class="form-control" id="sltcate" style="width: 350px;"></select><span id="validatecate" style="color: red; display: none;">请选择分类！</span>
+                </cite>
+            </li>
+            <li>
+                <label>
+                    文章内容
+                </label>
+                <textarea id="editor_id" name="content" style="width: 700px; height: 300px;"></textarea><span id="validatecontent" style="color: red; display: none;">文章内容不能为空！</span>
+            </li>
+            <li>
+                <label>
+                    &nbsp;
+                </label>
                 <button type="button" class="btn btn-info" id="submit">
-                    确认保存</button>
+                    确认保存
+                </button>
             </li>
         </ul>
     </div>

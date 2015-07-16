@@ -137,8 +137,14 @@ namespace G1mist.CMS.UI.Potal
         private static void HandleAccessTemplates(HttpContext context)
         {
             //禁止直接访问模板页
-            //如果访问的是模板页,则跳转到错误页面
-            RedirectToErrorPage(context);
+            //获取访问URL
+            var path = context.Request.Path;
+            if (path.Contains("templates"))
+            {
+                //如果访问的是模板页,则跳转到错误页面
+                RedirectToErrorPage(context);
+            }
+
         }
 
         /// <summary>

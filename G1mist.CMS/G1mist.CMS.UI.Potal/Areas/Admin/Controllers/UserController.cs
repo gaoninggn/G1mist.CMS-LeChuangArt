@@ -9,9 +9,11 @@ using Newtonsoft.Json;
 using G1mist.CMS.UI.Potal.Models;
 using GeetestSDK;
 using Microsoft.VisualBasic;
+using G1mist.CMS.UI.Potal.Filters;
 
 namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
 {
+    [ExceptionFilter]
     public class UserController : Controller
     {
         /// <summary>
@@ -205,6 +207,7 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
 
                         msg.code = 1;
                         msg.body = "登录成功";
+                        LogHelper.Info("用户" + user.username + "登录成功");
                     }
                     else
                     {
@@ -246,6 +249,7 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
             if (User != null)
             {
                 FormsAuthentication.SignOut();
+                LogHelper.Info("用户" + User.Identity.Name + "登出");
             }
 
             return Json(msg);

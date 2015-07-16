@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using G1mist.CMS.UI.Potal.Filters;
 
 namespace G1mist.CMS.UI.Potal
@@ -8,8 +7,7 @@ namespace G1mist.CMS.UI.Potal
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new ExceptionFilter());
-            //filters.Add(new ErrorHandler());
+            filters.Add(new G1MistHandleErrorAttribute());
         }
     }
 }
