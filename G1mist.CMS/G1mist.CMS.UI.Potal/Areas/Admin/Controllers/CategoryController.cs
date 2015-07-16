@@ -81,9 +81,10 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
             var list = CategoryService.GetList(a => a.id > 0).Select(a => new
             {
                 a.id,
-                a.name
+                a.name,
+                a.parentid
             }).ToList();
-            list.Insert(0, new { id = -1, name = "请选择分类" });
+            list.Insert(0, new { id = -1, name = "-----请选择分类-----", parentid = -1 });
 
             return Json(list, JsonRequestBehavior.AllowGet);
         }
