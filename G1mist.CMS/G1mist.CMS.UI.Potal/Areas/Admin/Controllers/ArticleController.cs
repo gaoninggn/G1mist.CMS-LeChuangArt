@@ -10,15 +10,20 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
 {
     public class ArticleController : Controller
     {
-        /// <summary>
-        /// 
-        /// </summary>
+        #region 注入数据库服务
         public IRepository.IRepository<T_Articles> ArticleService { get; set; }
 
         public IRepository.IRepository<T_Categories> CategoryService { get; set; }
 
         public IRepository.IRepository<T_Users> UserService { get; set; }
+        #endregion
 
+        #region Actions
+        /// <summary>
+        /// 新增文章
+        /// </summary>
+        /// <param name="article"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateInput(false)]
         public ActionResult Add(T_Articles article)
@@ -64,6 +69,14 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
             return Json(msg);
         }
 
+        /// <summary>
+        /// 获取文章信息
+        /// </summary>
+        /// <param name="limit"></param>
+        /// <param name="offset"></param>
+        /// <param name="order"></param>
+        /// <param name="search"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult Get(string limit, string offset, string order, string search)
         {
@@ -99,7 +112,7 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
         }
 
         /// <summary>
-        /// 
+        /// 更新文章
         /// </summary>
         /// <param name="article"></param>
         /// <returns></returns>
@@ -147,6 +160,11 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
             return Json(msg);
         }
 
+        /// <summary>
+        /// 通过ID获取文章实体
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult GetArticleById(int id)
         {
@@ -169,6 +187,11 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
             return Json(jsonObj, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// 通过ID获取文章正文
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult GetBodyById(int id)
         {
@@ -188,7 +211,7 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
         }
 
         /// <summary>
-        /// 
+        /// 删除文章
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -233,7 +256,14 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
             }
             return Json(msg);
         }
+        #endregion
 
+        #region NonAction-辅助方法
+        /// <summary>
+        /// 通过ID获取分类名称
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [NonAction]
         private string GetCateNameById(int id)
         {
@@ -241,5 +271,6 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
 
             return model == null ? "" : model.name;
         }
+        #endregion
     }
 }

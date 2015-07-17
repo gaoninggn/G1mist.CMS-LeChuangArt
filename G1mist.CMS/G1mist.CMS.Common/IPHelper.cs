@@ -1,34 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
-using System.Text;
-using System.Web;
 using Newtonsoft.Json;
 
 namespace G1mist.CMS.Common
 {
     public class IpHelper
     {
-        public static IPResult GetAreasByIp(string ip)
+        public static IpResult GetAreasByIp(string ip)
         {
-            var IsLocalIP = CheckIP(ip);
+            var isLocalIp = CheckIp(ip);
 
-            if (IsLocalIP)
+            if (isLocalIp)
             {
-                return new IPResult
+                return new IpResult
                 {
-                    errMsg = "成功",
-                    errNum = "1",
-                    retData = new retData
+                    ErrMsg = "成功",
+                    ErrNum = "1",
+                    RetData = new RetData
                         {
-                            city = "本地",
-                            province = "本地",
-                            country = "本地",
-                            carrier = "本地",
-                            ip = ip,
-                            district = "本地"
+                            City = "本地",
+                            Province = "本地",
+                            Country = "本地",
+                            Carrier = "本地",
+                            Ip = ip,
+                            District = "本地"
                         }
                 };
             }
@@ -47,7 +42,7 @@ namespace G1mist.CMS.Common
                         NullValueHandling = NullValueHandling.Ignore,
                         DefaultValueHandling = DefaultValueHandling.Ignore
                     };
-                    var ipResult = JsonConvert.DeserializeObject<IPResult>(result, settings);
+                    var ipResult = JsonConvert.DeserializeObject<IpResult>(result, settings);
 
                     return ipResult;
 
@@ -56,33 +51,26 @@ namespace G1mist.CMS.Common
             return null;
         }
 
-        private static bool CheckIP(string ip)
+        private static bool CheckIp(string ip)
         {
-            if (ip.Equals("127.0.0.1") || ip.Equals("::1"))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return ip.Equals("127.0.0.1") || ip.Equals("::1");
         }
     }
 
-    public class IPResult
+    public class IpResult
     {
-        public string errNum { get; set; }
-        public string errMsg { get; set; }
-        public retData retData { get; set; }
+        public string ErrNum { get; set; }
+        public string ErrMsg { get; set; }
+        public RetData RetData { get; set; }
     }
 
-    public class retData
+    public class RetData
     {
-        public string ip { get; set; }
-        public string country { get; set; }
-        public string province { get; set; }
-        public string city { get; set; }
-        public string district { get; set; }
-        public string carrier { get; set; }
+        public string Ip { get; set; }
+        public string Country { get; set; }
+        public string Province { get; set; }
+        public string City { get; set; }
+        public string District { get; set; }
+        public string Carrier { get; set; }
     }
 }

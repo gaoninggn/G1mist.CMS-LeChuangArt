@@ -13,21 +13,31 @@ using G1mist.CMS.UI.Potal.Filters;
 
 namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
 {
+    /// <summary>
+    /// 用户管理控制器
+    /// </summary>
     [ExceptionFilter]
     public class UserController : Controller
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public IRepository.IRepository<T_Users> UserService { get; set; }
+        #region 注入数据库服务
 
         /// <summary>
-        /// 
+        /// 用户表服务
         /// </summary>
-        /// <param name="limit"></param>
-        /// <param name="offset"></param>
-        /// <param name="order"></param>
-        /// <param name="search"></param>
+        public IRepository.IRepository<T_Users> UserService { get; set; }
+        #endregion
+
+        #region Actions
+
+
+
+        /// <summary>
+        /// 获取用户信息
+        /// </summary>
+        /// <param name="limit">取N条</param>
+        /// <param name="offset">从第N条开始</param>
+        /// <param name="order">排序条件</param>
+        /// <param name="search">过滤条件</param>
         /// <returns></returns>
         [HttpGet]
         public ActionResult Get(string limit, string offset, string order, string search)
@@ -72,9 +82,9 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
         }
 
         /// <summary>
-        /// 
+        ///  新增用户
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="user">用户实体</param>
         /// <returns></returns>
         [HttpPost]
         public ActionResult Add(T_Users user)
@@ -87,6 +97,7 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
                 msg.code = 0;
                 msg.body = "该用户不存在";
             }
+            //判断用户的权限
             else if (UserService.GetModal(a => a.username.Equals(User.Identity.Name)).type == 0)
             {
                 msg.code = 0;
@@ -104,53 +115,60 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
                 var typeCheck = CheckUserType(user.type);
 
                 //用户名为空
-                if (userNameFormatCheck == -1)
+                switch (userNameFormatCheck)
                 {
-                    msg.code = 0;
-                    msg.body = "用户名为空";
-                }
-                //用户名长度不能大于120
-                else if (userNameFormatCheck == -2)
-                {
-                    msg.code = 0;
-                    msg.body = "用户名长度不能大于120";
-                }
-                //用户名是否存在
-                else if (userNameOkCheck)
-                {
-                    msg.code = 0;
-                    msg.body = "用户已存在";
-                }
-                //请选择正确的用户类型
-                else if (!typeCheck)
-                {
-                    msg.code = 0;
-                    msg.body = "请选择正确的用户类型";
-                }
-                //用户名输入正确且已经选择正确的用户类型
-                else
-                {
-                    //执行添加用户操作
-                    var result = DoAdd(user);
-
-                    //添加成功
-                    if (result)
-                    {
-                        msg.code = 1;
-                        msg.body = "添加成功";
-                    }
-                    //添加失败
-                    else
-                    {
+                    case -1:
                         msg.code = 0;
-                        msg.body = "添加失败";
-                    }
+                        msg.body = "用户名为空";
+                        break;
+                    case -2:
+                        msg.code = 0;
+                        msg.body = "用户名长度不能大于120";
+                        break;
+                    default:
+                        if (userNameOkCheck)
+                        {
+                            msg.code = 0;
+                            msg.body = "用户已存在";
+                        }
+                        //请选择正确的用户类型
+                        else if (!typeCheck)
+                        {
+                            msg.code = 0;
+                            msg.body = "请选择正确的用户类型";
+                        }
+                        //用户名输入正确且已经选择正确的用户类型
+                        else
+                        {
+                            //执行添加用户操作
+                            var result = DoAdd(user);
+
+                            //添加成功
+                            if (result)
+                            {
+                                msg.code = 1;
+                                msg.body = "添加成功";
+                            }
+                            //添加失败
+                            else
+                            {
+                                msg.code = 0;
+                                msg.body = "添加失败";
+                            }
+                        }
+                        break;
                 }
 
             }
             return Json(msg);
         }
 
+        /// <summary>
+        /// 登录
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Login(string username, string password)
         {
@@ -219,28 +237,27 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
             return Json(msg);
         }
 
-        private string DecryptStr(string encryptedStr)
-        {
-            var path = Server.MapPath("~/config/keys.config");
-            var privateKey = new XmlHelper(path).GetValue("privateKey").Trim();
-
-            var rsa = new RsaCryptoService(privateKey);
-            var decryptStr = rsa.Decrypt(encryptedStr);
-            return decryptStr;
-        }
-
+        /// <summary>
+        /// 通过用户IP获取用户地址
+        /// </summary>
+        /// <param name="userHostAddress">IP地址</param>
+        /// <returns></returns>
         [NonAction]
         private string GetArea(string userHostAddress)
         {
             var ip = IpHelper.GetAreasByIp(userHostAddress);
-            if (ip.retData.country == "本地")
+            if (ip.RetData.Country == "本地")
             {
                 return "本地";
             }
 
-            return ip.retData.country + "," + ip.retData.province + "," + ip.retData.city + "," + ip.retData.district + "," + ip.retData.carrier;
+            return ip.RetData.Country + "," + ip.RetData.Province + "," + ip.RetData.City + "," + ip.RetData.District + "," + ip.RetData.Carrier;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Logout()
         {
@@ -256,8 +273,9 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
         }
 
         /// <summary>
-        /// 
+        /// 删除用户
         /// </summary>
+        /// <param name="id">用户ID</param>
         /// <returns></returns>
         [HttpPost]
         public ActionResult Delete(string id)
@@ -319,6 +337,10 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
             return Json(msg);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult GetUser()
         {
@@ -399,8 +421,9 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
             return Json(msg);
         }
 
-        #region NonAction-辅助方法
+        #endregion
 
+        #region NonAction-辅助方法
         /// <summary>
         /// 通过当前登录用户的用户名获取当前登录用户的ID
         /// </summary>
@@ -529,6 +552,21 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
                 return result;
             }
             return false;
+        }
+
+        /// <summary>
+        /// 对密文进行解密
+        /// </summary>
+        /// <param name="encryptedStr"></param>
+        /// <returns></returns>
+        private string DecryptStr(string encryptedStr)
+        {
+            var path = Server.MapPath("~/config/keys.config");
+            var privateKey = new XmlHelper(path).GetValue("privateKey").Trim();
+
+            var rsa = new RsaCryptoService(privateKey);
+            var decryptStr = rsa.Decrypt(encryptedStr);
+            return decryptStr;
         }
 
         #endregion

@@ -9,14 +9,26 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
 {
     public class CategoryController : Controller
     {
+        #region 注入数据库服务
+
+
         /// <summary>
-        /// 
+        /// 分类表服务
         /// </summary>
         public IRepository.IRepository<T_Categories> CategoryService { get; set; }
 
+        /// <summary>
+        /// 用户表服务
+        /// </summary>
         public IRepository.IRepository<T_Users> UserService { get; set; }
 
+        /// <summary>
+        /// 文章表服务
+        /// </summary>
         public IRepository.IRepository<T_Articles> ArticleService { get; set; }
+        #endregion
+
+        #region Actions
 
         /// <summary>
         /// 
@@ -295,6 +307,10 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
             }
             return Json(msg);
         }
+        #endregion
+
+        #region NonAction-辅助方法
+
 
         /// <summary>
         /// 
@@ -319,5 +335,6 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
         {
             return CategoryService.GetModal(a => a.name.Equals(cate)) != null;
         }
+        #endregion
     }
 }

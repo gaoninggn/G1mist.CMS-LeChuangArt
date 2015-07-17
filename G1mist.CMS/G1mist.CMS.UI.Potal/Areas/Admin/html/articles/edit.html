@@ -105,7 +105,11 @@
             $.get("/admin/category/getallcate", function (msg) {
                 var optionstring = "";
                 for (var item in msg) {
-                    optionstring += "<option value=\"" + msg[item].id + "\" >" + msg[item].name + "</option>";
+                    if (msg[item].parentid !== -1) {
+                        optionstring += "<option value=\"" + msg[item].id + "\" >-----" + msg[item].name + "</option>";
+                    } else {
+                        optionstring += "<option value=\"" + msg[item].id + "\" >" + msg[item].name + "</option>";
+                    }
                 }
                 $("#sltcate").html(optionstring);
             });
