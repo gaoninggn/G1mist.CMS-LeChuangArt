@@ -68,6 +68,30 @@ namespace G1mist.CMS.UI.Potal.Controllers
         }
 
         [HttpGet]
+        public void List(int id)
+        {
+            var velocityHelper = new VelocityHelper(_templatePath);
+            PutStatic(velocityHelper);
+            //参数ID传递出错
+            if (id <= 0)
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+            //文章不存在
+            if (!CategoryService.Exits(a => a.id.Equals(id)))
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+
+            var article = ArticleService.GetList(a => a.cateid.Equals(id));
+
+            velocityHelper.Put("article", article);
+            velocityHelper.Display("wenhualist.htm");
+        }
+
+        [HttpGet]
         public void Detail(int id)
         {
             var velocityHelper = new VelocityHelper(_templatePath);
