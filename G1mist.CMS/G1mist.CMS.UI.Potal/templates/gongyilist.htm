@@ -8,17 +8,6 @@
     <script type="text/javascript" src="${site}${js}mf-pattern/mF_expo2010.js"></script>
     <link rel="stylesheet" type="text/css" href="${site}${js}mf-pattern/mF_expo2010.css" />
     <script type="text/javascript" src="${site}${js}jquery-1.3.1.js"></script>
-    <script type="text/javascript">
-        myFocus.set({
-            id: 'boxID', //焦点图盒子ID
-            pattern: 'mF_expo2010', //风格应用的名称
-            time: 3, //切换时间间隔(秒)
-            trigger: 'mouseover', //触发切换模式:'click'(点击)/'mouseover'(悬停)
-            width: 684, //设置图片区域宽度(像素)
-            height: 293, //设置图片区域高度(像素)
-            txtHeight: 'default'//文字层高度设置(像素),'default'为默认高度，0为隐藏
-        });
-    </script>
 </head>
 <body>
     <div class="newsmain">
@@ -53,8 +42,16 @@
                         乐闯公益
                     </div>
                     <ul class="gyul">
+                        #if(${active}==16)
                         <li><a href="${site}gongyi/list/16" class="active">仁德慈善</a></li>
                         <li><a href="${site}gongyi/list/17">公益资讯</a></li>
+                        #elseif(${active}==17)
+                        <li><a href="${site}gongyi/list/16">仁德慈善</a></li>
+                        <li><a href="${site}gongyi/list/17" class="active">公益资讯</a></li>
+                        #else
+                        <li><a href="${site}gongyi/list/16" class="active">仁德慈善</a></li>
+                        <li><a href="${site}gongyi/list/17">公益资讯</a></li>
+                        #end
                     </ul>
                 </div>
                 <!--内容左边导航-->
@@ -65,16 +62,15 @@
                 <div class="newslistr clearfix">
                     <!--内容右边文章列表-->
                     <div class="newslistrtitle">
-                        <a href="news.html">乐闯公益</a> > <a href="#">仁德慈善</a>
+                        <a href="${site}gongyi">乐闯公益</a> > ${cateName}
                     </div>
                     <div class="newslistrul clearfix">
                         <ul>
                             #foreach($a in $articles)
-                            <li>
-                                <span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
-                                                                           margin-left: 5px;">
-                                    <img src=" ${site}${images}dian.png" />
-                                </span><a href="${site}gongyi/detail/${a.id}">${a.title}</a><span>${a.createtime.ToShortDateString()}</span>
+                            <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
+                                margin-left: 5px;">
+                                <img src=" ${site}${images}dian.png" />
+                            </span><a href="${site}gongyi/detail/${a.id}">${a.title}</a><span>${a.createtime.ToShortDateString()}</span>
                             </li>
                             #end
                         </ul>

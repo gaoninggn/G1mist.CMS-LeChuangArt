@@ -6,22 +6,22 @@
     <link rel="stylesheet" type="text/css" href="${site}${css}index.css" />
     <script type="text/javascript" src="${site}${js}myfocus-2.0.2.min.js"></script>
     <script type="text/javascript" src="${site}${js}mf-pattern/mF_expo2010.js"></script>
+    <link rel="stylesheet" type="text/css" href="${site}${js}mf-pattern/mF_expo2010.css" />
     <script type="text/javascript" src="${site}${js}jquery-1.3.1.js"></script>
     <script type="text/javascript">
         myFocus.set({
-            id: 'boxID',//焦点图盒子ID
-            pattern: 'mF_expo2010',//风格应用的名称
-            time: 3,//切换时间间隔(秒)
-            trigger: 'mouseover',//触发切换模式:'click'(点击)/'mouseover'(悬停)
-            width: 684,//设置图片区域宽度(像素)
-            height: 293,//设置图片区域高度(像素)
+            id: 'boxID', //焦点图盒子ID
+            pattern: 'mF_expo2010', //风格应用的名称
+            time: 3, //切换时间间隔(秒)
+            trigger: 'mouseover', //触发切换模式:'click'(点击)/'mouseover'(悬停)
+            width: 684, //设置图片区域宽度(像素)
+            height: 293, //设置图片区域高度(像素)
             txtHeight: 'default'//文字层高度设置(像素),'default'为默认高度，0为隐藏
         });
     </script>
 </head>
 <body>
     <div class="newsmain">
-
         <!--导航-->
         <div class="gytop">
             <div class="gylogo">
@@ -49,7 +49,8 @@
             <div class="gycontentleft">
                 <!--内容左边导航-->
                 <div class="gycontentlefttop">
-                    <div class="gycontentlefttopultitle">乐闯公益</div>
+                    <div class="gycontentlefttopultitle">
+                        乐闯公益</div>
                     <ul class="gyul">
                         <li><a href="${site}gongyi/list/16">仁德慈善</a></li>
                         <li><a href="${site}gongyi/list/17">公益资讯</a></li>
@@ -59,9 +60,12 @@
                 <!--内容左边文章列表-->
                 <div class="gycontentleftbottom">
                     <div class="gylefttitle">
-                        <div class="bk"></div>
-                        <div class="jibt">公益资讯</div>
-                        <div class="more"><a href="#">MORE</a></div>
+                        <div class="bk">
+                        </div>
+                        <div class="jibt">
+                            公益资讯</div>
+                        <div class="more">
+                            <a href="${site}gongyi/list/17">MORE</a></div>
                     </div>
                     <div class="gyleftul">
                         <ul>
@@ -81,51 +85,63 @@
                     <div id="boxID">
                         <div class="pic">
                             <ul>
-                                <li><a href="#"><img src=" ${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
-                                <li><a href="#"><img src=" ${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
-                                <li><a href="#"><img src=" ${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
-                                <li><a href="#"><img src=" ${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
+                                <li><a href="#">
+                                    <img src=" ${site}${images}newslb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
+                                <li><a href="#">
+                                    <img src=" ${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
+                                <li><a href="#">
+                                    <img src=" ${site}${images}newslb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
+                                <li><a href="#">
+                                    <img src=" ${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <!--内容右边轮播图-->
-
                 <div class="gycontentrightbottom">
                     <!--内容右边文章列表-->
                     <div class="gyrightleft">
                         <div class="gyrightlefttitle">
-                            <div class="bk"></div>
-                            <div class="jibt">仁德慈善</div>
-                            <div class="more"><a href="#">MORE</a></div>
+                            <div class="bk">
+                            </div>
+                            <div class="jibt">
+                                仁德慈善</div>
+                            <div class="more">
+                                <a href="${site}gongyi/list/16">MORE</a></div>
                         </div>
                         <div class="gyrightleftul">
                             <ul>
                                 #foreach($l in $cishanNews)
-                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px; margin-left: 5px;"><img src="${site}${images}dian.png" /></span><a href="${site}gongyi/detail/${l.id}">${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
+                                    margin-left: 5px;">
+                                    <img src="${site}${images}dian.png" /></span><a href="${site}gongyi/detail/${l.id}">${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
                                 #end
                             </ul>
                         </div>
                     </div>
                     <!--内容右边文章列表-->
-                    <!--内容右边视频展示-->
+                    <!--内容右边捐赠赞助-->
                     <div class="gyrightr">
                         <div class="gyrightrtitle">
-                            <div class="bk"></div>
-                            <div class="jibt">捐赠赞助</div>
-                            <div class="more"><a href="#">MORE</a></div>
+                            <div class="bk">
+                            </div>
+                            <div class="jibt">
+                                捐赠赞助</div>
+                            <div class="more">
+                                <a href="${site}zanzhu/list/24">MORE</a></div>
                         </div>
                         <div class="gyrightrsp">
                             <ul>
                                 #foreach($l in $artNews)
-                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px; margin-left: 5px;"><img src="${images}dian.png" /></span><a href="${site}gongyi/detail/${l.id}">${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
+                                    margin-left: 5px;">
+                                    <img src="${images}dian.png" /></span><a href="${site}zanzhu/detail/${l.id}">${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
                                 #end
                             </ul>
                         </div>
                     </div>
-                    <!--内容右边视频展示-->
+                    <!--内容右边捐赠赞助-->
                 </div>
-
             </div>
             <!--内容右边-->
         </div>
@@ -133,8 +149,10 @@
         <!--尾部-->
         <div class="foot">
             <div class="footcontent">
-                <p>广西南宁乐闯文化传播有限公司</p>
-                <p>电话：13307731021 邮箱：lechuangarts@163.com 地址：广西南宁市青秀区汇春路3号英华楼7楼715号</p>
+                <p>
+                    广西南宁乐闯文化传播有限公司</p>
+                <p>
+                    电话：13307731021 邮箱：lechuangarts@163.com 地址：广西南宁市青秀区汇春路3号英华楼7楼715号</p>
             </div>
         </div>
         <!--尾部-->

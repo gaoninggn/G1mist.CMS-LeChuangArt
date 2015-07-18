@@ -52,9 +52,23 @@
                         新闻中心
                     </div>
                     <ul class="newsul">
-                        <li><a href="${site}news/list/3">艺术动态</a></li>
+                        #if(${active}==3)
+                        <li><a href="${site}news/list/3" class="active">艺术动态</a></li>
                         <li><a href="${site}news/list/4">乐闯资讯</a></li>
                         <li><a href="${site}news/list/5">视频资源</a></li>
+                        #elseif(${active}==4)
+                        <li><a href="${site}news/list/3">艺术动态</a></li>
+                        <li><a href="${site}news/list/4" class="active">乐闯资讯</a></li>
+                        <li><a href="${site}news/list/5">视频资源</a></li>
+                        #elseif(${active}==5)
+                        <li><a href="${site}news/list/3">艺术动态</a></li>
+                        <li><a href="${site}news/list/4">乐闯资讯</a></li>
+                        <li><a href="${site}news/list/5" class="active">视频资源</a></li>
+                        #else
+                        <li><a href="${site}news/list/3" class="active">艺术动态</a></li>
+                        <li><a href="${site}news/list/4">乐闯资讯</a></li>
+                        <li><a href="${site}news/list/5">视频资源</a></li>
+                        #end
                     </ul>
                 </div>
                 <!--内容左边导航-->
@@ -65,7 +79,7 @@
                 <div class="newsdetailr clearfix">
                     <!--内容右边文章列表-->
                     <div class="newslistrtitle">
-                        <a href="#">新闻中心</a> > <a href="#">艺术动态</a> > <a href="#">桂林市乐闯美术培训学校</a>
+                        <a href="${site}news">新闻中心</a> > ${cateName} > ${article.title}
                     </div>
                     <div class="newslistrul">
                         <div class="detailarticle clearfix">

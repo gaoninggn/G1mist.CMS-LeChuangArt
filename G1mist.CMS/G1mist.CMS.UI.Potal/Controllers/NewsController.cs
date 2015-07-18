@@ -111,7 +111,10 @@ namespace G1mist.CMS.UI.Potal.Controllers
 
             var article = ArticleService.GetModal(a => a.id.Equals(id));
             article.body = Server.HtmlDecode(article.body);
+            var cateName = CategoryService.GetModal(a => a.id.Equals(article.cateid)).name;
 
+            velocityHelper.Put("active", article.cateid);
+            velocityHelper.Put("cateName", cateName);
             velocityHelper.Put("article", article);
             velocityHelper.Display("newsdetail.htm");
         }

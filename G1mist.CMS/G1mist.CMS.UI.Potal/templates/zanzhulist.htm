@@ -52,9 +52,23 @@
                     <div class="gycontentlefttopultitle">
                         捐赠赞助</div>
                     <ul class="gyul">
-                         <li><a href="${site}zanzhu/list/24" class="active">捐赠学校</a></li>
+                        #if(${active}==24)
+                        <li><a href="${site}zanzhu/list/24" class="active">捐赠学校</a></li>
                         <li><a href="${site}zanzhu/list/25">赞助美术馆</a></li>
                         <li><a href="${site}zanzhu/list/26">赞助教育活动</a></li>
+                        #elseif(${active}==25)
+                        <li><a href="${site}zanzhu/list/24">捐赠学校</a></li>
+                        <li><a href="${site}zanzhu/list/25" class="active">赞助美术馆</a></li>
+                        <li><a href="${site}zanzhu/list/26">赞助教育活动</a></li>
+                        #elseif(${active}==26)
+                        <li><a href="${site}zanzhu/list/24">捐赠学校</a></li>
+                        <li><a href="${site}zanzhu/list/25">赞助美术馆</a></li>
+                        <li><a href="${site}zanzhu/list/26" class="active">赞助教育活动</a></li>
+                        #else
+                        <li><a href="${site}zanzhu/list/24" class="active">捐赠学校</a></li>
+                        <li><a href="${site}zanzhu/list/25">赞助美术馆</a></li>
+                        <li><a href="${site}zanzhu/list/26">赞助教育活动</a></li>
+                        #end
                     </ul>
                 </div>
                 <!--内容左边导航-->
@@ -65,17 +79,17 @@
                 <div class="newslistr clearfix">
                     <!--内容右边文章列表-->
                     <div class="newslistrtitle">
-                        <a href="news.html">捐赠赞助</a> > <a href="#">赞助美术馆</a>
+                        <a href="${site}zanzhu">捐赠赞助</a> > ${cateName}
                     </div>
                     <div class="newslistrul clearfix">
-                    <ul>
+                        <ul>
                             #foreach($l in $article)
                             <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
                                 margin-left: 5px;">
-                                <img src="${site}${images}dian.png" /></span><a href="${site}zanzhu/detail/${l.id}">[通知] ${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                                <img src="${site}${images}dian.png" /></span><a href="${site}zanzhu/detail/${l.id}">[通知]
+                                    ${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
                             #end
                         </ul>
-                       
                     </div>
                     <!--内容右边文章列表-->
                 </div>

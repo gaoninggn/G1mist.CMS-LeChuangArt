@@ -53,10 +53,32 @@
                         乐闯文化
                     </div>
                     <ul class="whul">
+                        #if(${active}==19)
                         <li><a href="${site}wenhua/list/19" class="active">公司简介</a></li>
                         <li><a href="${site}wenhua/list/20">经营范围</a></li>
                         <li><a href="${site}wenhua/list/21">产品展示</a></li>
                         <li><a href="${site}wenhua/list/22">招商合作</a></li>
+                        #elseif(${active}==20)
+                        <li><a href="${site}wenhua/list/19">公司简介</a></li>
+                        <li><a href="${site}wenhua/list/20" class="active">经营范围</a></li>
+                        <li><a href="${site}wenhua/list/21">产品展示</a></li>
+                        <li><a href="${site}wenhua/list/22">招商合作</a></li>
+                        #elseif(${active}==21)
+                        <li><a href="${site}wenhua/list/19">公司简介</a></li>
+                        <li><a href="${site}wenhua/list/20">经营范围</a></li>
+                        <li><a href="${site}wenhua/list/21" class="active">产品展示</a></li>
+                        <li><a href="${site}wenhua/list/22">招商合作</a></li>
+                        #elseif(${active}==22)
+                        <li><a href="${site}wenhua/list/19">公司简介</a></li>
+                        <li><a href="${site}wenhua/list/20">经营范围</a></li>
+                        <li><a href="${site}wenhua/list/21">产品展示</a></li>
+                        <li><a href="${site}wenhua/list/22" class="active">招商合作</a></li>
+                        #else
+                        <li><a href="${site}wenhua/list/19" class="active">公司简介</a></li>
+                        <li><a href="${site}wenhua/list/20">经营范围</a></li>
+                        <li><a href="${site}wenhua/list/21">产品展示</a></li>
+                        <li><a href="${site}wenhua/list/22">招商合作</a></li>
+                        #end
                     </ul>
                 </div>
                 <!--内容左边导航-->
@@ -67,7 +89,7 @@
                 <div class="newsdetailr clearfix">
                     <!--内容右边文章列表-->
                     <div class="newslistrtitle">
-                        <a href="#">乐闯文化</a> > <a href="#">产品展示</a> > <a href="#">桂林市乐闯美术培训学校</a>
+                        <a href="${site}wenhua">乐闯文化</a> > ${cateName} > ${article.title}
                     </div>
                     <div class="newslistrul">
                         <div class="detailarticle clearfix">
@@ -76,7 +98,8 @@
                                     ${article.title}
                                 </div>
                                 <div class="articletime">
-                                    来源： ${article.from}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作者： ${article.author}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间： ${article.createtime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    来源： ${article.from}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作者： ${article.author}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间：
+                                    ${article.createtime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </div>
                             </div>
                             <div class="detailcontent clearfix">

@@ -86,7 +86,10 @@ namespace G1mist.CMS.UI.Potal.Controllers
             }
 
             var article = ArticleService.GetList(a => a.cateid.Equals(id));
+            var cateName = CategoryService.GetModal(a => a.id.Equals(id)).name;
 
+            velocityHelper.Put("active", id);
+            velocityHelper.Put("cateName", cateName);
             velocityHelper.Put("article", article);
             velocityHelper.Display("zanzhulist.htm");
         }
@@ -111,7 +114,10 @@ namespace G1mist.CMS.UI.Potal.Controllers
 
             var article = ArticleService.GetModal(a => a.id.Equals(id));
             article.body = Server.HtmlDecode(article.body);
+            var cateName = CategoryService.GetModal(a => a.id.Equals(article.cateid)).name;
 
+            velocityHelper.Put("active", article.cateid);
+            velocityHelper.Put("cateName", cateName);
             velocityHelper.Put("article", article);
             velocityHelper.Display("zanzhudetail.htm");
         }

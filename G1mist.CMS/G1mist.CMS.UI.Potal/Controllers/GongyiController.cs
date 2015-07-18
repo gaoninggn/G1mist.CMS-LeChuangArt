@@ -58,8 +58,8 @@ namespace G1mist.CMS.UI.Potal.Controllers
             var lechuangNews = ArticleService.GetList(a => a.cateid == 17).Take(14).ToList();
             //2.PUT仁德慈善id=16
             var cishanNews = ArticleService.GetList(a => a.cateid == 16).Take(5).ToList();
-            //3.PUT学科课程id=8
-            var artNews = ArticleService.GetList(a => a.cateid == 4).Take(5).ToList();
+            //3.PUT捐赠赞助id=8
+            var artNews = ArticleService.GetList(a => a.cateid == 24).Take(5).ToList();
 
             velocityHelper.Put("lechuangNews", lechuangNews);
             velocityHelper.Put("cishanNews", cishanNews);
@@ -87,7 +87,10 @@ namespace G1mist.CMS.UI.Potal.Controllers
             }
 
             var articles = ArticleService.GetList(a => a.cateid.Equals(id)).ToList();
+            var cateName = CategoryService.GetModal(a => a.id.Equals(id)).name;
 
+            velocityHelper.Put("active", id);
+            velocityHelper.Put("cateName", cateName);
             velocityHelper.Put("articles", articles);
             velocityHelper.Display("gongyilist.htm");
         }
@@ -112,7 +115,10 @@ namespace G1mist.CMS.UI.Potal.Controllers
 
             var article = ArticleService.GetModal(a => a.id.Equals(id));
             article.body = Server.HtmlDecode(article.body);
+            var cateName = CategoryService.GetModal(a => a.id.Equals(article.cateid)).name;
 
+            velocityHelper.Put("active", article.cateid);
+            velocityHelper.Put("cateName", cateName);
             velocityHelper.Put("article", article);
             velocityHelper.Display("gongyidetail.htm");
         }

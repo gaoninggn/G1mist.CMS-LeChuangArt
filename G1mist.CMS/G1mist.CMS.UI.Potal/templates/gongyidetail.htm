@@ -53,8 +53,16 @@
                         乐闯公益
                     </div>
                     <ul class="gyul">
+                        #if(${active}==16)
                         <li><a href="${site}gongyi/list/16" class="active">仁德慈善</a></li>
                         <li><a href="${site}gongyi/list/17">公益资讯</a></li>
+                        #elseif(${active}==17)
+                        <li><a href="${site}gongyi/list/16">仁德慈善</a></li>
+                        <li><a href="${site}gongyi/list/17" class="active">公益资讯</a></li>
+                        #else
+                        <li><a href="${site}gongyi/list/16" class="active">仁德慈善</a></li>
+                        <li><a href="${site}gongyi/list/17">公益资讯</a></li>
+                        #end
                     </ul>
                 </div>
                 <!--内容左边导航-->
@@ -65,7 +73,7 @@
                 <div class="newsdetailr clearfix">
                     <!--内容右边文章列表-->
                     <div class="newslistrtitle">
-                        <a href="#">新闻中心</a> > <a href="#">艺术动态</a> > <a href="#">${article.title}</a>
+                        <a href="${site}gongyi">乐闯公益</a> > ${cateName} > ${article.title}
                     </div>
                     <div class="newslistrul">
                         <div class="detailarticle clearfix">

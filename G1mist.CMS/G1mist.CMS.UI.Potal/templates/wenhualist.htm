@@ -52,10 +52,32 @@
                     <div class="whcontentlefttopultitle">
                         乐闯文化</div>
                     <ul class="whul">
+                        #if(${active}==19)
                         <li><a href="${site}wenhua/list/19" class="active">公司简介</a></li>
                         <li><a href="${site}wenhua/list/20">经营范围</a></li>
                         <li><a href="${site}wenhua/list/21">产品展示</a></li>
                         <li><a href="${site}wenhua/list/22">招商合作</a></li>
+                        #elseif(${active}==20)
+                        <li><a href="${site}wenhua/list/19">公司简介</a></li>
+                        <li><a href="${site}wenhua/list/20" class="active">经营范围</a></li>
+                        <li><a href="${site}wenhua/list/21">产品展示</a></li>
+                        <li><a href="${site}wenhua/list/22">招商合作</a></li>
+                        #elseif(${active}==21)
+                        <li><a href="${site}wenhua/list/19">公司简介</a></li>
+                        <li><a href="${site}wenhua/list/20">经营范围</a></li>
+                        <li><a href="${site}wenhua/list/21" class="active">产品展示</a></li>
+                        <li><a href="${site}wenhua/list/22">招商合作</a></li>
+                        #elseif(${active}==22)
+                        <li><a href="${site}wenhua/list/19">公司简介</a></li>
+                        <li><a href="${site}wenhua/list/20">经营范围</a></li>
+                        <li><a href="${site}wenhua/list/21">产品展示</a></li>
+                        <li><a href="${site}wenhua/list/22" class="active">招商合作</a></li>
+                        #else
+                        <li><a href="${site}wenhua/list/19" class="active">公司简介</a></li>
+                        <li><a href="${site}wenhua/list/20">经营范围</a></li>
+                        <li><a href="${site}wenhua/list/21">产品展示</a></li>
+                        <li><a href="${site}wenhua/list/22">招商合作</a></li>
+                        #end
                     </ul>
                 </div>
                 <!--内容左边导航-->
@@ -66,14 +88,15 @@
                 <div class="newslistr clearfix">
                     <!--内容右边文章列表-->
                     <div class="newslistrtitle">
-                        <a href="news.html">乐闯文化</a> > <a href="#">产品展示</a>
+                        <a href="${site}wenhua">乐闯文化</a> > ${cateName}
                     </div>
                     <div class="newslistrul clearfix">
                         <ul>
                             #foreach($l in $article)
                             <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
                                 margin-left: 5px;">
-                                <img src="${site}${images}dian.png" /></span><a href="${site}wenhua/detail/${l.id}">[通知] ${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                                <img src="${site}${images}dian.png" /></span><a href="${site}wenhua/detail/${l.id}">[通知]
+                                    ${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
                             #end
                         </ul>
                     </div>
