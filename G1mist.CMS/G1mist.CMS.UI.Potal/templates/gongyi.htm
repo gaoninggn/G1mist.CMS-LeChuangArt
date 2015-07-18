@@ -29,7 +29,7 @@
             </div>
             <div class="gynav">
                 <ul>
-                    <li><a href="${site}index" class="active">网站首页</a></li>
+                    <li><a href="${site}index">网站首页</a></li>
                     <li><a href="${site}news">新闻中心</a></li>
                     <li><a href="${site}art">乐闯美校</a></li>
                     <li><a href="${site}arthome">乐闯美术馆</a></li>
@@ -66,7 +66,7 @@
                     <div class="gyleftul">
                         <ul>
                             #foreach($l in $lechuangNews)
-                            <li><a href="${site}art/detail/${l.id}">${l.title}</a></li>
+                            <li><a href="${site}gongyi/detail/${l.id}">${l.title}</a></li>
                             #end
                         </ul>
                     </div>
@@ -101,8 +101,8 @@
                         </div>
                         <div class="gyrightleftul">
                             <ul>
-                                #foreach($l in $artNews)
-                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px; margin-left: 5px;"><img src="${images}dian.png" /></span><a href="${site}art/detail/${l.id}">${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                                #foreach($l in $cishanNews)
+                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px; margin-left: 5px;"><img src="${site}${images}dian.png" /></span><a href="${site}gongyi/detail/${l.id}">${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
                                 #end
                             </ul>
                         </div>
@@ -117,8 +117,8 @@
                         </div>
                         <div class="gyrightrsp">
                             <ul>
-                                #foreach($l in $lechuangNews)
-                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px; margin-left: 5px;"><img src="${images}dian.png" /></span><a href="${site}index/detail/${l.id}">${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                                #foreach($l in $artNews)
+                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px; margin-left: 5px;"><img src="${images}dian.png" /></span><a href="${site}gongyi/detail/${l.id}">${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
                                 #end
                             </ul>
                         </div>

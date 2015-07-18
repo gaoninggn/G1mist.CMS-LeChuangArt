@@ -54,15 +54,18 @@ namespace G1mist.CMS.UI.Potal.Controllers
             var velocityHelper = new VelocityHelper(_templatePath);
             //1.PUT前台相关路径
             PutStatic(velocityHelper);
-            //2.PUT学校概况id=7
-            var lechuangNews = ArticleService.GetList(a => a.cateid == 7).Take(14).ToList();
+            //2.PUT公益资讯id=17
+            var lechuangNews = ArticleService.GetList(a => a.cateid == 17).Take(14).ToList();
+            //2.PUT仁德慈善id=16
+            var cishanNews = ArticleService.GetList(a => a.cateid == 16).Take(5).ToList();
             //3.PUT学科课程id=8
-            var artNews = ArticleService.GetList(a => a.cateid == 8).Take(5).ToList();
+            var artNews = ArticleService.GetList(a => a.cateid == 4).Take(5).ToList();
 
             velocityHelper.Put("lechuangNews", lechuangNews);
+            velocityHelper.Put("cishanNews", cishanNews);
             velocityHelper.Put("artNews", artNews);
 
-            velocityHelper.Display("news.htm");
+            velocityHelper.Display("gongyi.htm");
         }
 
         [HttpGet]
@@ -87,7 +90,7 @@ namespace G1mist.CMS.UI.Potal.Controllers
             article.body = Server.HtmlDecode(article.body);
 
             velocityHelper.Put("article", article);
-            velocityHelper.Display("newsdetail.htm");
+            velocityHelper.Display("gongyidetail.htm");
         }
         [NonAction]
         private void PutStatic(VelocityHelper velocityHelper)

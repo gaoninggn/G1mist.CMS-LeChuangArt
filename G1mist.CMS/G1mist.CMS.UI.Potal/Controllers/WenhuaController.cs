@@ -47,9 +47,49 @@ namespace G1mist.CMS.UI.Potal.Controllers
         //
         // GET: /Wenhua/
 
-        public ActionResult Index()
+        [HttpGet]
+        public void Index()
         {
-            return View();
+            var velocityHelper = new VelocityHelper(_templatePath);
+            //1.PUT前台相关路径
+            PutStatic(velocityHelper);
+            //2.PUT乐闯资讯id=4
+            var lechuangNews = ArticleService.GetList(a => a.cateid == 4).Take(14).ToList();
+            //2.PUT公司简介id=19
+            var cishanNews = ArticleService.GetList(a => a.cateid == 19).Take(5).ToList();
+            //3.PUT招商合作id=22
+            var artNews = ArticleService.GetList(a => a.cateid == 22).Take(5).ToList();
+
+            velocityHelper.Put("lechuangNews", lechuangNews);
+            velocityHelper.Put("cishanNews", cishanNews);
+            velocityHelper.Put("artNews", artNews);
+
+            velocityHelper.Display("wenhua.htm");
+        }
+
+        [HttpGet]
+        public void Detail(int id)
+        {
+            var velocityHelper = new VelocityHelper(_templatePath);
+            PutStatic(velocityHelper);
+            //参数ID传递出错
+            if (id <= 0)
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+            //文章不存在
+            if (!ArticleService.Exits(a => a.id.Equals(id)))
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+
+            var article = ArticleService.GetModal(a => a.id.Equals(id));
+            article.body = Server.HtmlDecode(article.body);
+
+            velocityHelper.Put("article", article);
+            velocityHelper.Display("wenhuadetail.htm");
         }
 
         [NonAction]
@@ -58,7 +98,7 @@ namespace G1mist.CMS.UI.Potal.Controllers
             //按照节的名称读取节
             var section = Config["path"];
 
-            velocityHelper.Put("css",  section["css"].Value);
+            velocityHelper.Put("css", section["css"].Value);
             velocityHelper.Put("js", section["js"].Value);
             velocityHelper.Put("images", section["images"].Value);
             velocityHelper.Put("site", section["site"].Value);

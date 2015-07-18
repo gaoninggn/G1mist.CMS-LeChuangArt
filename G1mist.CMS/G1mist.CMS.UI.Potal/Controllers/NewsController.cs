@@ -65,6 +65,30 @@ namespace G1mist.CMS.UI.Potal.Controllers
         }
 
         [HttpGet]
+        public void List(int id)
+        {
+            var velocityHelper = new VelocityHelper(_templatePath);
+            PutStatic(velocityHelper);
+            //参数ID传递出错
+            if (id <= 0)
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+            //分类不存在
+            if (!CategoryService.Exits(a => a.id.Equals(id)))
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+
+            var articles = ArticleService.GetList(a => a.cateid.Equals(id)).ToList();
+
+            velocityHelper.Put("articles", articles);
+            velocityHelper.Display("newslist.htm");
+        }
+
+        [HttpGet]
         public void Detail(int id)
         {
             var velocityHelper = new VelocityHelper(_templatePath);
