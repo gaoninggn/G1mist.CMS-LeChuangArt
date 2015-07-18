@@ -53,7 +53,31 @@ namespace G1mist.CMS.UI.Potal.Controllers
 
             PutStatic(velocityHelper);
 
-            velocityHelper.Display("contactus.htm");
+            velocityHelper.Display("lechuangxuexiao.htm");
+        }
+        public void Meishuguan()
+        {
+            var velocityHelper = new VelocityHelper(_templatePath);
+
+            PutStatic(velocityHelper);
+
+            velocityHelper.Display("lechuangmeishuguan.htm");
+        }
+        public void Gongyi()
+        {
+            var velocityHelper = new VelocityHelper(_templatePath);
+
+            PutStatic(velocityHelper);
+
+            velocityHelper.Display("lechuanggongyi.htm");
+        }
+        public void Wenhua()
+        {
+            var velocityHelper = new VelocityHelper(_templatePath);
+
+            PutStatic(velocityHelper);
+
+            velocityHelper.Display("lechuangwenhua.htm");
         }
 
 

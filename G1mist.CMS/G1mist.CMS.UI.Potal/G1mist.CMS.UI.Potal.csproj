@@ -978,6 +978,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Areas\Admin\html\js\sweetalert.min.js" />
     <Content Include="static\401.html" />
+    <Content Include="templates\lechuangwenhua.htm" />
+    <Content Include="templates\lechuanggongyi.htm" />
+    <Content Include="templates\lechuangmeishuguan.htm" />
+    <Content Include="templates\lechuangxuexiao.htm" />
     <Content Include="static\error.html" />
     <Content Include="static\error500.html" />
     <Content Include="templates\art.htm" />
@@ -986,7 +990,6 @@
     <Content Include="templates\arthomelist.htm" />
     <Content Include="templates\artlist.htm" />
     <Content Include="templates\atrhomedetail.htm" />
-    <Content Include="templates\contactus.htm" />
     <Content Include="templates\gongyi.htm" />
     <Content Include="templates\gongyidetail.htm" />
     <Content Include="templates\gongyilist.htm" />
