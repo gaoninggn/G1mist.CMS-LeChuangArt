@@ -47,10 +47,13 @@ namespace G1mist.CMS.UI.Potal.Controllers
 
         //
         // GET: /Contactus/
-
-        public ActionResult Index()
+        public void Index()
         {
-            return View();
+            var velocityHelper = new VelocityHelper(_templatePath);
+
+            PutStatic(velocityHelper);
+
+            velocityHelper.Display("contactus.htm");
         }
 
 

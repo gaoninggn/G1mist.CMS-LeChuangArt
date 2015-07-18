@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -50,10 +50,11 @@
                 <!--内容左边导航-->
                 <div class="gycontentlefttop">
                     <div class="gycontentlefttopultitle">
-                        乐闯公益</div>
+                        乐闯公益
+                    </div>
                     <ul class="gyul">
-                        <li><a href="list.html" class="active">仁德慈善</a></li>
-                        <li><a href="list.html">公益资讯</a></li>
+                        <li><a href="${site}gongyi/list/16" class="active">仁德慈善</a></li>
+                        <li><a href="${site}gongyi/list/17">公益资讯</a></li>
                     </ul>
                 </div>
                 <!--内容左边导航-->
@@ -68,9 +69,14 @@
                     </div>
                     <div class="newslistrul clearfix">
                         <ul>
-                            <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
-                                margin-left: 5px;">
-                                <img src="${site}${images}dian.png" /></span><a href="newsdetail.html">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
+                            #foreach($a in $articles)
+                            <li>
+                                <span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
+                                                                           margin-left: 5px;">
+                                    <img src=" ${site}${images}dian.png" />
+                                </span><a href="${site}gongyi/detail/${a.id}">${a.title}</a><span>${a.createtime.ToShortDateString()}</span>
+                            </li>
+                            #end
                         </ul>
                     </div>
                     <!--内容右边文章列表-->
@@ -83,9 +89,11 @@
         <div class="foot">
             <div class="footcontent">
                 <p>
-                    广西南宁乐闯文化传播有限公司</p>
+                    广西南宁乐闯文化传播有限公司
+                </p>
                 <p>
-                    电话：13307731021 邮箱：lechuangarts@163.com 地址：广西南宁市青秀区汇春路3号英华楼7楼715号</p>
+                    电话：13307731021 邮箱：lechuangarts@163.com 地址：广西南宁市青秀区汇春路3号英华楼7楼715号
+                </p>
             </div>
         </div>
         <!--尾部-->
