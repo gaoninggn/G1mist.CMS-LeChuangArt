@@ -66,6 +66,9 @@
     <Reference Include="NVelocity">
       <HintPath>..\packages\NVelocity.1.0.3\lib\NVelocity.dll</HintPath>
     </Reference>
+    <Reference Include="SharpConfig">
+      <HintPath>..\packages\SharpConfig.1.4.3\lib\SharpConfig.dll</HintPath>
+    </Reference>
     <Reference Include="Spring.Core">
       <HintPath>..\packages\Spring.Core.2.0.1\lib\net40\Spring.Core.dll</HintPath>
     </Reference>
@@ -150,8 +153,14 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\LinkController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
-    <Compile Include="Controllers\ArticlesController.cs" />
+    <Compile Include="Controllers\ArtController.cs" />
+    <Compile Include="Controllers\ArthomeController.cs" />
+    <Compile Include="Controllers\ContactusController.cs" />
+    <Compile Include="Controllers\GongyiController.cs" />
     <Compile Include="Controllers\IndexController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\WenhuaController.cs" />
+    <Compile Include="Controllers\ZanzhuController.cs" />
     <Compile Include="Filters\ExceptionFilter.cs" />
     <Compile Include="Filters\G1mistHandleErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -527,6 +536,113 @@
     </Content>
     <Content Include="Content\bootstrap-table.min.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\index.css" />
+    <Content Include="Content\images\dian.png" />
+    <Content Include="Content\images\gongyilb.jpg" />
+    <Content Include="Content\images\gongyilogo.png" />
+    <Content Include="Content\images\gz.png" />
+    <Content Include="Content\images\indexlb.jpg" />
+    <Content Include="Content\images\indexlogo.png" />
+    <Content Include="Content\images\lianxiwomen.jpg" />
+    <Content Include="Content\images\meishuguangjiaoyu.jpg" />
+    <Content Include="Content\images\meishuguanglb.jpg" />
+    <Content Include="Content\images\meishuguanglogo.jpg" />
+    <Content Include="Content\images\meishuguangzaixianyulan.jpg" />
+    <Content Include="Content\images\meishuguangzs.jpg" />
+    <Content Include="Content\images\meixiaologo.jpg" />
+    <Content Include="Content\images\meixiaozhanshi.jpg" />
+    <Content Include="Content\images\mxfc.jpg" />
+    <Content Include="Content\images\newslb.jpg" />
+    <Content Include="Content\images\newssp.jpg" />
+    <Content Include="Content\images\wenhualogo.png" />
+    <Content Include="Content\images\zzbg.jpg" />
+    <Content Include="Content\js\ajaxform.js" />
+    <Content Include="Content\js\easyslider1.7.js" />
+    <Content Include="Content\js\iepngfx.js" />
+    <Content Include="Content\js\jquery-1.3.1.js" />
+    <Content Include="Content\js\jquery.easing.min.js" />
+    <Content Include="Content\js\jquery.js" />
+    <Content Include="Content\js\jquery.lavalamp.min.js" />
+    <Content Include="Content\js\jquery.prettyphoto.js" />
+    <Content Include="Content\js\js.js" />
+    <Content Include="Content\js\mf-pattern\img\mF_51xflash\play.gif" />
+    <Content Include="Content\js\mf-pattern\img\mF_51xflash\tit-ar.gif" />
+    <Content Include="Content\js\mf-pattern\img\mF_classicHB\btn-blue.gif" />
+    <Content Include="Content\js\mf-pattern\img\mF_classicHB\btn-gray.gif" />
+    <Content Include="Content\js\mf-pattern\img\mF_classicHC\btn-bg.png" />
+    <Content Include="Content\js\mf-pattern\img\mF_classicHC\btn-red.gif" />
+    <Content Include="Content\js\mf-pattern\img\mF_games_tb\ar.gif" />
+    <Content Include="Content\js\mf-pattern\img\mF_kdui\dots.png" />
+    <Content Include="Content\js\mf-pattern\img\mF_kdui\slider-arrows.png" />
+    <Content Include="Content\js\mf-pattern\img\mF_kiki\ar-left.gif" />
+    <Content Include="Content\js\mf-pattern\img\mF_kiki\ar-right.gif" />
+    <Content Include="Content\js\mf-pattern\img\mF_kiki\tit-ar.gif" />
+    <Content Include="Content\js\mf-pattern\img\mF_pithy_tb\btn.gif" />
+    <Content Include="Content\js\mf-pattern\img\mF_pithy_tb\turn.gif" />
+    <Content Include="Content\js\mf-pattern\img\mF_qiyi\bg.jpg" />
+    <Content Include="Content\js\mf-pattern\img\mF_qiyi\loading.gif" />
+    <Content Include="Content\js\mf-pattern\img\mF_sohusports\sh-btn.gif" />
+    <Content Include="Content\js\mf-pattern\img\mF_taobaomall\btn-bg2.gif" />
+    <Content Include="Content\js\mf-pattern\img\mF_tbhuabao\btn-bg.gif" />
+    <Content Include="Content\js\mf-pattern\mF_51xflash.css" />
+    <Content Include="Content\js\mf-pattern\mF_51xflash.js" />
+    <Content Include="Content\js\mf-pattern\mF_classicHB.css" />
+    <Content Include="Content\js\mf-pattern\mF_classicHB.js" />
+    <Content Include="Content\js\mf-pattern\mF_classicHC.css" />
+    <Content Include="Content\js\mf-pattern\mF_classicHC.js" />
+    <Content Include="Content\js\mf-pattern\mF_dleung.css" />
+    <Content Include="Content\js\mf-pattern\mF_dleung.js" />
+    <Content Include="Content\js\mf-pattern\mF_expo2010.css" />
+    <Content Include="Content\js\mf-pattern\mF_expo2010.js" />
+    <Content Include="Content\js\mf-pattern\mF_fancy.css" />
+    <Content Include="Content\js\mf-pattern\mF_fancy.js" />
+    <Content Include="Content\js\mf-pattern\mF_fscreen_tb.css" />
+    <Content Include="Content\js\mf-pattern\mF_fscreen_tb.js" />
+    <Content Include="Content\js\mf-pattern\mF_games_tb.css" />
+    <Content Include="Content\js\mf-pattern\mF_games_tb.js" />
+    <Content Include="Content\js\mf-pattern\mF_kdui.css" />
+    <Content Include="Content\js\mf-pattern\mF_kdui.js" />
+    <Content Include="Content\js\mf-pattern\mF_kiki.css" />
+    <Content Include="Content\js\mf-pattern\mF_kiki.js" />
+    <Content Include="Content\js\mf-pattern\mF_ladyQ.css" />
+    <Content Include="Content\js\mf-pattern\mF_ladyQ.js" />
+    <Content Include="Content\js\mf-pattern\mF_liquid.css" />
+    <Content Include="Content\js\mf-pattern\mF_liquid.js" />
+    <Content Include="Content\js\mf-pattern\mF_liuzg.css" />
+    <Content Include="Content\js\mf-pattern\mF_liuzg.js" />
+    <Content Include="Content\js\mf-pattern\mF_luluJQ.css" />
+    <Content Include="Content\js\mf-pattern\mF_luluJQ.js" />
+    <Content Include="Content\js\mf-pattern\mF_pconline.css" />
+    <Content Include="Content\js\mf-pattern\mF_pconline.js" />
+    <Content Include="Content\js\mf-pattern\mF_peijianmall.css" />
+    <Content Include="Content\js\mf-pattern\mF_peijianmall.js" />
+    <Content Include="Content\js\mf-pattern\mF_pithy_tb.css" />
+    <Content Include="Content\js\mf-pattern\mF_pithy_tb.js" />
+    <Content Include="Content\js\mf-pattern\mF_qiyi.css" />
+    <Content Include="Content\js\mf-pattern\mF_qiyi.js" />
+    <Content Include="Content\js\mf-pattern\mF_quwan.css" />
+    <Content Include="Content\js\mf-pattern\mF_quwan.js" />
+    <Content Include="Content\js\mf-pattern\mF_rapoo.css" />
+    <Content Include="Content\js\mf-pattern\mF_rapoo.js" />
+    <Content Include="Content\js\mf-pattern\mF_shutters.css" />
+    <Content Include="Content\js\mf-pattern\mF_shutters.js" />
+    <Content Include="Content\js\mf-pattern\mF_slide3D.css" />
+    <Content Include="Content\js\mf-pattern\mF_slide3D.js" />
+    <Content Include="Content\js\mf-pattern\mF_sohusports.css" />
+    <Content Include="Content\js\mf-pattern\mF_sohusports.js" />
+    <Content Include="Content\js\mf-pattern\mF_taobao2010.css" />
+    <Content Include="Content\js\mf-pattern\mF_taobao2010.js" />
+    <Content Include="Content\js\mf-pattern\mF_taobaomall.css" />
+    <Content Include="Content\js\mf-pattern\mF_taobaomall.js" />
+    <Content Include="Content\js\mf-pattern\mF_tbhuabao.css" />
+    <Content Include="Content\js\mf-pattern\mF_tbhuabao.js" />
+    <Content Include="Content\js\mf-pattern\mF_YSlider.css" />
+    <Content Include="Content\js\mf-pattern\mF_YSlider.js" />
+    <Content Include="Content\js\myfocus-1.2.4.full.js" />
+    <Content Include="Content\js\myfocus-2.0.2.min.js" />
+    <Content Include="Content\js\myFocus.easing.1.0.js" />
+    <Content Include="Content\js\tabjs.js" />
+    <Content Include="Content\js\unitpngfix.js" />
     <Content Include="Content\select.css" />
     <Content Include="Content\style.css" />
     <Content Include="Areas\Admin\html\css\sweetalert.css" />
@@ -864,9 +980,16 @@
     <Content Include="static\401.html" />
     <Content Include="static\error.html" />
     <Content Include="static\error500.html" />
+    <Content Include="templates\art.htm" />
+    <Content Include="templates\arthome.htm" />
+    <Content Include="templates\contactus.htm" />
+    <Content Include="templates\gongyi.htm" />
     <Content Include="templates\index.htm" />
-    <Content Include="templates\list.htm" />
-    <Content Include="templates\show.htm" />
+    <Content Include="templates\news.htm" />
+    <Content Include="templates\newsdetail.htm" />
+    <Content Include="templates\newslist.htm" />
+    <Content Include="templates\wenhua.htm" />
+    <Content Include="templates\zanzhu.htm" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -883,6 +1006,7 @@
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Uploads\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -918,6 +1042,7 @@
   <ItemGroup>
     <Content Include="Areas\Admin\html\js\editor\asp.net\file_manager_json.ashx" />
     <Content Include="Areas\Admin\html\js\editor\asp.net\upload_json.ashx" />
+    <Content Include="Config\static.config" />
     <None Include="Properties\PublishProfiles\配置文件1.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

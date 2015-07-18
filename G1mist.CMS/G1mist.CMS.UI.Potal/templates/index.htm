@@ -1,16 +1,68 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>乐闯美术</title>
+    <link rel="stylesheet" type="text/css" href="${css}index.css" />
+    <script type="text/javascript" src="${js}myfocus-2.0.2.min.js"></script>
+    <script type="text/javascript" src="${js}mf-pattern/mF_expo2010.js"></script>
+    <script type="text/javascript" src="${js}jquery-1.3.1.js"></script>
+    <script type="text/javascript">
+        myFocus.set({
+            id: 'boxID',//焦点图盒子ID
+            pattern: 'mF_expo2010',//风格应用的名称
+            time: 3,//切换时间间隔(秒)
+            trigger: 'mouseover',//触发切换模式:'click'(点击)/'mouseover'(悬停)
+            width: 1000,//设置图片区域宽度(像素)
+            height: 530,//设置图片区域高度(像素)
+            txtHeight: 'default'//文字层高度设置(像素),'default'为默认高度，0为隐藏
+        });
+    </script>
 </head>
 <body>
-    #foreach($art in ${articles.GetArticlesByCate(1)})
-    <div>
-        <p>
-            Title:$art.title</p>
-        <p>
-            Body:$art.body</p>
+    <div class="indexmain">
+
+        <!--导航-->
+        <div class="indextop">
+            <div class="indexlogo">
+                <img src="${images}indexlogo.png" />
+            </div>
+            <div class="indexnav">
+                <ul>
+                    <li><a href="${site}index" class="active">网站首页</a></li>
+                    <li><a href="${site}news">新闻中心</a></li>
+                    <li><a href="${site}art">乐闯美校</a></li>
+                    <li><a href="${site}arthome">乐闯美术馆</a></li>
+                    <li><a href="${site}gongyi">乐闯公益</a></li>
+                    <li><a href="${site}wenhua">乐闯文化</a></li>
+                    <li><a href="${site}zanzhu">捐赠赞助</a></li>
+                    <li><a href="${site}contactus">联系我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <!--导航-->
+        <!--内容-->
+        <div class="indexcontent">
+            <div id="boxID">
+                <div class="pic">
+                    <ul>
+                        <li><a href="#"><img src="${images}indexlb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
+                        <li><a href="#"><img src="${images}indexlb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
+                        <li><a href="#"><img src="${images}indexlb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
+                        <li><a href="#"><img src="${images}indexlb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--内容-->
+        <!--尾部-->
+        <div class="indexfoot">
+            <div class="indexfootcontent">
+                <p>广西南宁乐闯文化传播有限公司</p>
+                <p>电话：13307731021 邮箱：lechuangarts@163.com 地址：广西南宁市青秀区汇春路3号英华楼7楼715号</p>
+            </div>
+        </div>
+        <!--尾部-->
     </div>
-    #end
 </body>
 </html>

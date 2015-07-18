@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>sharpconfig</id>
+    <version>1.4.3</version>
+    <title>SharpConfig</title>
+    <authors>Cemalettin Dervis</authors>
+    <owners>Cemalettin Dervis</owners>
+    <projectUrl>https://github.com/cemdervis/SharpConfig</projectUrl>
+    <iconUrl>http://i.imgur.com/x6x7xiy.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>SharpConfig is an easy-to-use CFG/INI configuration library for .NET.</description>
+    <summary>SharpConfig is an easy-to-use CFG/INI configuration library for .NET.</summary>
+    <releaseNotes>- Fixed a bug that caused comment delimiters inside string values to be ignored (issue #5).
+- Added the static property Configuration.IgnoreInlineComments. The default value is false.
+- Added the static property Configuration.IgnorePreComments. The default value is false.</releaseNotes>
+    <copyright>Copyright © Cemalettin Dervis 2013-2015</copyright>
+    <tags>sharpconfig config c# csharp cfg ini configuration library</tags>
+  </metadata>
+</package>

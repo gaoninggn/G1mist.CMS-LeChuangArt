@@ -24,10 +24,10 @@ public class Upload : IHttpHandler
         var aspxUrl = context.Request.Path.Substring(0, context.Request.Path.LastIndexOf("/", StringComparison.Ordinal) + 1);
 
         //文件保存目录路径
-        var savePath = "../../../../uploads/";
+        var savePath = "../../../../../../uploads/";
 
         //文件保存目录URL
-        var saveUrl = aspxUrl + "../../../../uploads/";
+        var saveUrl = aspxUrl + "../../../../../../uploads/";
 
         //定义允许上传的文件扩展名
         var extTable = new Hashtable
