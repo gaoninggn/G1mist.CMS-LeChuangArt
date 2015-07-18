@@ -998,8 +998,8 @@
     <Content Include="templates\wenhuadetail.html" />
     <Content Include="templates\wenhualist.html" />
     <Content Include="templates\zanzhu.htm" />
-    <Content Include="templates\zanzhudetail.html" />
-    <Content Include="templates\zanzhulist.html" />
+    <Content Include="templates\zanzhudetail.htm" />
+    <Content Include="templates\zanzhulist.htm" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

@@ -52,9 +52,9 @@
                     <div class="gycontentlefttopultitle">
                         捐赠赞助</div>
                     <ul class="gyul">
-                        <li><a href="list.html" class="active">捐赠学校</a></li>
-                        <li><a href="list.html">赞助美术馆</a></li>
-                        <li><a href="list.html">赞助教育活动</a></li>
+                        <li><a href="${site}zanzhu/list/24" class="active">捐赠学校</a></li>
+                        <li><a href="${site}zanzhu/list/25">赞助美术馆</a></li>
+                        <li><a href="${site}zanzhu/list/26">赞助教育活动</a></li>
                     </ul>
                 </div>
                 <!--内容左边导航-->
@@ -62,17 +62,22 @@
             <!--内容左边-->
             <!--内容右边-->
             <div class="newscontentright clearfix">
-                <div class="newslistr clearfix">
+                <div class="newsdetailr clearfix">
                     <!--内容右边文章列表-->
                     <div class="newslistrtitle">
-                        <a href="news.html">捐赠赞助</a> > <a href="#">赞助美术馆</a>
+                        <a href="news.html">捐赠赞助</a> > <a href="#">赞助美术馆</a> > <a href="#">${article.title}</a>
                     </div>
-                    <div class="newslistrul clearfix">
-                        <ul>
-                            <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
-                                margin-left: 5px;">
-                                <img src="${site}${images}dian.png" /></span><a href="newsdetail.html">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                        </ul>
+                    <div class="newslistrul">
+                        <div class="detailarticle clearfix">
+                            <div class="articletop">
+                                <div class="articletitle">
+                                    ${article.title}</div>
+                                <div class="articletime">
+                                    来源：${article.from}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作者：${article.author}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间：${article.createtime}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                            </div>
+                            <div class="detailcontent clearfix">
+                                ${article.body}</div>
+                        </div>
                     </div>
                     <!--内容右边文章列表-->
                 </div>

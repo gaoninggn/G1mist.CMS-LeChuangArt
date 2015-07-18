@@ -47,10 +47,73 @@ namespace G1mist.CMS.UI.Potal.Controllers
 
         //
         // GET: /Zanzhu/
-
-        public ActionResult Index()
+        [HttpGet]
+        public void Index()
         {
-            return View();
+            var velocityHelper = new VelocityHelper(_templatePath);
+            //1.PUT前台相关路径
+            PutStatic(velocityHelper);
+            //2.PUT捐赠学校id=24
+            var juanzengxuexiao = ArticleService.GetList(a => a.cateid == 24).Take(5).ToList();
+            //3.PUT赞助美术馆id=25
+            var zanzhuart = ArticleService.GetList(a => a.cateid == 25).Take(14).ToList();
+            //3.PUT赞助教育id=26
+            var zanzhuschool = ArticleService.GetList(a => a.cateid == 26).Take(14).ToList();
+
+            velocityHelper.Put("juanzengxuexiao", juanzengxuexiao);
+            velocityHelper.Put("zanzhuart", zanzhuart);
+            velocityHelper.Put("zanzhuschool", zanzhuschool);
+
+            velocityHelper.Display("zanzhu.htm");
+        }
+
+        [HttpGet]
+        public void list(int id)
+        {
+            var velocityHelper = new VelocityHelper(_templatePath);
+            PutStatic(velocityHelper);
+            //参数ID传递出错
+            if (id <= 0)
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+            //文章不存在
+            if (!CategoryService.Exits(a => a.id.Equals(id)))
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+
+            var article = ArticleService.GetList(a => a.cateid.Equals(id));
+
+            velocityHelper.Put("article", article);
+            velocityHelper.Display("zanzhulist.htm");
+        }
+
+        [HttpGet]
+        public void Detail(int id)
+        {
+            var velocityHelper = new VelocityHelper(_templatePath);
+            PutStatic(velocityHelper);
+            //参数ID传递出错
+            if (id <= 0)
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+            //文章不存在
+            if (!ArticleService.Exits(a => a.id.Equals(id)))
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+
+            var article = ArticleService.GetModal(a => a.id.Equals(id));
+            article.body = Server.HtmlDecode(article.body);
+
+            velocityHelper.Put("article", article);
+            velocityHelper.Display("zanzhudetail.htm");
         }
 
         [NonAction]

@@ -9,19 +9,18 @@
     <script type="text/javascript" src="${site}${js}jquery-1.3.1.js"></script>
     <script type="text/javascript">
         myFocus.set({
-            id: 'boxID',//焦点图盒子ID
-            pattern: 'mF_expo2010',//风格应用的名称
-            time: 3,//切换时间间隔(秒)
-            trigger: 'mouseover',//触发切换模式:'click'(点击)/'mouseover'(悬停)
-            width: 684,//设置图片区域宽度(像素)
-            height: 293,//设置图片区域高度(像素)
+            id: 'boxID', //焦点图盒子ID
+            pattern: 'mF_expo2010', //风格应用的名称
+            time: 3, //切换时间间隔(秒)
+            trigger: 'mouseover', //触发切换模式:'click'(点击)/'mouseover'(悬停)
+            width: 684, //设置图片区域宽度(像素)
+            height: 293, //设置图片区域高度(像素)
             txtHeight: 'default'//文字层高度设置(像素),'default'为默认高度，0为隐藏
         });
     </script>
 </head>
 <body>
     <div class="newsmain">
-
         <!--导航-->
         <div class="gytop">
             <div class="gylogo">
@@ -49,37 +48,30 @@
             <div class="gycontentleft">
                 <!--内容左边导航-->
                 <div class="gycontentlefttop">
-                    <div class="gycontentlefttopultitle">捐赠赞助</div>
+                    <div class="gycontentlefttopultitle">
+                        捐赠赞助</div>
                     <ul class="gyul">
-                        <li><a href="list.html">捐赠学校</a></li>
-                        <li><a href="list.html">赞助美术馆</a></li>
-                        <li><a href="list.html">赞助教育活动</a></li>
+                        <li><a href="${site}zanzhu/list/24">捐赠学校</a></li>
+                        <li><a href="${site}zanzhu/list/25">赞助美术馆</a></li>
+                        <li><a href="${site}zanzhu/list/26">赞助教育活动</a></li>
                     </ul>
                 </div>
                 <!--内容左边导航-->
                 <!--内容左边文章列表-->
                 <div class="gycontentleftbottom">
                     <div class="gylefttitle">
-                        <div class="bk"></div>
-                        <div class="jibt">捐赠学校</div>
-                        <div class="more"><a href="#">MORE</a></div>
+                        <div class="bk">
+                        </div>
+                        <div class="jibt">
+                            捐赠学校</div>
+                        <div class="more">
+                            <a href="#">MORE</a></div>
                     </div>
                     <div class="gyleftul">
                         <ul>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
+                            #foreach($l in $juanzengxuexiao)
+                            <li><a href="${site}zanzhu/detail/${l.id}">[公告]${l.title}</a></li>
+                            #end
                         </ul>
                     </div>
                 </div>
@@ -93,31 +85,37 @@
                     <div id="boxID">
                         <div class="pic">
                             <ul>
-                                <li><a href="#"><img src=" ${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
-                                <li><a href="#"><img src=" ${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
-                                <li><a href="#"><img src=" ${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
-                                <li><a href="#"><img src=" ${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
+                                <li><a href="#">
+                                    <img src=" ${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
+                                <li><a href="#">
+                                    <img src=" ${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
+                                <li><a href="#">
+                                    <img src=" ${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
+                                <li><a href="#">
+                                    <img src=" ${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <!--内容右边轮播图-->
-
                 <div class="gycontentrightbottom">
                     <!--内容右边文章列表-->
                     <div class="gyrightleft">
                         <div class="gyrightlefttitle">
-                            <div class="bk"></div>
-                            <div class="jibt">赞助美术馆</div>
-                            <div class="more"><a href="#">MORE</a></div>
+                            <div class="bk">
+                            </div>
+                            <div class="jibt">
+                                赞助美术馆</div>
+                            <div class="more">
+                                <a href="#">MORE</a></div>
                         </div>
                         <div class="gyrightleftul">
                             <ul>
-                                <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                                <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                                <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                                <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                                <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
+                                #foreach($l in $zanzhuart)
+                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
+                                    margin-left: 5px;">
+                                    <img src="${images}dian.png" /></span><a href="${site}zanzhu/detail/${l.id}">[公告]${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                                #end
                             </ul>
                         </div>
                     </div>
@@ -125,23 +123,25 @@
                     <!--内容右边视频展示-->
                     <div class="gyrightr">
                         <div class="gyrightrtitle">
-                            <div class="bk"></div>
-                            <div class="jibt">赞助教育活动</div>
-                            <div class="more"><a href="#">MORE</a></div>
+                            <div class="bk">
+                            </div>
+                            <div class="jibt">
+                                赞助教育活动</div>
+                            <div class="more">
+                                <a href="#">MORE</a></div>
                         </div>
                         <div class="gyrightrsp">
                             <ul>
-                                <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                                <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                                <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                                <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                                <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
+                                #foreach($l in $zanzhuschool)
+                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
+                                    margin-left: 5px;">
+                                    <img src="${images}dian.png" /></span><a href="${site}zanzhu/detail/${l.id}">[公告]${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                                #end
                             </ul>
                         </div>
                     </div>
                     <!--内容右边视频展示-->
                 </div>
-
             </div>
             <!--内容右边-->
         </div>
@@ -149,8 +149,10 @@
         <!--尾部-->
         <div class="foot">
             <div class="footcontent">
-                <p>广西南宁乐闯文化传播有限公司</p>
-                <p>电话：13307731021 邮箱：lechuangarts@163.com 地址：广西南宁市青秀区汇春路3号英华楼7楼715号</p>
+                <p>
+                    广西南宁乐闯文化传播有限公司</p>
+                <p>
+                    电话：13307731021 邮箱：lechuangarts@163.com 地址：广西南宁市青秀区汇春路3号英华楼7楼715号</p>
             </div>
         </div>
         <!--尾部-->

@@ -52,9 +52,9 @@
                     <div class="gycontentlefttopultitle">
                         捐赠赞助</div>
                     <ul class="gyul">
-                        <li><a href="list.html" class="active">捐赠学校</a></li>
-                        <li><a href="list.html">赞助美术馆</a></li>
-                        <li><a href="list.html">赞助教育活动</a></li>
+                         <li><a href="${site}zanzhu/list/24" class="active">捐赠学校</a></li>
+                        <li><a href="${site}zanzhu/list/25">赞助美术馆</a></li>
+                        <li><a href="${site}zanzhu/list/26">赞助教育活动</a></li>
                     </ul>
                 </div>
                 <!--内容左边导航-->
@@ -62,30 +62,20 @@
             <!--内容左边-->
             <!--内容右边-->
             <div class="newscontentright clearfix">
-                <div class="newsdetailr clearfix">
+                <div class="newslistr clearfix">
                     <!--内容右边文章列表-->
                     <div class="newslistrtitle">
-                        <a href="news.html">捐赠赞助</a> > <a href="#">赞助美术馆</a> > <a href="#">桂林市乐闯美术培训学校</a>
+                        <a href="news.html">捐赠赞助</a> > <a href="#">赞助美术馆</a>
                     </div>
-                    <div class="newslistrul">
-                        <div class="detailarticle clearfix">
-                            <div class="articletop">
-                                <div class="articletitle">
-                                    桂林市乐闯美术培训学校</div>
-                                <div class="articletime">
-                                    来源：广西日报&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作者：小小酥&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间：2014/5/7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
-                            </div>
-                            <div class="detailcontent clearfix">
-                                桂林市乐闯美术培训学校是桂林市教育局批准成立的全日制美术培训学校，秦乐闯校长已与俄罗斯列宾美术学院签订合作协议，建立列宾桂林夏季写生基地，筹备列宾美术学院桂林分院，是目前国内唯一与列宾美术学院有着长期密切学术交流与合作的美术培训学校。<br />
-                                学校由一批资深著名画家、教授和各大美院毕业的教师组成教学团队，具有丰富的教学经验，开发本校特有的美术教学培训体系，美术高考学生成绩优异，广西美术联考合格率100%。<br />
-                                学校拥有一幢美术馆大楼、两幢教学楼、男女分设二十四小时专人管理的学生宿舍楼、学校食堂、运动操场及列宾美术学院200多幅优秀原作，给学生创造了一个充满艺术氛围的学习环境，让学生在和世界一流作品对话中，提高了审美标准，开拓了眼界。<br />
-                                2011年合并两家画室，引进有四年以上画室办学经验老师，强强联合，打造广西美术培训航母。<br />
-                                我校老师历年培养有：天津美术学院，中国美术学院，鲁艺，川美，广州美术学院等重点美院学生。<br />
-                                2010年5月20日我校校长成功策展了俄罗斯列宾美术学院馆藏作品展，成为广西美术界一大盛事。并成画展开幕式上与俄罗斯列宾美术学院签订了合作交流协议。<br />
-                                2010年11月至12月桂林市十八中高一的十个班600多人到我校上俄罗斯列宾美术学院素描欣赏课，《桂林晚报》新闻报道。<br />
-                                2011年广西联考过线率100%。<br />
-                                2011年3月广西理工大美术学院陈伟利教授带学生到我校美术馆上素描教学课，以我校馆藏的俄罗斯列宾美术学院的优秀原作为范画进行讲解，让学生感受到世界一流素描的艺术魅力，也让学生们看到自己的差距，激发了学生重新学习美术基础的愿望，已有学生在我校重修素描课。</div>
-                        </div>
+                    <div class="newslistrul clearfix">
+                    <ul>
+                            #foreach($l in $article)
+                            <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
+                                margin-left: 5px;">
+                                <img src="${site}${images}dian.png" /></span><a href="${site}zanzhu/detail/${l.id}">[通知] ${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                            #end
+                        </ul>
+                       
                     </div>
                     <!--内容右边文章列表-->
                 </div>
