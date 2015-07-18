@@ -47,9 +47,45 @@ namespace G1mist.CMS.UI.Potal.Controllers
         //
         // GET: /Art/
 
-        public ActionResult Index()
+        public void Index()
         {
-            return View();
+            var velocityHelper = new VelocityHelper(_templatePath);
+
+            PutStatic(velocityHelper);
+
+            //2.PUT学校概况id=7
+            var lechuangNews = ArticleService.GetList(a => a.cateid == 7).Take(5).ToList();
+            //3.PUT学科课程id=8
+            var artNews = ArticleService.GetList(a => a.cateid == 8).Take(14).ToList();
+
+            velocityHelper.Put("lechuangNews", lechuangNews);
+            velocityHelper.Put("artNews", artNews);
+
+            velocityHelper.Display("Art.htm");
+        }
+
+        public void Detail(int id)
+        {
+            var velocityHelper = new VelocityHelper(_templatePath);
+            PutStatic(velocityHelper);
+
+            if (id <= 0)
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+
+            if (!ArticleService.Exits(a => a.id.Equals(id)))
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+
+            var article = ArticleService.GetModal(a => a.id.Equals(id));
+            article.body = Server.HtmlDecode(article.body);
+
+            velocityHelper.Put("article", article);
+            velocityHelper.Display("newsdetail.htm");
         }
 
         [NonAction]
@@ -58,7 +94,7 @@ namespace G1mist.CMS.UI.Potal.Controllers
             //按照节的名称读取节
             var section = Config["path"];
 
-            velocityHelper.Put("css", section["site"].Value + section["css"].Value);
+            velocityHelper.Put("css", section["css"].Value);
             velocityHelper.Put("js", section["js"].Value);
             velocityHelper.Put("images", section["images"].Value);
             velocityHelper.Put("site", section["site"].Value);

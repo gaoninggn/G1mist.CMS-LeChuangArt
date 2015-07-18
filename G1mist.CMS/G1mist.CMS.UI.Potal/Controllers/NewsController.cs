@@ -95,9 +95,9 @@ namespace G1mist.CMS.UI.Potal.Controllers
             //按照节的名称读取节
             var section = Config["path"];
 
-            velocityHelper.Put("css", section["site"].Value + section["css"].Value);
-            velocityHelper.Put("js", section["js"].Value);
-            velocityHelper.Put("images", section["images"].Value);
+            velocityHelper.Put("css",  section["css"].Value);
+            velocityHelper.Put("js",  section["js"].Value);
+            velocityHelper.Put("images",  section["images"].Value);
             velocityHelper.Put("site", section["site"].Value);
         }
     }
