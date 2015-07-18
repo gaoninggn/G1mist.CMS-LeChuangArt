@@ -1,116 +1,96 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>乐闯美术</title>
-<link rel="stylesheet" type="text/css" href="css/index.css"/>
-<script type="text/javascript" src="js/myfocus-2.0.2.min.js"></script>
-<script type="text/javascript" src="js/mf-pattern/mF_expo2010.js"></script>
-<link rel="stylesheet" type="text/css" href="js/mf-pattern/mF_expo2010.css"/>
-<script type="text/javascript" src="js/jquery-1.3.1.js"></script>
-<script type="text/javascript">
-myFocus.set({
-    id:'boxID',//焦点图盒子ID
-    pattern:'mF_expo2010',//风格应用的名称
-    time:3,//切换时间间隔(秒)
-    trigger:'mouseover',//触发切换模式:'click'(点击)/'mouseover'(悬停)
-    width:684,//设置图片区域宽度(像素)
-    height:293,//设置图片区域高度(像素)
-    txtHeight:'default'//文字层高度设置(像素),'default'为默认高度，0为隐藏
-});
-</script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>乐闯美术</title>
+    <link rel="stylesheet" type="text/css" href="${site}${css}index.css" />
+    <script type="text/javascript" src="${site}${js}myfocus-2.0.2.min.js"></script>
+    <script type="text/javascript" src="${site}${js}mf-pattern/mF_expo2010.js"></script>
+    <link rel="stylesheet" type="text/css" href="${site}${js}mf-pattern/mF_expo2010.css" />
+    <script type="text/javascript" src="${site}${js}jquery-1.3.1.js"></script>
+    <script type="text/javascript">
+        myFocus.set({
+            id: 'boxID', //焦点图盒子ID
+            pattern: 'mF_expo2010', //风格应用的名称
+            time: 3, //切换时间间隔(秒)
+            trigger: 'mouseover', //触发切换模式:'click'(点击)/'mouseover'(悬停)
+            width: 684, //设置图片区域宽度(像素)
+            height: 293, //设置图片区域高度(像素)
+            txtHeight: 'default'//文字层高度设置(像素),'default'为默认高度，0为隐藏
+        });
+    </script>
 </head>
 <body>
-<div class="newsmain">
-
-  <!--导航-->
-  <div class="arthometop"> 
-  	<div class="arthomelogo">
-    	<img src="images/meishuguanglogo.jpg" />
-    </div>
-    <div class="arthomenav">
-    	  <ul>
-            <li><a href="index.html">网站首页</a></li>
-            <li><a href="news.html">新闻中心</a></li>
-            <li><a href="art.html">乐闯美校</a></li>
-            <li><a href="arthome.html" class="active">乐闯美术馆</a></li>
-            <li><a href="gongyi.html">乐闯公益</a></li>
-            <li><a href="wenhua.html">乐闯文化</a></li>
-            <li><a href="zanzhu.html">捐赠赞助</a></li>
-            <li><a href="contactus.html">联系我们</a></li>
-          </ul>
-    </div>
-    <div class="arthometopfoot clearfix">
-    </div>
-  </div>
-  <!--导航-->
-  
-  <!--内容-->
-  <div class="newscontent clearfix">
-  <!--内容左边-->
-  	<div class="newscontentleft">
-    <!--内容左边导航-->
-    	<div class="arthomecontentlefttop">
-            <div class="arthomecontentlefttopultitle">乐闯美术馆</div>
-              <ul class="arthomeul">
-                <li><a href="list.html" class="active">展示鉴赏</a></li>
-                <li><a href="list.html">传播教育</a></li>
-                <li><a href="list.html">签约画家</a></li>
-                <li><a href="list.html">艺术商店</a></li>
-              </ul>
+    <div class="newsmain">
+        <!--导航-->
+        <div class="arthometop">
+            <div class="arthomelogo">
+                <img src="${site}${images}meishuguanglogo.jpg" />
+            </div>
+            <div class="arthomenav">
+                <ul>
+                    <li><a href="${site}index">网站首页</a></li>
+                    <li><a href="${site}news">新闻中心</a></li>
+                    <li><a href="${site}art">乐闯美校</a></li>
+                    <li><a href="${site}arthome" class="active">乐闯美术馆</a></li>
+                    <li><a href="${site}gongyi">乐闯公益</a></li>
+                    <li><a href="${site}wenhua">乐闯文化</a></li>
+                    <li><a href="${site}zanzhu">捐赠赞助</a></li>
+                    <li><a href="${site}contactus">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="arthometopfoot clearfix">
+            </div>
         </div>
-        <!--内容左边导航-->
-    </div>
-    <!--内容左边-->
-  
-  <!--内容右边-->
-  <div class="newscontentright clearfix">
-        
-        <div class="newslistr clearfix">
-            <!--内容右边文章列表-->
-                <div class="newslistrtitle">
-                    <a href="news.html">乐闯美术馆</a> > <a href="#">展示鉴赏</a>
-                 </div>
-                <div class="newslistrul clearfix">
-                    <ul>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="newsdetail.html">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="newsdetail.html">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="newsdetail.html">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="newsdetail.html">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="newsdetail.html">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
-                      <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src="images/dian.png" /></span><a href="#">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
+        <!--导航-->
+        <!--内容-->
+        <div class="newscontent clearfix">
+            <!--内容左边-->
+            <div class="newscontentleft">
+                <!--内容左边导航-->
+                <div class="arthomecontentlefttop">
+                    <div class="arthomecontentlefttopultitle">
+                        乐闯美术馆</div>
+                    <ul class="arthomeul">
+                        <li><a href="list.html" class="active">展示鉴赏</a></li>
+                        <li><a href="list.html">传播教育</a></li>
+                        <li><a href="list.html">签约画家</a></li>
+                        <li><a href="list.html">艺术商店</a></li>
                     </ul>
                 </div>
-            <!--内容右边文章列表-->
+                <!--内容左边导航-->
+            </div>
+            <!--内容左边-->
+            <!--内容右边-->
+            <div class="newscontentright clearfix">
+                <div class="newslistr clearfix">
+                    <!--内容右边文章列表-->
+                    <div class="newslistrtitle">
+                        <a href="news.html">乐闯美术馆</a> > <a href="#">展示鉴赏</a>
+                    </div>
+                    <div class="newslistrul clearfix">
+                        <ul>
+                            <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
+                                margin-left: 5px;">
+                                <img src="${site}${images}dian.png" /></span><a href="newsdetail.html">[通知] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</a><span>2015-05-28</span></li>
+                        </ul>
+                    </div>
+                    <!--内容右边文章列表-->
+                </div>
+            </div>
+            <!--内容右边-->
         </div>
-    
+        <!--内容-->
+        <!--尾部-->
+        <div class="foot">
+            <div class="footcontent">
+                <p>
+                    广西南宁乐闯文化传播有限公司</p>
+                <p>
+                    电话：13307731021 邮箱：lechuangarts@163.com 地址：广西南宁市青秀区汇春路3号英华楼7楼715号</p>
+            </div>
+        </div>
+        <!--尾部-->
     </div>
-    <!--内容右边-->
-  </div>
-  <!--内容-->
-  
-  <!--尾部-->
-  <div class="foot"> 
-  	  <div class="footcontent">
-        <p>广西南宁乐闯文化传播有限公司</p>
-        <p>电话：13307731021 邮箱：lechuangarts@163.com 地址：广西南宁市青秀区汇春路3号英华楼7楼715号</p>
-      </div>
-  </div>
-  <!--尾部-->
-</div>
 </body>
 </html>
