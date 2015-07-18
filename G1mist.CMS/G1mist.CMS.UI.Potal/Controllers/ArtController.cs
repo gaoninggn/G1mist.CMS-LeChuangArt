@@ -64,6 +64,30 @@ namespace G1mist.CMS.UI.Potal.Controllers
             velocityHelper.Display("Art.htm");
         }
 
+        [HttpGet]
+        public void List(int id)
+        {
+            var velocityHelper = new VelocityHelper(_templatePath);
+            PutStatic(velocityHelper);
+            //参数ID传递出错
+            if (id <= 0)
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+            //分类不存在
+            if (!CategoryService.Exits(a => a.id.Equals(id)))
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+
+            var articles = ArticleService.GetList(a => a.cateid.Equals(id)).ToList();
+
+            velocityHelper.Put("articles", articles);
+            velocityHelper.Display("artlist.htm");
+        }
+
         public void Detail(int id)
         {
             var velocityHelper = new VelocityHelper(_templatePath);
@@ -85,7 +109,7 @@ namespace G1mist.CMS.UI.Potal.Controllers
             article.body = Server.HtmlDecode(article.body);
 
             velocityHelper.Put("article", article);
-            velocityHelper.Display("newsdetail.htm");
+            velocityHelper.Display("artdetail.htm");
         }
 
         [NonAction]

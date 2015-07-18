@@ -67,20 +67,9 @@
                     </div>
                     <div class="whleftul">
                         <ul>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
-                            <li><a href="#">[公告]XXXXXXXXXXXXXXXXXXXXXXXXXXX</a></li>
+                            #foreach($l in $lechuangNews)
+                            <li><a href="${site}wenhua/detail/${l.id}">${l.title}</a></li>
+                            #end
                         </ul>
                     </div>
                 </div>
@@ -119,8 +108,9 @@
                         </div>
                         <div class="whrightleftul">
                             <ul>
-                                <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src=" ${site}${images}dian.png" /></span><a href="#">[公告]XXXXXXXXXXXXXXXXXXXxX</a><span>2015-05-28</span></li>
-
+                                #foreach($l in $cishanNews)
+                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px; margin-left: 5px;"><img src="${site}${images}dian.png" /></span><a href="${site}wenhua/detail/${l.id}">${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                                #end
                             </ul>
                         </div>
                     </div>
@@ -134,8 +124,9 @@
                         </div>
                         <div class="whrightrsp">
                             <ul>
-                                <li><span style=" width:9px; height:20px; line-height:20px; float:left; margin-right:5px; margin-left:5px;"><img src=" ${site}${images}dian.png" /></span><a href="#">[公告]XXXXXXXXXXXXXXXXXXXxX</a><span>2015-05-28</span></li>
-
+                                #foreach($l in $artNews)
+                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px; margin-left: 5px;"><img src="${site}${images}dian.png" /></span><a href="${site}wenhua/detail/${l.id}">${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                                #end
                             </ul>
                         </div>
                     </div>
