@@ -48,18 +48,54 @@ namespace G1mist.CMS.UI.Potal.Controllers
         //
         // GET: /Gongyi/
 
-        public ActionResult Index()
+        [HttpGet]
+        public void Index()
         {
-            return View();
+            var velocityHelper = new VelocityHelper(_templatePath);
+            //1.PUT前台相关路径
+            PutStatic(velocityHelper);
+            //2.PUT学校概况id=7
+            var lechuangNews = ArticleService.GetList(a => a.cateid == 7).Take(14).ToList();
+            //3.PUT学科课程id=8
+            var artNews = ArticleService.GetList(a => a.cateid == 8).Take(5).ToList();
+
+            velocityHelper.Put("lechuangNews", lechuangNews);
+            velocityHelper.Put("artNews", artNews);
+
+            velocityHelper.Display("news.htm");
         }
 
+        [HttpGet]
+        public void Detail(int id)
+        {
+            var velocityHelper = new VelocityHelper(_templatePath);
+            PutStatic(velocityHelper);
+            //参数ID传递出错
+            if (id <= 0)
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+            //文章不存在
+            if (!ArticleService.Exits(a => a.id.Equals(id)))
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+
+            var article = ArticleService.GetModal(a => a.id.Equals(id));
+            article.body = Server.HtmlDecode(article.body);
+
+            velocityHelper.Put("article", article);
+            velocityHelper.Display("newsdetail.htm");
+        }
         [NonAction]
         private void PutStatic(VelocityHelper velocityHelper)
         {
             //按照节的名称读取节
             var section = Config["path"];
 
-            velocityHelper.Put("css",  section["css"].Value);
+            velocityHelper.Put("css", section["css"].Value);
             velocityHelper.Put("js", section["js"].Value);
             velocityHelper.Put("images", section["images"].Value);
             velocityHelper.Put("site", section["site"].Value);

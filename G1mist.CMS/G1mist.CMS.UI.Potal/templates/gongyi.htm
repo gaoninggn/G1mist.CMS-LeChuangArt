@@ -65,8 +65,8 @@
                     </div>
                     <div class="gyleftul">
                         <ul>
-                            #foreach($l in $artNews)
-                            <li><a href="${site}index/detail/${l.id}">${l.title}</a></li>
+                            #foreach($l in $lechuangNews)
+                            <li><a href="${site}art/detail/${l.id}">${l.title}</a></li>
                             #end
                         </ul>
                     </div>
@@ -101,8 +101,8 @@
                         </div>
                         <div class="gyrightleftul">
                             <ul>
-                                #foreach($l in $lechuangNews)
-                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px; margin-left: 5px;"><img src="${images}dian.png" /></span><a href="${site}index/detail/${l.id}">${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                                #foreach($l in $artNews)
+                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px; margin-left: 5px;"><img src="${images}dian.png" /></span><a href="${site}art/detail/${l.id}">${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
                                 #end
                             </ul>
                         </div>
