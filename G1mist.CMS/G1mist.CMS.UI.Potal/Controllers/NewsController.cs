@@ -83,7 +83,10 @@ namespace G1mist.CMS.UI.Potal.Controllers
             }
 
             var articles = ArticleService.GetList(a => a.cateid.Equals(id)).ToList();
+            var cateName = CategoryService.GetModal(a => a.id.Equals(id)).name;
 
+            velocityHelper.Put("active", id);
+            velocityHelper.Put("cateName", cateName);
             velocityHelper.Put("articles", articles);
             velocityHelper.Display("newslist.htm");
         }
