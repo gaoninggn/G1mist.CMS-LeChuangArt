@@ -46,9 +46,10 @@ namespace G1mist.CMS.UI.Potal.Controllers
         #endregion
         //
         // GET: /Art/
-
+        [HttpGet]
         public void Index()
         {
+            int stuId;
             var velocityHelper = new VelocityHelper(_templatePath);
 
             PutStatic(velocityHelper);
@@ -57,11 +58,41 @@ namespace G1mist.CMS.UI.Potal.Controllers
             var lechuangNews = ArticleService.GetList(a => a.cateid == 7).Take(5).ToList();
             //3.PUT学科课程id=8
             var artNews = ArticleService.GetList(a => a.cateid == 8).Take(14).ToList();
+            //4.PUT学生风采id=9
+            //获取最新学生风采文章(拿到ID),找到第一张图片的路径
+            var stuNews = ArticleService.GetList(a => a.cateid == 9).OrderByDescending(a => a.createtime).ToList();
+
+            var path = GetStudentPic(stuNews, out stuId);
 
             velocityHelper.Put("lechuangNews", lechuangNews);
             velocityHelper.Put("artNews", artNews);
+            //PUT学生风采文章ID和第一张图片路径
+            velocityHelper.Put("stuId", stuId);
+            velocityHelper.Put("stuImage", path);
 
             velocityHelper.Display("Art.htm");
+        }
+
+        [NonAction]
+        private string GetStudentPic(List<T_Articles> stuNews, out int stuId)
+        {
+            foreach (var stu in stuNews)
+            {
+                var content = Server.HtmlDecode(stu.body);
+
+                if (content.Contains("/uploads/image/"))
+                {
+                    var indexStart = content.IndexOf("src=\"", StringComparison.Ordinal) + 4;
+                    var indexEnd = content.IndexOf("\" alt", indexStart, StringComparison.Ordinal);
+                    var srcPath = content.Substring(indexStart + 2, indexEnd - 11);
+
+                    stuId = stu.id;
+                    return srcPath;
+                }
+            }
+
+            stuId = -1;
+            return "";
         }
 
         [HttpGet]
@@ -87,7 +118,7 @@ namespace G1mist.CMS.UI.Potal.Controllers
             velocityHelper.Put("articles", articles);
             velocityHelper.Display("artlist.htm");
         }
-
+        [HttpGet]
         public void Detail(int id)
         {
             var velocityHelper = new VelocityHelper(_templatePath);

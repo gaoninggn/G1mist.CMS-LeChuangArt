@@ -52,6 +52,8 @@ namespace G1mist.CMS.UI.Potal.Controllers
         {
             return View();
         }
+
+
         [NonAction]
         private void PutStatic(VelocityHelper velocityHelper)
         {
