@@ -49,6 +49,10 @@
     <Reference Include="Common.Logging.Core">
       <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.3.0.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlSanitizationLibrary, Version=4.3.0.0, Culture=neutral, PublicKeyToken=d127efab8a9c114f, processorArchitecture=MSIL">
       <HintPath>..\packages\AntiXSS.4.3.0\lib\net40\HtmlSanitizationLibrary.dll</HintPath>
       <Private>True</Private>
@@ -773,6 +777,9 @@
     <Content Include="images\ulist.png" />
     <Content Include="images\user.png" />
     <Content Include="images\userbg.png" />
+    <Content Include="lib\HtmlAgilityPack.dll" />
+    <Content Include="lib\HtmlAgilityPack.pdb" />
+    <Content Include="lib\HtmlAgilityPack.xml" />
     <Content Include="Scripts\bootstrap-table-export.js" />
     <Content Include="Scripts\bootstrap-table.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -989,7 +996,7 @@
     <Content Include="templates\arthome.htm" />
     <Content Include="templates\arthomelist.htm" />
     <Content Include="templates\artlist.htm" />
-    <Content Include="templates\atrhomedetail.htm" />
+    <Content Include="templates\arthomedetail.htm" />
     <Content Include="templates\gongyi.htm" />
     <Content Include="templates\gongyidetail.htm" />
     <Content Include="templates\gongyilist.htm" />

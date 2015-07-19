@@ -53,9 +53,23 @@
                         乐闯美校
                     </div>
                     <ul class="artul">
-                        <li><a href="${site}artlist/7 ">学校概况</a></li>
-                        <li><a href="${site}artlist/8 ">学科课程</a></li>
-                        <li><a href="${site}artlist/9 ">学生风采</a></li>
+                        #if(${active}==7)
+                        <li><a href="${site}art/list/7 " class="active">学校概况</a></li>
+                        <li><a href="${site}art/list/8 ">学科课程</a></li>
+                        <li><a href="${site}art/list/9 ">学生风采</a></li>
+                        #elseif(${active}==8)
+                        <li><a href="${site}art/list/7 ">学校概况</a></li>
+                        <li><a href="${site}art/list/8 " class="active">学科课程</a></li>
+                        <li><a href="${site}art/list/9 ">学生风采</a></li>
+                        #elseif(${active}==9)
+                        <li><a href="${site}art/list/7 ">学校概况</a></li>
+                        <li><a href="${site}art/list/8 ">学科课程</a></li>
+                        <li><a href="${site}art/list/9 " class="active">学生风采</a></li>
+                        #else
+                        <li><a href="${site}art/list/7 " class="active">学校概况</a></li>
+                        <li><a href="${site}art/list/8 ">学科课程</a></li>
+                        <li><a href="${site}art/list/9 ">学生风采</a></li>
+                        #end
                     </ul>
                 </div>
                 <!--内容左边导航-->
@@ -66,7 +80,7 @@
                 <div class="newsdetailr clearfix">
                     <!--内容右边文章列表-->
                     <div class="newslistrtitle">
-                        <a href="#">新闻中心</a> > <a href="#">艺术动态</a> > <a href="#">桂林市乐闯美术培训学校</a>
+                        <a href="#">乐闯美校</a> > <a href="#">${cateName}</a> > <a href="#">${article.title}</a>
                     </div>
                     <div class="newslistrul">
                         <div class="detailarticle clearfix">

@@ -68,7 +68,7 @@ namespace G1mist.CMS.UI.Potal.Controllers
         }
 
         [HttpGet]
-        public void list(int id)
+        public void List(int id)
         {
             var velocityHelper = new VelocityHelper(_templatePath);
             PutStatic(velocityHelper);

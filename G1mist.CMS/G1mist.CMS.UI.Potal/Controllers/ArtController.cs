@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using G1mist.CMS.Common;
 using G1mist.CMS.IRepository;
 using G1mist.CMS.Modal;
+using HtmlAgilityPack;
 using SharpConfig;
 
 namespace G1mist.CMS.UI.Potal.Controllers
@@ -68,26 +69,28 @@ namespace G1mist.CMS.UI.Potal.Controllers
             velocityHelper.Put("artNews", artNews);
             //PUT学生风采文章ID和第一张图片路径
             velocityHelper.Put("stuId", stuId);
-            velocityHelper.Put("stuImage", path);
+            velocityHelper.Put("stuImage", path.Substring(1));
 
             velocityHelper.Display("Art.htm");
         }
 
         [NonAction]
-        private string GetStudentPic(List<T_Articles> stuNews, out int stuId)
+        private string GetStudentPic(IEnumerable<T_Articles> stuNews, out int stuId)
         {
             foreach (var stu in stuNews)
             {
                 var content = Server.HtmlDecode(stu.body);
+                var doc = new HtmlDocument();
+                doc.LoadHtml(content);
 
-                if (content.Contains("/uploads/image/"))
+                var firstOrDefault = doc.DocumentNode.ChildNodes.Cast<HtmlNode>().FirstOrDefault(node => node.Name.Equals("img"));
+
+                if (firstOrDefault != null)
                 {
-                    var indexStart = content.IndexOf("src=\"", StringComparison.Ordinal) + 4;
-                    var indexEnd = content.IndexOf("\" alt", indexStart, StringComparison.Ordinal);
-                    var srcPath = content.Substring(indexStart + 2, indexEnd - 11);
+                    var src = firstOrDefault.Attributes["src"].Value;
 
                     stuId = stu.id;
-                    return srcPath;
+                    return src;
                 }
             }
 
@@ -114,7 +117,10 @@ namespace G1mist.CMS.UI.Potal.Controllers
             }
 
             var articles = ArticleService.GetList(a => a.cateid.Equals(id)).ToList();
+            var cateName = CategoryService.GetModal(a => a.id.Equals(id)).name;
 
+            velocityHelper.Put("active", id);
+            velocityHelper.Put("cateName", cateName);
             velocityHelper.Put("articles", articles);
             velocityHelper.Display("artlist.htm");
         }
@@ -138,7 +144,10 @@ namespace G1mist.CMS.UI.Potal.Controllers
 
             var article = ArticleService.GetModal(a => a.id.Equals(id));
             article.body = Server.HtmlDecode(article.body);
+            var cateName = CategoryService.GetModal(a => a.id.Equals(article.cateid)).name;
 
+            velocityHelper.Put("active", article.cateid);
+            velocityHelper.Put("cateName", cateName);
             velocityHelper.Put("article", article);
             velocityHelper.Display("artdetail.htm");
         }

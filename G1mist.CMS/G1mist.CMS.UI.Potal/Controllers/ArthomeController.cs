@@ -48,9 +48,76 @@ namespace G1mist.CMS.UI.Potal.Controllers
         //
         // GET: /Arthome/
 
-        public ActionResult Index()
+        [HttpGet]
+        public void Index()
         {
-            return View();
+            var velocityHelper = new VelocityHelper(_templatePath);
+            //1.PUT前台相关路径
+            PutStatic(velocityHelper);
+            ////2.PUT乐闯资讯id=4
+            //var lechuangNews = ArticleService.GetList(a => a.cateid == 4).Take(5).ToList();
+            ////3.PUT艺术动态id=3
+            //var artNews = ArticleService.GetList(a => a.cateid == 3).Take(14).ToList();
+
+            //velocityHelper.Put("lechuangNews", lechuangNews);
+            //velocityHelper.Put("artNews", artNews);
+
+            velocityHelper.Display("arthome.htm");
+        }
+
+        [HttpGet]
+        public void List(int id)
+        {
+            var velocityHelper = new VelocityHelper(_templatePath);
+            PutStatic(velocityHelper);
+            //参数ID传递出错
+            if (id <= 0)
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+            //分类不存在
+            if (!CategoryService.Exits(a => a.id.Equals(id)))
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+
+            var articles = ArticleService.GetList(a => a.cateid.Equals(id)).ToList();
+            var cateName = CategoryService.GetModal(a => a.id.Equals(id)).name;
+
+            velocityHelper.Put("active", id);
+            velocityHelper.Put("cateName", cateName);
+            velocityHelper.Put("articles", articles);
+            velocityHelper.Display("arthomelist.htm");
+        }
+
+        [HttpGet]
+        public void Detail(int id)
+        {
+            var velocityHelper = new VelocityHelper(_templatePath);
+            PutStatic(velocityHelper);
+
+            if (id <= 0)
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+
+            if (!ArticleService.Exits(a => a.id.Equals(id)))
+            {
+                Response.Redirect(@"/static/error.html");
+                Response.End();
+            }
+
+            var article = ArticleService.GetModal(a => a.id.Equals(id));
+            article.body = Server.HtmlDecode(article.body);
+            var cateName = CategoryService.GetModal(a => a.id.Equals(article.cateid)).name;
+
+            velocityHelper.Put("active", article.cateid);
+            velocityHelper.Put("cateName", cateName);
+            velocityHelper.Put("article", article);
+            velocityHelper.Display("arthomedetail.htm");
         }
 
 

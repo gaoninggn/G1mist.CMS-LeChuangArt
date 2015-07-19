@@ -53,9 +53,23 @@
                         乐闯美校
                     </div>
                     <ul class="artul">
-                        <li><a href="${site}art/list/7">学校概况</a></li>
+                        #if(${active}==7)
+                        <li><a href="${site}art/list/7" class="active">学校概况</a></li>
                         <li><a href="${site}art/list/8">学科课程</a></li>
                         <li><a href="${site}art/list/9">学生风采</a></li>
+                        #elseif(${active}==8)
+                        <li><a href="${site}art/list/7">学校概况</a></li>
+                        <li><a href="${site}art/list/8" class="active">学科课程</a></li>
+                        <li><a href="${site}art/list/9">学生风采</a></li>
+                        #elseif(${active}==9)
+                        <li><a href="${site}art/list/7">学校概况</a></li>
+                        <li><a href="${site}art/list/8">学科课程</a></li>
+                        <li><a href="${site}art/list/9" class="active">学生风采</a></li>
+                        #else
+                        <li><a href="${site}art/list/7" class="active">学校概况</a></li>
+                        <li><a href="${site}art/list/8">学科课程</a></li>
+                        <li><a href="${site}art/list/9">学生风采</a></li>
+                        #end
                     </ul>
                 </div>
                 <!--内容左边导航-->
@@ -66,7 +80,7 @@
                 <div class="newslistr clearfix">
                     <!--内容右边文章列表-->
                     <div class="newslistrtitle">
-                        <a href="news.html">乐闯美校</a> > <a href="#">学生风采</a>
+                        <a href="${site}art">乐闯美校</a> > <a href="#">${cateName}</a>
                     </div>
                     <div class="newslistrul clearfix">
                         <ul>
