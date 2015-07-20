@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using G1mist.CMS.Common;
 using G1mist.CMS.IRepository;
 using G1mist.CMS.Modal;
+using HtmlAgilityPack;
 using SharpConfig;
 
 namespace G1mist.CMS.UI.Potal.Controllers
@@ -52,17 +53,45 @@ namespace G1mist.CMS.UI.Potal.Controllers
         public void Index()
         {
             var velocityHelper = new VelocityHelper(_templatePath);
-            //1.PUT前台相关路径
+
             PutStatic(velocityHelper);
-            ////2.PUT乐闯资讯id=4
-            //var lechuangNews = ArticleService.GetList(a => a.cateid == 4).Take(5).ToList();
-            ////3.PUT艺术动态id=3
-            //var artNews = ArticleService.GetList(a => a.cateid == 3).Take(14).ToList();
 
-            //velocityHelper.Put("lechuangNews", lechuangNews);
-            //velocityHelper.Put("artNews", artNews);
+            //2.PUT传播教育id=12
+            var teachArticles = ArticleService.GetList(a => a.cateid == 12).OrderByDescending(a => a.createtime).Take(2).ToList();
 
-            velocityHelper.Display("arthome.htm");
+            //3.PUT展示鉴赏id=11
+            //获取最新展示鉴赏文章(拿到ID),找到第一张图片的路径
+            var listArticles = ArticleService.GetList(a => a.cateid == 11).OrderByDescending(a => a.createtime).Take(3).ToList();
+
+            var listpath = GetStudentPic(listArticles);
+            var teachpath = GetStudentPic(teachArticles);
+
+            //PUT展示鉴赏文章ID和图片路径
+            velocityHelper.Put("list", listpath);
+            //PUT传播教育文章ID和图片路径
+            velocityHelper.Put("teach", teachpath);
+
+            velocityHelper.Display("Arthome.htm");
+        }
+
+        [NonAction]
+        private List<dynamic> GetStudentPic(IEnumerable<T_Articles> stuNews)
+        {
+            var list = new List<dynamic>();
+
+            foreach (var stu in stuNews)
+            {
+                var content = Server.HtmlDecode(stu.body);
+                var doc = new HtmlDocument();
+                doc.LoadHtml(content);
+
+                foreach (var node in doc.DocumentNode.SelectNodes("//img"))
+                {
+                    list.Add(new { stu.id, src = node.Attributes["src"].Value, stu.title });
+                }
+            }
+
+            return list;
         }
 
         [HttpGet]
@@ -119,7 +148,6 @@ namespace G1mist.CMS.UI.Potal.Controllers
             velocityHelper.Put("article", article);
             velocityHelper.Display("arthomedetail.htm");
         }
-
 
         [NonAction]
         private void PutStatic(VelocityHelper velocityHelper)

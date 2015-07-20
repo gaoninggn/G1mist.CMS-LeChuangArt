@@ -72,14 +72,14 @@
                     </div>
                     <div class="arthomeleftul">
                         <ul>
+                            #foreach($item in $teach)
                             <li>
-                                <img src=" ${site}${images}meishuguangjiaoyu.jpg" /><br />
-                                <a href="#">某某绘画技巧教学</a>
+                                <a href="${site}arthome/detail/${item.id}">
+                                    <img src=" ${site}${item.src}" width="216" height="126" />
+                                </a><br />
+                                <a href="${site}arthome/detail/${item.id}">${item.title}</a>
                             </li>
-                            <li>
-                                <img src=" ${site}${images}meishuguangjiaoyu.jpg" /><br />
-                                <a href="#">某某绘画技巧教学</a>
-                            </li>
+                            #end
                         </ul>
                     </div>
                 </div>
@@ -133,21 +133,13 @@
                         </div>
                         <div class="arthomerightleftul">
                             <ul>
+                                #foreach($item in $list)
                                 <li>
-                                    <a href="#">
-                                        <img src=" ${site}${images}meishuguangzs.jpg" />
+                                    <a href="${site}arthome/detail/${item.id}">
+                                        <img src=" ${site}${item.src}" width="216" height="126" />
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        <img src=" ${site}${images}meishuguangzs.jpg" />
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <img src=" ${site}${images}meishuguangzs.jpg" />
-                                    </a>
-                                </li>
+                                #end
                             </ul>
                         </div>
                     </div>
