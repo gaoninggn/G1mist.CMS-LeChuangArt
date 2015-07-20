@@ -62,40 +62,43 @@ namespace G1mist.CMS.UI.Potal.Controllers
             //4.PUT学生风采id=9
             //获取最新学生风采文章(拿到ID),找到第一张图片的路径
             var stuNews = ArticleService.GetList(a => a.cateid == 9).OrderByDescending(a => a.createtime).ToList();
+            var path = GetStudentPic(stuNews).FirstOrDefault();
 
-            var path = GetStudentPic(stuNews, out stuId);
+            // 获取三张轮播图
+            // 获取3张轮播图 id =29
+            var pics = ArticleService.GetList(a => a.cateid == 30).Take(1).ToList();
+            var paths = GetStudentPic(pics);
 
             velocityHelper.Put("lechuangNews", lechuangNews);
             velocityHelper.Put("artNews", artNews);
             //PUT学生风采文章ID和第一张图片路径
-            velocityHelper.Put("stuId", stuId);
-            velocityHelper.Put("stuImage", path.Substring(1));
-
+            velocityHelper.Put("path", path);
+            //轮播图
+            velocityHelper.Put("paths", paths);
             velocityHelper.Display("Art.htm");
         }
 
         [NonAction]
-        private string GetStudentPic(IEnumerable<T_Articles> stuNews, out int stuId)
+        private List<dynamic> GetStudentPic(IEnumerable<T_Articles> stuNews)
         {
+            var list = new List<dynamic>();
+
             foreach (var stu in stuNews)
             {
                 var content = Server.HtmlDecode(stu.body);
                 var doc = new HtmlDocument();
                 doc.LoadHtml(content);
 
-                var firstOrDefault = doc.DocumentNode.ChildNodes.Cast<HtmlNode>().FirstOrDefault(node => node.Name.Equals("img"));
-
-                if (firstOrDefault != null)
+                if (doc.DocumentNode.SelectNodes("//img").Count > 0)
                 {
-                    var src = firstOrDefault.Attributes["src"].Value;
-
-                    stuId = stu.id;
-                    return src;
+                    foreach (var node in doc.DocumentNode.SelectNodes("//img"))
+                    {
+                        list.Add(new { stu.id, src = node.Attributes["src"].Value, stu.title });
+                    }
                 }
             }
 
-            stuId = -1;
-            return "";
+            return list;
         }
 
         [HttpGet]

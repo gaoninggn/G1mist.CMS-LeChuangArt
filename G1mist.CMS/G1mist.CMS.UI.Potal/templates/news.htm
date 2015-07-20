@@ -84,12 +84,10 @@
                     <div id="boxID">
                         <div class="pic">
                             <ul>
-                                <li><a href="${site}news/list/3">
-                                    <img src="${site}${images}newslb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
-                                <li><a href="${site}news/list/4">
-                                    <img src="${site}${images}gongyilb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
-                                <li><a href="${site}news/list/5">
-                                    <img src="${site}${images}newslb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
+                                #set($var=3) #foreach($p in $paths)
+                                <li><a href="${site}news/list/${var}">
+                                    <img src="${site}${p.src.SubString(1)}" thumb="" alt="" text="乐闯美术" /></a></li>
+                                #set($var = $var+1) #end
                             </ul>
                         </div>
                     </div>

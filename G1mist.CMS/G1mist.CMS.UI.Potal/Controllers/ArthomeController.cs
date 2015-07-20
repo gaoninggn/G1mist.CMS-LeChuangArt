@@ -62,6 +62,12 @@ namespace G1mist.CMS.UI.Potal.Controllers
             //3.PUT展示鉴赏id=11
             //获取最新展示鉴赏文章(拿到ID),找到第一张图片的路径
             var listArticles = ArticleService.GetList(a => a.cateid == 11).OrderByDescending(a => a.createtime).Take(3).ToList();
+            //获得三张轮播图id=31
+            var pics = ArticleService.GetList(a => a.cateid == 31).Take(1).ToList();
+
+            var paths = GetStudentPic(pics);
+
+            velocityHelper.Put("paths", paths);
 
             var listpath = GetStudentPic(listArticles);
             var teachpath = GetStudentPic(teachArticles);

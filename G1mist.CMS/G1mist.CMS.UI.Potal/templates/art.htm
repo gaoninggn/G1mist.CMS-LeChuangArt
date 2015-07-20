@@ -84,12 +84,10 @@
                     <div id="boxID">
                         <div class="pic">
                             <ul>
-                                <li><a href="${site}art/list/7">
-                                    <img src="${site}${images}newslb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
-                                <li><a href="${site}art/list/8">
-                                    <img src="${site}${images}newslb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
-                                <li><a href="${site}art/list/9">
-                                    <img src="${site}${images}newslb.jpg" thumb="" alt="" text="乐闯美术" /></a></li>
+                                #set($var=7) #foreach($p in $paths)
+                                <li><a href="${site}art/list/${var}">
+                                    <img src="${site}${p.src.SubString(1)}" thumb="" alt="" text="乐闯美术" /></a></li>
+                                #set($var = $var+1) #end
                             </ul>
                         </div>
                     </div>
@@ -128,8 +126,8 @@
                                 <img src="${site}${images}mxfc.jpg" /></div>
                         </div>
                         <div class="artrightrsp">
-                            <a href="${site}art/detail/${stuId}">
-                                <img src="${site}${stuImage}" width="216" height="126" /></a>
+                            <a href="${site}art/detail/${path.id}">
+                                <img src="${site}${path.src.SubString(1)}" width="216" height="126" /></a>
                         </div>
                     </div>
                     <!--内容右边图片展示-->

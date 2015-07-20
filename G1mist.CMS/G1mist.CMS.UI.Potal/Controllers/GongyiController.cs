@@ -7,6 +7,7 @@ using G1mist.CMS.Common;
 using G1mist.CMS.IRepository;
 using G1mist.CMS.Modal;
 using SharpConfig;
+using HtmlAgilityPack;
 
 namespace G1mist.CMS.UI.Potal.Controllers
 {
@@ -60,10 +61,14 @@ namespace G1mist.CMS.UI.Potal.Controllers
             var cishanNews = ArticleService.GetList(a => a.cateid == 16).Take(5).ToList();
             //3.PUT捐赠赞助id=8
             var artNews = ArticleService.GetList(a => a.cateid == 24).Take(5).ToList();
+            //获取两张轮播图
+            var pic = ArticleService.GetList(a => a.cateid == 32).Take(1).ToList();
+            var paths = GetStudentPic(pic);
 
             velocityHelper.Put("lechuangNews", lechuangNews);
             velocityHelper.Put("cishanNews", cishanNews);
             velocityHelper.Put("artNews", artNews);
+            velocityHelper.Put("paths", paths);
 
             velocityHelper.Display("gongyi.htm");
         }
@@ -132,6 +137,29 @@ namespace G1mist.CMS.UI.Potal.Controllers
             velocityHelper.Put("js", section["js"].Value);
             velocityHelper.Put("images", section["images"].Value);
             velocityHelper.Put("site", section["site"].Value);
+        }
+
+        [NonAction]
+        private List<dynamic> GetStudentPic(IEnumerable<T_Articles> stuNews)
+        {
+            var list = new List<dynamic>();
+
+            foreach (var stu in stuNews)
+            {
+                var content = Server.HtmlDecode(stu.body);
+                var doc = new HtmlDocument();
+                doc.LoadHtml(content);
+
+                if (doc.DocumentNode.SelectNodes("//img").Count > 0)
+                {
+                    foreach (var node in doc.DocumentNode.SelectNodes("//img"))
+                    {
+                        list.Add(new { stu.id, src = node.Attributes["src"].Value, stu.title });
+                    }
+                }
+            }
+
+            return list;
         }
     }
 }
