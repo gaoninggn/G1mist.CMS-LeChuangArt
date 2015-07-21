@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using G1mist.CMS.Common;
 using G1mist.CMS.IRepository;
 using G1mist.CMS.Modal;
+using HtmlAgilityPack;
 using SharpConfig;
 
 namespace G1mist.CMS.UI.Potal.Controllers
@@ -52,8 +53,37 @@ namespace G1mist.CMS.UI.Potal.Controllers
 
             PutStatic(velocityHelper);
 
+            // 获取首页三张轮播图
+            // 获取3张轮播图 id =35
+            var pics = ArticleService.GetList(a => a.cateid == 35).Take(1).ToList();
+            var paths = GetPic(pics);
+
+            velocityHelper.Put("paths", paths);
             velocityHelper.Display("index.htm");
         }
+        [NonAction]
+        private List<dynamic> GetPic(IEnumerable<T_Articles> stuNews)
+        {
+            var list = new List<dynamic>();
+
+            foreach (var stu in stuNews)
+            {
+                var content = Server.HtmlDecode(stu.body);
+                var doc = new HtmlDocument();
+                doc.LoadHtml(content);
+
+                if (doc.DocumentNode.SelectNodes("//img").Count > 0)
+                {
+                    foreach (var node in doc.DocumentNode.SelectNodes("//img"))
+                    {
+                        list.Add(new { stu.id, src = node.Attributes["src"].Value, stu.title });
+                    }
+                }
+            }
+
+            return list;
+        }
+
         [HttpGet]
         public void News()
         {
