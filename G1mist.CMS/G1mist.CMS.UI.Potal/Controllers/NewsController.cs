@@ -65,7 +65,7 @@ namespace G1mist.CMS.UI.Potal.Controllers
             //4.PUT视频资源id=5
             //获取最新视频资源文章(拿到ID),找到第一张图片的路径
             var stuNews = ArticleService.GetList(a => a.cateid == 5).OrderByDescending(a => a.createtime).ToList();
-            var path = GetStudentPic(stuNews);
+            var path = GetVedioPath(stuNews);
 
             velocityHelper.Put("paths", paths);
             velocityHelper.Put("path", path);
@@ -183,6 +183,26 @@ namespace G1mist.CMS.UI.Potal.Controllers
             var node = doc.DocumentNode.SelectNodes("//embed")[0];
 
             return node.Attributes["src"].Value;
+        }
+
+        [NonAction]
+        private List<dynamic> GetVedioPath(IEnumerable<T_Articles> stuNews)
+        {
+            var list = new List<dynamic>();
+
+            foreach (var stu in stuNews)
+            {
+                var content = Server.HtmlDecode(stu.body);
+                var doc = new HtmlDocument();
+                doc.LoadHtml(content);
+
+                foreach (var node in doc.DocumentNode.SelectNodes("//embed"))
+                {
+                    list.Add(new { stu.id, src = node.Attributes["src"].Value, stu.title });
+                }
+            }
+
+            return list;
         }
     }
 }
