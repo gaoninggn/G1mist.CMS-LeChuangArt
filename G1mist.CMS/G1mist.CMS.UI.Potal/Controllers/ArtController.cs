@@ -50,7 +50,6 @@ namespace G1mist.CMS.UI.Potal.Controllers
         [HttpGet]
         public void Index()
         {
-            int stuId;
             var velocityHelper = new VelocityHelper(_templatePath);
 
             PutStatic(velocityHelper);
@@ -62,7 +61,7 @@ namespace G1mist.CMS.UI.Potal.Controllers
             //4.PUT学生风采id=9
             //获取最新学生风采文章(拿到ID),找到第一张图片的路径
             var stuNews = ArticleService.GetList(a => a.cateid == 9).OrderByDescending(a => a.createtime).ToList();
-            var path = GetStudentPic(stuNews).FirstOrDefault();
+            var path = GetStudentPic(stuNews);
 
             // 获取三张轮播图
             // 获取3张轮播图 id =29
