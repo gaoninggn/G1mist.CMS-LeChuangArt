@@ -60,10 +60,15 @@ namespace G1mist.CMS.UI.Potal.Controllers
             var artNews = ArticleService.GetList(a => a.cateid == 3).Take(14).ToList();
             // 获取3张轮播图 id =29
             var pics = ArticleService.GetList(a => a.cateid == 29).Take(1).ToList();
-
             var paths = GetStudentPic(pics);
 
+            //4.PUT视频资源id=5
+            //获取最新视频资源文章(拿到ID),找到第一张图片的路径
+            var stuNews = ArticleService.GetList(a => a.cateid == 5).OrderByDescending(a => a.createtime).ToList();
+            var path = GetStudentPic(stuNews);
+
             velocityHelper.Put("paths", paths);
+            velocityHelper.Put("path", path);
             velocityHelper.Put("lechuangNews", lechuangNews);
             velocityHelper.Put("artNews", artNews);
 

@@ -59,6 +59,7 @@ namespace G1mist.CMS.UI.Potal.Controllers
             var paths = GetPic(pics);
 
             velocityHelper.Put("paths", paths);
+            velocityHelper.Put("this", this);
             velocityHelper.Display("index.htm");
         }
         [NonAction]
@@ -82,6 +83,16 @@ namespace G1mist.CMS.UI.Potal.Controllers
             }
 
             return list;
+        }
+
+        public string GetCategoryString(int index)
+        {
+            var list = new List<string>
+            {
+                "news","art","arthome","gongyi","wenhua"
+            };
+
+            return list[index];
         }
 
         [HttpGet]

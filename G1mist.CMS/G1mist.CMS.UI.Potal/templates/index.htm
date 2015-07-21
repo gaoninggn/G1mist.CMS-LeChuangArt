@@ -46,10 +46,12 @@
             <div id="boxID">
                 <div class="pic">
                     <ul>
+                        #set($var=0)
                         #foreach($p in $paths)
                         <li>
-                            <a href="#">
+                            <a href="${site}${this.GetCategoryString($var)}">
                                 <img src="${site}${p.src.SubString(1)}" thumb="" alt="" text="${p.title}" />
+                                #set($var=$var+1)
                             </a>
                         </li>
                         #end

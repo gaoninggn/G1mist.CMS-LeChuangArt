@@ -50,7 +50,8 @@
                 <!--内容左边导航-->
                 <div class="newscontentlefttop">
                     <div class="newscontentlefttopultitle">
-                        新闻中心</div>
+                        新闻中心
+                    </div>
                     <ul class="newsul">
                         <li><a href="${site}news/list/3">艺术动态</a></li>
                         <li><a href="${site}news/list/4">乐闯资讯</a></li>
@@ -64,7 +65,8 @@
                         <div class="bk">
                         </div>
                         <div class="jibt">
-                            艺术动态</div>
+                            艺术动态
+                        </div>
                     </div>
                     <div class="newsleftul">
                         <ul>
@@ -85,8 +87,11 @@
                         <div class="pic">
                             <ul>
                                 #set($var=3) #foreach($p in $paths)
-                                <li><a href="${site}news/list/${var}">
-                                        <img src="${site}${p.src.SubString(1)}" thumb="" alt="" text="${p.title}" /></a></li>
+                                <li>
+                                    <a href="${site}news/list/${var}">
+                                        <img src="${site}${p.src.SubString(1)}" thumb="" alt="" text="${p.title}" />
+                                    </a>
+                                </li>
                                 #set($var = $var+1) #end
                             </ul>
                         </div>
@@ -100,16 +105,21 @@
                             <div class="bk">
                             </div>
                             <div class="jibt">
-                                乐闯资讯</div>
+                                乐闯资讯
+                            </div>
                             <div class="more">
-                                <a href="${site}news/list/4">MORE</a></div>
+                                <a href="${site}news/list/4">MORE</a>
+                            </div>
                         </div>
                         <div class="newsrightleftul">
                             <ul>
                                 #foreach($l in $lechuangNews)
-                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
+                                <li>
+                                    <span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
                                     margin-left: 5px;">
-                                    <img src="${images}dian.png" /></span><a href="${site}news/detail/${l.id}">${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                                        <img src="${images}dian.png" />
+                                    </span><a href="${site}news/detail/${l.id}">${l.title}</a><span>${l.createtime.ToShortDateString()}</span>
+                                </li>
                                 #end
                             </ul>
                         </div>
@@ -121,12 +131,18 @@
                             <div class="bk">
                             </div>
                             <div class="jibt">
-                                视频资源</div>
+                                视频资源
+                            </div>
                             <div class="more">
-                                <a href="${site}news/list/5">MORE</a></div>
+                                <a href="${site}news/list/5">MORE</a>
+                            </div>
                         </div>
                         <div class="newsrightrsp">
-                            <img src="${site}${images}newssp.jpg" />
+                            #foreach($l in $path)
+                            <a href="${site}news/detail/${l.id}">
+                                <img src="${site}${l.src.SubString(1)}" width="216" height="126" />
+                            </a>
+                            #end
                         </div>
                     </div>
                     <!--内容右边视频展示-->
@@ -139,9 +155,11 @@
         <div class="foot">
             <div class="footcontent">
                 <p>
-                    广西南宁乐闯文化传播有限公司</p>
+                    广西南宁乐闯文化传播有限公司
+                </p>
                 <p>
-                    电话：13307731021 邮箱：lechuangarts@163.com 地址：广西南宁市青秀区汇春路3号英华楼7楼715号</p>
+                    电话：13307731021 邮箱：lechuangarts@163.com 地址：广西南宁市青秀区汇春路3号英华楼7楼715号
+                </p>
             </div>
         </div>
         <!--尾部-->
