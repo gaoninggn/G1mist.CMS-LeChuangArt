@@ -38,8 +38,8 @@ public class Upload : IHttpHandler
             {"file", "doc,docx,xls,xlsx,ppt,htm,html,txt,zip,rar,gz,bz2"}
         };
 
-        //最大文件大小
-        int maxSize = 1000000;
+        //最大文件大小50M
+        int maxSize = 50 * 1024 * 1024;
         this.context = context;
 
         HttpPostedFile imgFile = context.Request.Files["imgFile"];

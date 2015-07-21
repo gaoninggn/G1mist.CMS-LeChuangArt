@@ -70,7 +70,7 @@ namespace G1mist.CMS.UI.Potal.Controllers
             velocityHelper.Put("paths", paths);
 
             var listpath = GetStudentPic(listArticles);
-            var teachpath = GetStudentPic(teachArticles);
+            var teachpath = GetVedioPath(teachArticles);
 
             //PUT展示鉴赏文章ID和图片路径
             velocityHelper.Put("list", listpath);
@@ -98,6 +98,37 @@ namespace G1mist.CMS.UI.Potal.Controllers
             }
 
             return list;
+        }
+
+        [NonAction]
+        private List<dynamic> GetVedioPath(IEnumerable<T_Articles> stuNews)
+        {
+            var list = new List<dynamic>();
+
+            foreach (var stu in stuNews)
+            {
+                var content = Server.HtmlDecode(stu.body);
+                var doc = new HtmlDocument();
+                doc.LoadHtml(content);
+
+                foreach (var node in doc.DocumentNode.SelectNodes("//embed"))
+                {
+                    list.Add(new { stu.id, src = node.Attributes["src"].Value, stu.title });
+                }
+            }
+
+            return list;
+        }
+
+        [NonAction]
+        private string GetVedioPath(string body)
+        {
+            var doc = new HtmlDocument();
+            doc.LoadHtml(body);
+
+            var node = doc.DocumentNode.SelectNodes("//embed")[0];
+
+            return node.Attributes["src"].Value;
         }
 
         [HttpGet]
@@ -147,6 +178,16 @@ namespace G1mist.CMS.UI.Potal.Controllers
 
             var article = ArticleService.GetModal(a => a.id.Equals(id));
             article.body = Server.HtmlDecode(article.body);
+
+            //按照节的名称读取节
+            var section = Config["path"];
+            var path = GetVedioPath(article.body);
+            var site = section["site"].Value;
+            var newpath = site + "scripts/ckplayer/ckplayer.swf?f=" + site + path.Substring(1);
+
+            article.body = article.body.Replace(path, newpath);
+            article.body = article.body.Replace("loop", "allowfullscreen");
+
             var cateName = CategoryService.GetModal(a => a.id.Equals(article.cateid)).name;
 
             velocityHelper.Put("active", article.cateid);
