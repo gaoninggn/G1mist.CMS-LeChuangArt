@@ -181,7 +181,7 @@ namespace G1mist.CMS.UI.Potal.Controllers
             var doc = new HtmlDocument();
             doc.LoadHtml(body);
 
-            if (doc.DocumentNode.SelectNodes("//embed").Count > 0)
+            if (doc.DocumentNode.SelectNodes("//embed") != null && doc.DocumentNode.SelectNodes("//embed").Count > 0)
             {
                 var node = doc.DocumentNode.SelectNodes("//embed")[0];
                 return node.Attributes["src"].Value;

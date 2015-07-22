@@ -51,6 +51,7 @@
                     作者
                 </label><cite>
                     <input type="text" class="form-control" id="author" placeholder="在此输入文章的作者" style="width: 350px;" />
+                    <span id="validateauthor" style="color: red; display: none;">作者不能为空！</span>
                 </cite>
             </li>
             <li>
@@ -107,6 +108,9 @@
                 if (title.length === 0) {
                     $('#validatetitle').css("display", "block");
                 }
+                else if (author.length === 0) {
+                    $('#validateauthor').css("display", "block");
+                }
                 else if (cate === -1) {
                     $('#validatecate').css("display", "block");
                 }
@@ -117,6 +121,7 @@
                     $('#validatetitle').css("display", "none");
                     $('#validatecate').css("display", "none");
                     $('#validatecontent').css("display", "none");
+                    $('#validateauthor').css("display", "none");
 
                     $.post("/admin/article/add",
                      {

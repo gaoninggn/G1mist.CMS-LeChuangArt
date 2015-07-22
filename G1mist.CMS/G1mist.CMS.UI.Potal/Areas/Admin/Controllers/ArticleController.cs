@@ -50,6 +50,15 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
                 article.createtime = DateTime.Now;
                 article.uid = currentUser.id;
 
+                if (string.IsNullOrEmpty(article.from))
+                {
+                    article.from = Encoder.HtmlEncode("");
+                }
+                if (string.IsNullOrEmpty(article.author))
+                {
+                    article.author = Encoder.HtmlEncode("");
+                }
+
                 var result = ArticleService.Insert(article);
 
                 if (result)

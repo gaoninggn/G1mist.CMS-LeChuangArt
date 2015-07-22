@@ -64,7 +64,7 @@ namespace G1mist.CMS.UI.Potal.Controllers
 
             //4.PUT视频资源id=5
             //获取最新视频资源文章(拿到ID),找到第一张图片的路径
-            var stuNews = ArticleService.GetList(a => a.cateid == 5).OrderByDescending(a => a.createtime).ToList();
+            var stuNews = ArticleService.GetList(a => a.cateid == 5).OrderByDescending(a => a.createtime).Take(1).ToList();
             var path = GetVedioPath(stuNews);
 
             velocityHelper.Put("paths", paths);
