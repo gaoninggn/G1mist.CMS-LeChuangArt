@@ -7,7 +7,8 @@ namespace G1mist.CMS.UI.Potal
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new G1MistHandleErrorAttribute());
+            //filters.Add(new G1MistHandleErrorAttribute());
+            filters.Add(new HandleErrorAttribute());
         }
     }
 }
