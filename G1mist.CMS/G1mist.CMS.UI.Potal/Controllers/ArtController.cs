@@ -148,6 +148,18 @@ namespace G1mist.CMS.UI.Potal.Controllers
             article.body = Server.HtmlDecode(article.body);
             var cateName = CategoryService.GetModal(a => a.id.Equals(article.cateid)).name;
 
+            //按照节的名称读取节
+            var section = Config["path"];
+            var path = GetVedioPath(article.body);
+            var site = section["site"].Value;
+            if (!string.IsNullOrEmpty(path))
+            {
+                var newpath = site + "scripts/ckplayer/ckplayer.swf?f=" + site + path.Substring(1);
+
+                article.body = article.body.Replace(path, newpath);
+                article.body = article.body.Replace("loop", "allowfullscreen");
+            }
+
             velocityHelper.Put("active", article.cateid);
             velocityHelper.Put("cateName", cateName);
             velocityHelper.Put("article", article);
@@ -165,5 +177,20 @@ namespace G1mist.CMS.UI.Potal.Controllers
             velocityHelper.Put("images", section["images"].Value);
             velocityHelper.Put("site", section["site"].Value);
         }
+
+        [NonAction]
+        private string GetVedioPath(string body)
+        {
+            var doc = new HtmlDocument();
+            doc.LoadHtml(body);
+
+            if (doc.DocumentNode.SelectNodes("//embed").Count > 0)
+            {
+                var node = doc.DocumentNode.SelectNodes("//embed")[0];
+                return node.Attributes["src"].Value;
+            }
+            return "";
+        }
     }
+
 }

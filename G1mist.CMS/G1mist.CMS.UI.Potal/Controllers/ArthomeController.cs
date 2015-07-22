@@ -126,9 +126,12 @@ namespace G1mist.CMS.UI.Potal.Controllers
             var doc = new HtmlDocument();
             doc.LoadHtml(body);
 
-            var node = doc.DocumentNode.SelectNodes("//embed")[0];
-
-            return node.Attributes["src"].Value;
+            if (doc.DocumentNode.SelectNodes("//embed").Count > 0)
+            {
+                var node = doc.DocumentNode.SelectNodes("//embed")[0];
+                return node.Attributes["src"].Value;
+            }
+            return "";
         }
 
         [HttpGet]
@@ -183,10 +186,14 @@ namespace G1mist.CMS.UI.Potal.Controllers
             var section = Config["path"];
             var path = GetVedioPath(article.body);
             var site = section["site"].Value;
-            var newpath = site + "scripts/ckplayer/ckplayer.swf?f=" + site + path.Substring(1);
 
-            article.body = article.body.Replace(path, newpath);
-            article.body = article.body.Replace("loop", "allowfullscreen");
+            if (!string.IsNullOrEmpty(path))
+            {
+                var newpath = site + "scripts/ckplayer/ckplayer.swf?f=" + site + path.Substring(1);
+
+                article.body = article.body.Replace(path, newpath);
+                article.body = article.body.Replace("loop", "allowfullscreen");
+            }
 
             var cateName = CategoryService.GetModal(a => a.id.Equals(article.cateid)).name;
 
