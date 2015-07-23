@@ -647,3 +647,4 @@ table { border-collapse:collapse; }artul
 .foot{ width:1000px; min-height:74px; height:100%; background-color:#fff; margin:0 auto; padding:0;}
 .footcontent{ width:680px; height:50px; margin:auto; padding:0px; padding-top:10px;}
 .footcontent p{ width:680px; height:25px;  line-height:25px; text-align:center; margin:auto; padding:0px;  color:#7A7A7A; font-family:"微软雅黑"; font-size:14px;}
+.side-bar {width:141px;position: fixed;top:50px;right: 10px;font-size: 0;line-height: 0;z-index: 100;}
