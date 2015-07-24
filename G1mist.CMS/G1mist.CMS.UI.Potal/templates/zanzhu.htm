@@ -2,7 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>乐闯美术</title>
+    <title>捐赠赞助-乐闯公益</title>
+    <meta name="keywords" content="美术培训,公益,油画视频教程,秦乐闯，公益捐助，油画鉴赏,油画义卖" />
+    <meta name="description" content="乐闯美术，是一家公益美术机构，是目前国内唯一与列宾美术学院有着长期密切学术交流与合作的美术培训学校，我校校长秦乐闯成功策展了俄罗斯列宾美术学院馆藏作品展，成为广西美术界一大盛事。" />
+
     <link rel="stylesheet" type="text/css" href="${site}${css}index.css" />
     <script type="text/javascript" src="${site}${js}myfocus-2.0.2.min.js"></script>
     <script type="text/javascript" src="${site}${js}mf-pattern/mF_pconline.js"></script>
@@ -50,7 +53,8 @@
                 <!--内容左边导航-->
                 <div class="gycontentlefttop">
                     <div class="gycontentlefttopultitle">
-                        捐赠赞助</div>
+                        捐赠赞助
+                    </div>
                     <ul class="gyul">
                         <li><a href="${site}zanzhu/list/24">捐赠学校</a></li>
                         <li><a href="${site}zanzhu/list/25">赞助美术馆</a></li>
@@ -64,9 +68,11 @@
                         <div class="bk">
                         </div>
                         <div class="jibt">
-                            捐赠学校</div>
+                            捐赠学校
+                        </div>
                         <div class="more">
-                            <a href="${site}zanzhu/list/24">MORE</a></div>
+                            <a href="${site}zanzhu/list/24">MORE</a>
+                        </div>
                     </div>
                     <div class="gyleftul">
                         <ul>
@@ -86,9 +92,12 @@
                     <div id="boxID">
                         <div class="pic">
                             <ul>
-                               #set($var=24) #foreach($p in $paths)
-                                <li><a href="${site}zanzhu/list/${var}">
-                                        <img src="${site}${p.src.SubString(1)}" thumb="" alt="" text="${p.title}" /></a></li>
+                                #set($var=24) #foreach($p in $paths)
+                                <li>
+                                    <a href="${site}zanzhu/list/${var}">
+                                        <img src="${site}${p.src.SubString(1)}" thumb="" alt="" text="${p.title}" />
+                                    </a>
+                                </li>
                                 #set($var = $var+1) #end
                             </ul>
                         </div>
@@ -102,16 +111,21 @@
                             <div class="bk">
                             </div>
                             <div class="jibt">
-                                赞助美术馆</div>
+                                赞助美术馆
+                            </div>
                             <div class="more">
-                                <a href="${site}zanzhu/list/25">MORE</a></div>
+                                <a href="${site}zanzhu/list/25">MORE</a>
+                            </div>
                         </div>
                         <div class="gyrightleftul">
                             <ul>
                                 #foreach($l in $zanzhuart)
-                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
+                                <li>
+                                    <span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
                                     margin-left: 5px;">
-                                    <img src="${images}dian.png" /></span><a href="${site}zanzhu/detail/${l.id}">[公告]${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                                        <img src="${images}dian.png" />
+                                    </span><a href="${site}zanzhu/detail/${l.id}">[公告]${l.title}</a><span>${l.createtime.ToShortDateString()}</span>
+                                </li>
                                 #end
                             </ul>
                         </div>
@@ -123,16 +137,21 @@
                             <div class="bk">
                             </div>
                             <div class="jibt">
-                                赞助教育活动</div>
+                                赞助教育活动
+                            </div>
                             <div class="more">
-                                <a href="${site}zanzhu/list/26">MORE</a></div>
+                                <a href="${site}zanzhu/list/26">MORE</a>
+                            </div>
                         </div>
                         <div class="gyrightrsp">
                             <ul>
                                 #foreach($l in $zanzhuschool)
-                                <li><span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
+                                <li>
+                                    <span style="width: 9px; height: 20px; line-height: 20px; float: left; margin-right: 5px;
                                     margin-left: 5px;">
-                                    <img src="${images}dian.png" /></span><a href="${site}zanzhu/detail/${l.id}">[公告]${l.title}</a><span>${l.createtime.ToShortDateString()}</span></li>
+                                        <img src="${images}dian.png" />
+                                    </span><a href="${site}zanzhu/detail/${l.id}">[公告]${l.title}</a><span>${l.createtime.ToShortDateString()}</span>
+                                </li>
                                 #end
                             </ul>
                         </div>
@@ -147,15 +166,17 @@
         <div class="foot">
             <div class="footcontent">
                 <p>
-                    广西南宁乐闯文化传播有限公司</p>
+                    广西南宁乐闯文化传播有限公司
+                </p>
                 <p>
-                    电话：13307731021 邮箱：lechuangarts@163.com 地址：广西南宁市青秀区汇春路3号英华楼7楼715号</p>
+                    电话：13307731021 邮箱：lechuangarts@163.com 地址：广西南宁市青秀区汇春路3号英华楼7楼715号
+                </p>
             </div>
         </div>
         <!--尾部-->
     </div>
 </body>
-<div class="side-bar"> 
-	<img style="width:138px;height:138px;" src="${site}${images}22.png" alt="微信订阅号">
+<div class="side-bar">
+    <img style="width:138px;height:138px;" src="${site}${images}22.png" alt="微信订阅号" />
 </div>
 </html>
