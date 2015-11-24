@@ -1,4 +1,4 @@
-body{ margin:0 auto; padding:0;font-size:14px; color:#333; font-family:"微软雅黑";  width:100%; height:100%; margin:0 auto; padding:0; background-color:#FFFFFF;}
+﻿body{ margin:0 auto; padding:0;font-size:14px; color:#333; font-family:"微软雅黑";  width:100%; height:100%; margin:0 auto; padding:0; background-color:#FFFFFF;}
 html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, form, input, p, img, h6 { padding:0; margin:0; }
 html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, form, input, p, img, h6 { padding:0; margin:0; }
 html {  _overflow-y:scroll;}
@@ -246,7 +246,7 @@ table { border-collapse:collapse; }artul
 .artcontentrightlb{ width:684px; height:293px; margin:0; padding:0;}
 
 .artcontentrightbottom{ width:684px; height:166px; margin:0; padding:0; margin-top:20px;}
-.artrightleft{ width:460px; height:166px; margin:0; padding:0; float:left; background:url(../images/meixiaozhanshi.jpg) no-repeat;}
+.artrightleft{ width:460px; height:166px; margin:0; padding:0; float:left;}
 .artrightlefttitle{ width:460px; height:30px; margin:0; padding:0; border-bottom:#CCCCCC 1px solid;}
 .artrightleftul ul{ width:460px; height:136px;margin:0; padding:0; font-size:12px; clear:both;}
 .artrightleftul ul li{ width:460px; height:20px;font-size:12px; color:#666564; }
@@ -642,7 +642,7 @@ table { border-collapse:collapse; }artul
 .articletime{ text-align:center;  font-family:"微软雅黑"; font-size:13px;color:#373737;}
 
 .detailcontent{ width:684px; min-height:515px;  height:100%; margin:5px; padding:0;line-height:25px; font-family:"微软雅黑"; font-size:13px;color:#373737;}
-
+  .detailcontent img {max-width: 670px;    }
 
 .foot{ width:1000px; min-height:74px; height:100%; background-color:#fff; margin:0 auto; padding:0;}
 .footcontent{ width:680px; height:50px; margin:auto; padding:0px; padding-top:10px;}

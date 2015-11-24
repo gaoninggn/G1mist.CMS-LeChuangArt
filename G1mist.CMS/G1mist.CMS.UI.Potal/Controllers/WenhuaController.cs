@@ -91,7 +91,7 @@ namespace G1mist.CMS.UI.Potal.Controllers
                 Response.End();
             }
 
-            var article = ArticleService.GetList(a => a.cateid.Equals(id));
+            var article = ArticleService.GetList(a => a.cateid.Equals(id)).OrderByDescending(a => a.createtime);
             var cateName = CategoryService.GetModal(a => a.id.Equals(id)).name;
 
             velocityHelper.Put("active", id);
@@ -168,11 +168,12 @@ namespace G1mist.CMS.UI.Potal.Controllers
                     foreach (var node in doc.DocumentNode.SelectNodes("//img"))
                     {
                         list.Add(new { stu.id, src = node.Attributes["src"].Value, stu.title });
+                        break;
                     }
                 }
             }
 
-            return list;
+            return list.Take(3).ToList();
         }
 
         [NonAction]

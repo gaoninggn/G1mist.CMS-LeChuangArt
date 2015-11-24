@@ -323,7 +323,9 @@
     <Content Include="Areas\Admin\html\js\bootstrap-table-zh-CN.min.js" />
     <Content Include="Areas\Admin\html\js\bootstrap-table.min.js" />
     <Content Include="Areas\Admin\html\js\bootstrap.min.js" />
-    <Content Include="Areas\Admin\html\js\editor\asp.net\bin\LitJSON.dll" />
+    <Content Include="Areas\Admin\html\js\editor\asp.net\bin\LitJSON.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Areas\Admin\html\js\editor\asp.net\demo.aspx" />
     <Content Include="Areas\Admin\html\js\editor\asp.net\README.txt" />
     <Content Include="Areas\Admin\html\js\editor\kindeditor-all-min.js" />
@@ -1082,6 +1084,7 @@
     <Content Include="Areas\Admin\html\js\editor\asp.net\file_manager_json.ashx" />
     <Content Include="Areas\Admin\html\js\editor\asp.net\upload_json.ashx" />
     <Content Include="Config\static.config" />
+    <None Include="Properties\PublishProfiles\lechuang.pubxml" />
     <None Include="Properties\PublishProfiles\配置文件1.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

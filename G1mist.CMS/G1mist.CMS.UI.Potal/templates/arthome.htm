@@ -96,7 +96,7 @@
                                 #set($var=11) #foreach($p in $paths)
                                 <li>
                                     <a href="${site}arthome/list/${var}">
-                                        <img src="${site}${p.src.SubString(1)}" thumb="" alt="" text="${p.title}" />
+                                        <img src="${site}${p.src.SubString(1)}" thumb="" alt="" text="${p.title}" width="684" height="293" />
                                     </a>
                                 </li>
                                 #set($var = $var+1) #end
@@ -123,7 +123,7 @@
                                 #foreach($item in $list)
                                 <li>
                                     <a href="${site}arthome/detail/${item.id}">
-                                        <img src=" ${site}${item.src}" width="216" height="126" />
+                                        <img src=" ${site}${item.src.SubString(1)}" width="216" height="126" />
                                     </a>
                                 </li>
                                 #end

@@ -91,6 +91,11 @@ namespace G1mist.CMS.UI.Potal.Areas.Admin.Controllers
         {
             int total;
 
+            if (!string.IsNullOrEmpty(search))
+            {
+                search = Encoder.HtmlEncode(search);
+            }
+
             var list = string.IsNullOrEmpty(search) ? ArticleService.GetListByPage(int.Parse(offset), int.Parse(limit), a => a.id > 0, a => a.createtime, a => a, out total, false).ToList() : ArticleService.GetListByPage(int.Parse(offset), int.Parse(limit), a => a.title.Contains(search), a => a.createtime, a => a, out total, false).ToList();
 
             var resultList = list.Select(a => a.cateid != null ? new

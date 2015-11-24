@@ -82,7 +82,7 @@ namespace G1mist.CMS.UI.Potal.Controllers
                 }
             }
 
-            return list;
+            return list.Take(5).ToList();
         }
 
         public string GetCategoryString(int index)

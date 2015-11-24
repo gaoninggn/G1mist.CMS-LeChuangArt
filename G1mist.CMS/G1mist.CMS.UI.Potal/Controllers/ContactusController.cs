@@ -50,16 +50,29 @@ namespace G1mist.CMS.UI.Potal.Controllers
         public void Index()
         {
             var velocityHelper = new VelocityHelper(_templatePath);
+            var article = ArticleService.GetModal(a => a.cateid == 36);
+            if (article != null)
+            {
+                article.body = Server.HtmlDecode(article.body);
+            }
 
             PutStatic(velocityHelper);
 
+            velocityHelper.Put("article", article);
             velocityHelper.Display("lechuangxuexiao.htm");
         }
         public void Meishuguan()
         {
             var velocityHelper = new VelocityHelper(_templatePath);
+            var article = ArticleService.GetModal(a => a.cateid == 37);
+            if (article != null)
+            {
+                article.body = Server.HtmlDecode(article.body);
+            }
 
             PutStatic(velocityHelper);
+
+            velocityHelper.Put("article", article);
 
             velocityHelper.Display("lechuangmeishuguan.htm");
         }
@@ -67,7 +80,15 @@ namespace G1mist.CMS.UI.Potal.Controllers
         {
             var velocityHelper = new VelocityHelper(_templatePath);
 
+            var article = ArticleService.GetModal(a => a.cateid == 38);
+            if (article != null)
+            {
+                article.body = Server.HtmlDecode(article.body);
+            }
+
             PutStatic(velocityHelper);
+
+            velocityHelper.Put("article", article);
 
             velocityHelper.Display("lechuanggongyi.htm");
         }
@@ -75,11 +96,18 @@ namespace G1mist.CMS.UI.Potal.Controllers
         {
             var velocityHelper = new VelocityHelper(_templatePath);
 
+            var article = ArticleService.GetModal(a => a.cateid == 39);
+            if (article != null)
+            {
+                article.body = Server.HtmlDecode(article.body);
+            }
+
             PutStatic(velocityHelper);
+
+            velocityHelper.Put("article", article);
 
             velocityHelper.Display("lechuangwenhua.htm");
         }
-
 
         [NonAction]
         private void PutStatic(VelocityHelper velocityHelper)

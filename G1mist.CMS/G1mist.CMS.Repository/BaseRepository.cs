@@ -111,7 +111,7 @@ namespace G1mist.CMS.Repository
         public ICollection<T> GetListByPage<TS>(int pageIndex, int pageSize, Func<T, bool> @where, Func<T, TS> orderBy, Func<T, T> selector, out int totalCount,
             bool isAsc = true)
         {
-            return _dal.GetListByPage(pageIndex, pageSize, where, orderBy, selector, out totalCount);
+            return _dal.GetListByPage(pageIndex, pageSize, where, orderBy, selector, out totalCount, isAsc);
         }
     }
 }
